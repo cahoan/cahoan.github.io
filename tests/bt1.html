@@ -6,12 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Listening Quiz</title>
     <style>
-        .center {
-            text-align: center
-        }
-        h2 {
-            text-align: center;
-        }
+        #ans1,#ans2,#ans3,#ans4,#ans5,#ans6{color:blue;text-align: center;}
+        .center {text-align: center}
+        h2 {text-align: center;}
         .btn {
             background:green;
             color:yellow;
@@ -20,33 +17,21 @@
             margin:auto;
             display:block;
         }
-
-        .tieude {
-            background:lightgreen; 
-
-        }
-        p {
-        font-size: 14pt;
-    
-        }
-        .bdy {
-            background:#f7e6cd;
-
-        }
+        .tieude {background:lightgreen;}
+        p {font-size: 14pt;}
+        .bdy {background:#f7e6cd;}
         .f-grid {
             display: flex;
             justify-content: space-between;
             margin-left: 0rem;
             flex-flow: row wrap;
         }
-        
         .f-grid-col {
             flex: 3 0;
             background-color: rgba(184,245,114,0.883);
             margin-left: 1rem;
             margin-bottom: 1rem;
             padding: 1rem;
-
         }
     </style>
     </head>
@@ -68,6 +53,7 @@
             <div class="f-grid-col" ><input id='c1inp3'  type="radio" name="question_1" value="C._";><span id='c1C._'>He thinks the boss will tell people not to spread rumors.</span></div>
             <div class="f-grid-col" ><input id='c1inp4'  type="radio" name="question_1" value="D.";><span id='c1D.'>He thinks the staff will gossip about the email.</span></div>
         </div>
+        <p id='ans1'></p>
         <hr>
         <p>
             <span style="color:blue">Question 2: </span>What does Kaveh think will happen after the budget cuts?<br>
@@ -79,6 +65,7 @@
             <div class="f-grid-col"><input id='c2inp3'  type="radio" name="question_2" value="C.";><span id='c2C.'>Kaveh thinks that the studio will close.</span></div>
             <div class="f-grid-col"><input id='c2inp4'  type="radio" name="question_2" value="D._";><span id='c2D._'>He thinks the staff will gossip about the email.</span></div>
         </div>
+        <p id='ans2'></p>
         <hr>
         <p>
             <span style="color:blue">Question 3: </span>What does Ms. Weaver want to do at the meeting?<br>
@@ -90,6 +77,7 @@
             <div class="f-grid-col"><input id='c3inp3'  type="radio" name="question_3" value="C._";><span id='c3C._'>She wants to praise the team and give them new assignments.</span></div>
             <div class="f-grid-col"><input id='c3inp4'  type="radio" name="question_3" value="D.";><span id='c3D.'>Ms. Weaver wants to tell the team she is going to fire them.</span></div>
         </div>
+        <p id='ans3'></p>
         <hr>
         <p>
             <span style="color:blue">Question 4: </span>What does Ms. Weaver say about the team?<br>
@@ -101,6 +89,7 @@
             <div class="f-grid-col"><input id='c4inp3'  type="radio" name="question_4" value="C.";><span id='c4C.'>Everyone is going to lose their jobs.</span></div>
             <div class="f-grid-col"><input id='c4inp4'  type="radio" name="question_4" value="D.";><span id='c4D.'>There will not be any budget cuts.</span></div>
         </div>
+        <p id='ans4'></p>
         <hr><br>
         <input type="button" class="btn" value="Result" onclick="check()">
     </form>
@@ -135,6 +124,7 @@
                     document.getElementById("c1inp2").setAttribute('disabled','disabled');
                     document.getElementById("c1inp3").setAttribute('disabled','disabled');
                     document.getElementById("c1inp4").setAttribute('disabled','disabled');
+                    document.getElementById("ans1").innerHTML ='Jonathan thinks the meeting is about budget cuts.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     break;
                 case 'c2':
@@ -148,6 +138,7 @@
                     document.getElementById("c2inp2").setAttribute('disabled','disabled');
                     document.getElementById("c2inp3").setAttribute('disabled','disabled');
                     document.getElementById("c2inp4").setAttribute('disabled','disabled');
+                    document.getElementById("ans2").innerHTML ='Kaveh thinks that people will lose their jobs and he might lose his own job.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     break;
                 case 'c3':
@@ -161,6 +152,7 @@
                     document.getElementById("c3inp2").setAttribute('disabled','disabled');
                     document.getElementById("c3inp3").setAttribute('disabled','disabled');
                     document.getElementById("c3inp4").setAttribute('disabled','disabled');
+                    document.getElementById("ans3").innerHTML ='She wants to praise the team and give them new assignments.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     break;
                 case 'c4':
@@ -174,6 +166,7 @@
                     document.getElementById("c4inp2").setAttribute('disabled','disabled');
                     document.getElementById("c4inp3").setAttribute('disabled','disabled');
                     document.getElementById("c4inp4").setAttribute('disabled','disabled');
+                    document.getElementById("ans4").innerHTML ='Ms. Weaver says that they are doing a good job and are getting new assignments.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     break;
 
