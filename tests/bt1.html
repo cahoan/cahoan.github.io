@@ -34,6 +34,7 @@
             padding: 1rem;
         }
     </style>
+    <script>var chtlroi='';</script>
     </head>
 <body class="bdy">
     <form name="myform">
@@ -43,51 +44,51 @@
             <br>
         </div>    
         <hr>
-        <p id="Q-1">
+        <p id="Q-1" onclick="readhoitl(cau='c1')">
             <span style="color:blue">Question 1: </span>What does Jonathan think will happen in the meeting?<br>
             <div class='center'><video width="320" height="240" controls><source src="https://av.voanews.com/Videoroot/Pangeavideo/2017/06/2/2c/2c4d970f-2b29-45d6-ab1f-80b07678b059.mp4" type="video/mp4"><source src="movie.ogg" type="video/ogg"></video></div>
         </p>
         <div class="f-grid" id='c1' onchange="getSelectValue(cau='c1')">
-            <div class="f-grid-col" ><input id='c1inp1' type="radio" name="question_1" value="A." ;><span id='c1A.'>Jonathan thinks the meeting is about Mark in Accounting.</span></div>
-            <div class="f-grid-col" ><input id='c1inp2' type="radio" name="question_1" value="B.";><span id='c1B.'>He thinks the boss will tell people not to spread rumors.</span></div>
-            <div class="f-grid-col" ><input id='c1inp3'  type="radio" name="question_1" value="C._";><span id='c1C._'>He thinks the boss will tell people not to spread rumors.</span></div>
-            <div class="f-grid-col" ><input id='c1inp4'  type="radio" name="question_1" value="D.";><span id='c1D.'>He thinks the staff will gossip about the email.</span></div>
+            <div class="f-grid-col" ><input id='c1inp1' type="radio" name="question_1" value="A." ;><span id='c1A.'>a) Jonathan thinks the meeting is about Mark in Accounting.</span></div>
+            <div class="f-grid-col" ><input id='c1inp2' type="radio" name="question_1" value="B.";><span id='c1B.'>b) He thinks the boss will tell people not to spread rumors.</span></div>
+            <div class="f-grid-col" ><input id='c1inp3'  type="radio" name="question_1" value="C._";><span id='c1C._'>c) He thinks the boss will tell people not to spread rumors.</span></div>
+            <div class="f-grid-col" ><input id='c1inp4'  type="radio" name="question_1" value="D.";><span id='c1D.'>d) He thinks the staff will gossip about the email.</span></div>
         </div>
         <p id='ans1'></p>
         <hr>
-        <p id="Q-2">
+        <p id="Q-2" onclick="readhoitl(cau='c2')">
             <span style="color:blue">Question 2: </span>What does Kaveh think will happen after the budget cuts?<br>
             <div class='center'><video width="320" height="240" controls><source src="https://av.voanews.com/Videoroot/Pangeavideo/2017/06/9/9d/9dbeef88-bdee-4383-b1fd-408260c7fd98.mp4" type="video/mp4"><source src="movie.ogg" type="video/ogg"></video></div>
         </p>
         <div class="f-grid" id='c2' onchange="getSelectValue(cau='c2');">
-            <div class="f-grid-col"><input id='c2inp1'  type="radio" name="question_2" value="A";><span id='c2A.'>Kaveh thinks that he will become a videographer.</span></div>
-            <div class="f-grid-col"><input id='c2inp2'  type="radio" name="question_2" value="B.";><span id='c2B.'>He thinks that Amelia will get another job.</span></div>
-            <div class="f-grid-col"><input id='c2inp3'  type="radio" name="question_2" value="C.";><span id='c2C.'>Kaveh thinks that the studio will close.</span></div>
-            <div class="f-grid-col"><input id='c2inp4'  type="radio" name="question_2" value="D._";><span id='c2D._'>He thinks the staff will gossip about the email.</span></div>
+            <div class="f-grid-col"><input id='c2inp1'  type="radio" name="question_2" value="A";><span id='c2A.'>a) Kaveh thinks that he will become a videographer.</span></div>
+            <div class="f-grid-col"><input id='c2inp2'  type="radio" name="question_2" value="B.";><span id='c2B.'>b) He thinks that Amelia will get another job.</span></div>
+            <div class="f-grid-col"><input id='c2inp3'  type="radio" name="question_2" value="C.";><span id='c2C.'>c) Kaveh thinks that the studio will close.</span></div>
+            <div class="f-grid-col"><input id='c2inp4'  type="radio" name="question_2" value="D._";><span id='c2D._'>d) He thinks the staff will gossip about the email.</span></div>
         </div>
         <p id='ans2'></p>
         <hr>
-        <p id="Q-3">
+        <p id="Q-3" onclick="readhoitl(cau='c3')">
             <span style="color:blue">Question 3: </span>What does Ms. Weaver want to do at the meeting?<br>
             <div class='center'><video width="320" height="240" controls><source src="https://av.voanews.com/Videoroot/Pangeavideo/2017/08/3/3d/3d6e524d-e72a-4af4-8d31-ea1920c8fa9f.mp4" type="video/mp4"><source src="movie.ogg" type="video/ogg"></video></div>
         </p>
         <div class="f-grid" id='c3' onchange="getSelectValue(cau='c3');">
-            <div class="f-grid-col"><input id='c3inp1'  type="radio" name="question_3" value="A.";><span id='c3A.'>She wants to find out what they have been doing in their jobs.</span></div>
-            <div class="f-grid-col"><input id='c3inp2'  type="radio" name="question_3" value="B.";><span id='c3B.'>Ms. Weaver wants to dance with Anna and the Studio team.</span></div>
-            <div class="f-grid-col"><input id='c3inp3'  type="radio" name="question_3" value="C._";><span id='c3C._'>She wants to praise the team and give them new assignments.</span></div>
-            <div class="f-grid-col"><input id='c3inp4'  type="radio" name="question_3" value="D.";><span id='c3D.'>Ms. Weaver wants to tell the team she is going to fire them.</span></div>
+            <div class="f-grid-col"><input id='c3inp1'  type="radio" name="question_3" value="A.";><span id='c3A.'>a) She wants to find out what they have been doing in their jobs.</span></div>
+            <div class="f-grid-col"><input id='c3inp2'  type="radio" name="question_3" value="B.";><span id='c3B.'>b) Ms. Weaver wants to dance with Anna and the Studio team.</span></div>
+            <div class="f-grid-col"><input id='c3inp3'  type="radio" name="question_3" value="C._";><span id='c3C._'>c) She wants to praise the team and give them new assignments.</span></div>
+            <div class="f-grid-col"><input id='c3inp4'  type="radio" name="question_3" value="D.";><span id='c3D.'>d) Ms. Weaver wants to tell the team she is going to fire them.</span></div>
         </div>
         <p id='ans3'></p>
         <hr>
-        <p  id="Q-4">
+        <p id="Q-4" onclick="readhoitl(cau='c4')">
             <span style="color:blue">Question 4: </span>What does Ms. Weaver say about the team?<br>
             <div class='center'><video width="320" height="240" controls><source src="https://av.voanews.com/Videoroot/Pangeavideo/2017/06/4/45/4535a618-8090-4687-8fca-cc0e6deeb9f7.mp4" type="video/mp4"><source src="movie.ogg" type="video/ogg"></video></div>
         </p>
         <div class="f-grid" id='c4' onchange="getSelectValue(cau='c4');">
-            <div class="f-grid-col"><input id='c4inp1'  type="radio" name="question_4" value="A._";><span id='c4A._'>They are doing a good job and getting new assignments.</span></div>
-            <div class="f-grid-col"><input id='c4inp2'  type="radio" name="question_4" value="B.";><span id='c4B.'>Mark from accounting is going to be part of their team.</span></div>
-            <div class="f-grid-col"><input id='c4inp3'  type="radio" name="question_4" value="C.";><span id='c4C.'>Everyone is going to lose their jobs.</span></div>
-            <div class="f-grid-col"><input id='c4inp4'  type="radio" name="question_4" value="D.";><span id='c4D.'>There will not be any budget cuts.</span></div>
+            <div class="f-grid-col"><input id='c4inp1'  type="radio" name="question_4" value="A._";><span id='c4A._'>a) They are doing a good job and getting new assignments.</span></div>
+            <div class="f-grid-col"><input id='c4inp2'  type="radio" name="question_4" value="B.";><span id='c4B.'>b) Mark from accounting is going to be part of their team.</span></div>
+            <div class="f-grid-col"><input id='c4inp3'  type="radio" name="question_4" value="C.";><span id='c4C.'>c) Everyone is going to lose their jobs.</span></div>
+            <div class="f-grid-col"><input id='c4inp4'  type="radio" name="question_4" value="D.";><span id='c4D.'>d) There will not be any budget cuts.</span></div>
         </div>
         <p id='ans4'></p>
         <hr><br>
@@ -110,6 +111,61 @@
         }
     </script>
     <script>
+        function readhoitl(cau){
+            switch (cau) {
+                case 'c1':
+                    var ndread=document.getElementById("Q-1").innerHTML+'. ' ;
+                    if (chtlroi.indexOf('c1')<0){
+                        ndread=ndread+'Answer '+document.getElementById("c1A.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c1B.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c1C._").innerHTML+'. '
+                            +'Answer '+document.getElementById("c1D.").innerHTML+'. ';
+                    }else{
+                        ndread=ndread+' Correct answer is '+document.getElementById("c1C._").innerHTML+'. ';
+                        
+                    }    
+                    say(ndread);
+                    break;
+                case 'c2':
+                    var ndread=document.getElementById("Q-2").innerHTML+'. ' ;
+                    if (chtlroi.indexOf('c2')<0){
+                        ndread=ndread+'Answer '+document.getElementById("c2A.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c2B.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c2C.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c2D._").innerHTML+'. ';
+                    }else{
+                        ndread=ndread+' Correct answer is '+document.getElementById("c2D._").innerHTML+'. ';
+                        
+                    }    
+                    say(ndread);
+                    break;
+                case 'c3':
+                    var ndread=document.getElementById("Q-3").innerHTML+'. ' ;
+                    if (chtlroi.indexOf('c3')<0){
+                        ndread=ndread+'Answer '+document.getElementById("c3A.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c3B.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c3C._").innerHTML+'. '
+                            +'Answer '+document.getElementById("c3D.").innerHTML+'. ';
+                    }else{
+                        ndread=ndread+' Correct answer is '+document.getElementById("c3C._").innerHTML+'. ';
+                    }    
+                    say(ndread);
+                    break;
+                case 'c4':
+                    var ndread=document.getElementById("Q-4").innerHTML+'. ' ;
+                    if (chtlroi.indexOf('c4')<0){
+                        ndread=ndread+'Answer '+document.getElementById("c4A._").innerHTML+'. '
+                            +'Answer '+document.getElementById("c4B.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c4C.").innerHTML+'. '
+                            +'Answer '+document.getElementById("c4D.").innerHTML+'. ';
+                    }else{
+                        ndread=ndread+' Correct answer is '+document.getElementById("c4A._").innerHTML+'. ';
+                    }    
+                    say(ndread);
+                    break;
+            }
+        }
+
         function getSelectValue(cau){
             let selectedValue;
             switch (cau) {
@@ -127,6 +183,7 @@
                     document.getElementById("ans1").innerHTML ='Jonathan thinks the meeting is about budget cuts.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     say(document.getElementById("Q-1").innerHTML+'. Answer: '+document.getElementById("ans1").innerHTML);
+                    chtlroi=chtlroi+'c1 ';
                     break;
                 case 'c2':
                     selectedValue=document.myform.question_2.value;
@@ -142,6 +199,7 @@
                     document.getElementById("ans2").innerHTML ='Kaveh thinks that people will lose their jobs and he might lose his own job.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     say(document.getElementById("Q-2").innerHTML+'. Answer: '+document.getElementById("ans2").innerHTML);
+                    chtlroi=chtlroi+'c2 ';
                     break;
                 case 'c3':
                     selectedValue=document.myform.question_3.value;
@@ -157,6 +215,7 @@
                     document.getElementById("ans3").innerHTML ='She wants to praise the team and give them new assignments.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     say(document.getElementById("Q-3").innerHTML+'. Answer: '+document.getElementById("ans3").innerHTML);
+                    chtlroi=chtlroi+'c3 ';
                     break;
                 case 'c4':
                     selectedValue=document.myform.question_4.value;
@@ -172,6 +231,7 @@
                     document.getElementById("ans4").innerHTML ='Ms. Weaver says that they are doing a good job and are getting new assignments.'
                     //document.getElementById("input4").removeAttribute('disabled');
                     say(document.getElementById("Q-4").innerHTML+'. Answer: '+document.getElementById("ans4").innerHTML);
+                    chtlroi=chtlroi+'c4 ';
                     break;
 
                 }
@@ -179,7 +239,7 @@
         
     </script>
 <script>
-    
+
 function say(m) {
     var msg = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
@@ -189,7 +249,7 @@ function say(m) {
     msg.rate = 1;
     msg.pitch = 0.8;
     msg.text = m;
-    msg.lang = 'en-US';
+    msg.lang = 'en';
     speechSynthesis.speak(msg);
   }
 </script>              
