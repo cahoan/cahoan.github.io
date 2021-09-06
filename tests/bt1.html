@@ -239,19 +239,12 @@
         
     </script>
 <script>
-
-function say(m) {
-    var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices[0];
-    msg.voiceURI = "native";
-    msg.volume = 1;
-    msg.rate = 1;
-    msg.pitch = 0.8;
-    msg.text = m;
-    msg.lang = 'en(-|_)US';
-    speechSynthesis.speak(msg);
-  }
+function say(message) {
+   var msg = new SpeechSynthesisUtterance(message)
+   var voices = window.speechSynthesis.getVoices()
+   msg.voice = voices[0]
+   window.speechSynthesis.speak(msg)
+}
 </script>              
 </body>
 </html>
