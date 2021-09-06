@@ -239,7 +239,10 @@
         
     </script>
 <script>
-function say(message){  
+function say(message){
+  message=message.replace('<span style="color:blue">', '');
+  message=message.replace('</span>', '');
+  message=message.replace('<br>', '');
   let speech = new SpeechSynthesisUtterance(message);
   speech.lang = "en";
   window.speechSynthesis.speak(speech);
