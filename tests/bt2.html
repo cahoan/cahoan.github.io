@@ -1,20 +1,34 @@
-<html lang="en">
-  <head>
-    <title>Text to Speech</title>
-  </head>
-  <body>
-      <p onclick="say(document.getElementById('cau1').innerHTML)" id="cau1">I am a teacher. Are you a teacher?</p>
-  </body>
+<!doctype html>
+	<head>
+		<title>JavaScript Speech to Text</title>
+	</head>
+	<body>
+		<h2>JavaScript Speech to Text</h2>
+    
+<p><button type="button" onclick="runSpeechRecognition()">Click and Speak again</button> &nbsp; <span id="noighihd"></span></p>
+        <div id="noixra" class="hide"></div>
 <script>
-function say(message){  
-let speech = new SpeechSynthesisUtterance(message);
-speech.lang = "en";
-
-
-//document.querySelector("#start").addEventListener("click", () => {
-//speech.text = document.getElementById("start").innerHTML;
-window.speechSynthesis.speak(speech);
-
-}
+	function runSpeechRecognition() {
+		document.getElementById("noixra").innerHTML='';	//noi xuat ra luc dau rong
+		var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;	//kdongmodul
+		var recognition = new SpeechRecognition();	//lammoi
+		recognition.lang = 'en';
+		recognition.onstart = function() {
+			document.getElementById("noighihd").innerHTML = "<small>listening...</small>";
+		};
+		recognition.onspeechend = function() {
+			document.getElementById("noighihd").innerHTML = "<small>Stopped!</small>";
+			recognition.stop();
+		}
+		recognition.onresult = function(event) {
+			var transcript = event.results[0][0].transcript;
+			//var confidence = event.results[0][0].confidence;
+			//output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+			document.getElementById("noixra").innerHTML = transcript;
+			document.getElementById("noixra").classList.remove("hide");
+		};
+		recognition.start();
+	}
 </script>
+</body>
 </html>
