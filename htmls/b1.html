@@ -88,7 +88,7 @@ background-color:green;
 
 <hr>
 
-<h2 id="cbai" onclick="say(cabai)">Lesson 1: Budget Cuts</h2>
+<h2 id="cbai" onclick="say(cabai)">Bài 1:</h2>
 <br>
 </div>
 <hr>
@@ -212,14 +212,22 @@ var c28=document.getElementById("p28").innerHTML;
 cabai=cabai+". "+c28;
 var c29=document.getElementById("p29").innerHTML;
 cabai=cabai+". "+c29;
+cabai=cabai.replaceAll('</strong>','');
+cabai=cabai.replaceAll('<strong>','');
+cabai=cabai.replaceAll('</span>','');
+cabai=cabai.replaceAll('<span style="color:blue">','');
+cabai=cabai.replaceAll('<span style="color:red">','');
 </script>
 
 <script>
 function say(message){
     
-message=message.replace('<span style="color:blue">', '');
-message=message.replace('<span style="color:red">', '');
-message=message.replace('</span>', '');
+message=message.replaceAll('<span style="color:blue">', '');
+message=message.replaceAll('<span style="color:red">', '');
+message=message.replaceAll('</span>', '');
+message=message.replaceAll('</strong>','');
+message=message.replaceAll('<strong>','');
+
 message=message.slice(message.indexOf(":")+1, -1)
 ndluu=message;  
 let speech = new SpeechSynthesisUtterance(message);
@@ -305,4 +313,3 @@ window.speechSynthesis.speak(speech);}
 
 </body>
 </html>
-
