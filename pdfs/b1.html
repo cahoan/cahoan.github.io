@@ -88,7 +88,7 @@ background-color:green;
 
 <hr>
 
-<h2 id="cbai" onclick="say(cabai)">Bài 1:</h2>
+<h2 id="cbai" onclick="say(cabai)">Lesson 1: Budget Cuts</h2>
 <br>
 </div>
 <hr>
@@ -280,22 +280,23 @@ window.speechSynthesis.speak(speech);}
             ndcau=ndcau.replaceAll('-','');
             ndcau=ndcau.replaceAll('?','');
             ndcau=ndcau.toLowerCase();
+            const lndluu=ndluu.split(" ");
             const lndcau=ndcau.split(" ");
             
-            var tsdmax=lndcau.length;
+            var tsdmax=lndluu.length;
+            var tstcau=lndcau.length;
+
             var tsd=0;
             var ch='';
-            for (let j = 0; j < tsdmax; j++)
+            for (let j = 0; j < tstcau; j++)
             {   ch=lndcau[j].trim();
                 if (ndluu.indexOf(ch)>=0){
                     tsd++;
+                    ndluu.replace(ch,'');
                 }
             }
                 alert('Câu bạn vừa nói so với câu máy đọc đạt tỉ lệ : '+Math.round((100*tsd/tsdmax))+'%'); 
         }
-
-    </script>
-      
 </script>
 <br><br><br>
 <div class="footer">
