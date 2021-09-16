@@ -271,30 +271,27 @@ window.speechSynthesis.speak(speech);}
             ndluu=ndluu.replace('</strong>','');
             ndluu=ndluu.replace('<strong>','').trim();
             ndluu=ndluu.toLowerCase();
-            ndluu=ndluu.replaceAll('.',' ');
-            ndluu=ndluu.replaceAll(',',' ');
-            ndluu=ndluu.replaceAll(';',' ');
-            ndluu=ndluu.replaceAll('!',' ');
-            ndluu=ndluu.replaceAll(':',' ');
-            ndluu=ndluu.replaceAll('-',' ');
-            ndluu=ndluu.replaceAll('?',' ');
-            const lndluu=ndluu.split(" ");
+
+            ndcau=ndcau.replaceAll('.','');
+            ndcau=ndcau.replaceAll(',','');
+            ndcau=ndcau.replaceAll(';','');
+            ndcau=ndcau.replaceAll('!','');
+            ndcau=ndcau.replaceAll(':','');
+            ndcau=ndcau.replaceAll('-','');
+            ndcau=ndcau.replaceAll('?','');
             ndcau=ndcau.toLowerCase();
-            var tsdmax=lndluu.length;
+            const lndcau=ndcau.split(" ");
+            
+            var tsdmax=lndcau.length;
             var tsd=0;
             var ch='';
             for (let j = 0; j < tsdmax; j++)
-            {   ch=lndluu[j].trim();
-                if (ndcau.indexOf(ch)>=0){
+            {   ch=lndcau[j].trim();
+                if (ndluu.indexOf(ch)>=0){
                     tsd++;
                 }
             }
-            if (tsdmax>0){
                 alert('Câu bạn vừa nói so với câu máy đọc đạt tỉ lệ : '+Math.round((100*tsd/tsdmax))+'%'); 
-                }else{
-                alert('Not reading');    
-                }
-
         }
 
     </script>
@@ -307,4 +304,3 @@ window.speechSynthesis.speak(speech);}
 
 </body>
 </html>
-
