@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Quiz</title>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<style>
+#ans1,#ans2,#ans3,#ans4,#ans5,#ans6{color:blue;text-align: center;}
+.center {text-align: center}
+h2 {text-align: center;}
+.btn {background:green;color:yellow;height:40px;width:200px;margin:auto;display:block;}
+.tieude {background:lightgreen;}
+p {font-size: 14pt;}
+.bdy {background:#f7e6cd;}
+.f-grid {display: flex;justify-content: space-between;margin-left: 0rem;flex-flow: row wrap;}
+.f-grid-col {flex: 3 0;background-color: rgba(184,245,114,0.883);margin-left: 1rem;margin-bottom: 1rem;padding: 1rem;font-size: 14pt;}
+</style>
+<script>var chtlroi='';var ndluu='';</script>
+<style>
+#fixNav{
+  width: 100%;
+  height: 120px;
+background-color:green;
+  color:yellow;
+  display: block;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5); /*Đổ bóng cho menu*/
+  position: fixed; /*Cho menu cố định 1 vị trí với top và left*/
+  top: 0; /*Nằm trên cùng*/
+  z-index: 100000; /*Hiển thị lớp trên cùng*/
+}
+#circlein {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    box-shadow: 0px -2px 15px #E0FF94;
+}
+.para{
+    text-align:center;
+}
+    
+.obj {
+    justify-content: center;
+    height: 100%;
+    margin-left: auto;
+}
+.mic-icon {
+    height: 15px;
+    position: absolute;
+    margin: 18px;
+}
+.footer {
+    background-color:green;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+
+</style>
+</head>
+<body class="bdy">
+    <nav id="fixNav">
+        <div class="words">
+        <div class="obj">
+            <div class="button" id="circlein">
+                <svg class="mic-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000"
+                    enable-background="new 0 0 1000 1000" xml:space="preserve" style="fill:#1E2D70">
+                    <g>
+                        <path
+                            d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+    </nav>
+<br><br><br><br>
+<div class="tieude">
+
+<hr>
+
+<h2 id="cbai" onclick="say(cabai)"> Lesson 24: I Feel Super!</h2>
+<br>
+</div>
+<hr>
+<div class="f-grid">
+<div class="f-grid-col" id="p1" onclick="say(c1)"><span style="color:blue">ANNA:</span> Hi! I see you like <strong>superhero </strong>culture. Me too.</div>
+<div class="f-grid-col" id="p2" onclick="say(c2)"><span style="color:red">ANNA:</span> In fact, tonight I’m going to the big superhero <strong>convention.</strong> Are you going?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p3" onclick="say(c3)"><span style="color:blue">YOUNG MAN:</span> Um, I don’t know.</div>
+<div class="f-grid-col" id="p4" onclick="say(c4)"><span style="color:red">ANNA:</span> Well, <u>you'd better</u> <strong>decide </strong>soon. Last year, it sold out.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p5" onclick="say(c5)"><span style="color:blue">ANNA:</span> So, since we’re talking about superheroes: <u>would you rather</u> become a superhero by accident, like Spiderman, or be born a superhero, like Wonder Woman?</div>
+<div class="f-grid-col" id="p6" onclick="say(c6)"><span style="color:red">ANNA:</span> Take your time. It’s a big question. I thought about it for days –</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p7" onclick="say(c7)"><span style="color:blue">YOUNG MAN:</span> Okay. If I had to choose, I’<u>d rather</u> be born a superhero.</div>
+<div class="f-grid-col" id="p8" onclick="say(c8)"><span style="color:red">ANNA:</span> <u>I’d rather</u> become a superhero by an <strong>unexpected </strong>accident!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p9" onclick="say(c9)"><span style="color:blue">YOUNG MAN:</span> Aren’t all accidents unexpected?</div>
+<div class="f-grid-col" id="p10" onclick="say(c10)"><span style="color:red">ANNA:</span> Well, yeah.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p11" onclick="say(c11)"><span style="color:blue">YOUNG MAN:</span> What was that!? Are you okay?</div>
+<div class="f-grid-col" id="p12" onclick="say(c12)"><span style="color:red">ANNA:</span> I'm better than okay. I feel <strong>super</strong>!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p13" onclick="say(c13)"><span style="color:blue">PROF. BOT:</span> Oh No! Anna was just hit by lightning. She had better get help.</div>
+<div class="f-grid-col" id="p14" onclick="say(c14)"><span style="color:red">PROF. BOT:</span> We use <em>had better</em> to give advice. It is very informal and stronger than <em>should</em> and <em>ought to</em>. For example, Anna says: “<u>You'd better </u>decide soon. Last year, it sold out.”</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p15" onclick="say(c15)"><span style="color:blue">PROF. BOT:</span> When we use<em> had better</em>, we usually shorten the word <em>had</em> for personal pronouns.</div>
+<div class="f-grid-col" id="p16" onclick="say(c16)"><span style="color:red">PROF. BOT:</span> We use <em>would rather</em> to say what we or someone else <strong>prefers</strong> to do or have. For example, the boy says: “Okay. If I had to choose, <u>I’d rather</u> be born a superhero.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p17" onclick="say(c17)"><span style="color:blue">PROF. BOT:</span> With <em>would rather</em>, we also shorten the word <em>would</em> when used with personal pronouns. Keep watching and listen for <em>had better</em> and <em>would rather.</em></div>
+<div class="f-grid-col" id="p18" onclick="say(c18)"><span style="color:red">YOUNG MAN:</span> <u>You’d better</u> see a doctor.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p19" onclick="say(c19)"><span style="color:blue">ANNA:</span> I’ve never felt better!</div>
+<div class="f-grid-col" id="p20" onclick="say(c20)"><span style="color:red">YOUNG MAN:</span> You were just struck by <strong>lightning</strong>!! And what happened to your hair and your clothes?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p21" onclick="say(c21)"><span style="color:blue">ANNA:</span> I don't know. Wait, I do know. This is my <strong>super suit</strong>! And this is my <strong>origin story</strong>.</div>
+<div class="f-grid-col" id="p22" onclick="say(c22)"><span style="color:red">YOUNG MAN:</span> What are you talking about?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p23" onclick="say(c23)"><span style="color:blue">ANNA:</span> An origin story tells the beginning of a superhero. You should know that.</div>
+<div class="f-grid-col" id="p24" onclick="say(c24)"><span style="color:red">YOUNG MAN:</span> You're not <strong>making </strong>any <strong>sense</strong>, lady<strong>. </strong></div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p25" onclick="say(c25)"><span style="color:blue">ANNA:</span> <u>I would rather</u> be called Lightning Bolt Lady! It’ll sound great in a <strong>theme song: </strong>Lightning Bolt Lady!</div>
+<div class="f-grid-col" id="p26" onclick="say(c26)"><span style="color:red">ANNA:</span> Now, I need to find my superpowers --</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p27" onclick="say(c27)"><span style="color:blue">YOUNG MAN:</span> Um, I really think --</div>
+<div class="f-grid-col" id="p28" onclick="say(c28)"><span style="color:red">ANNA:</span> Wait. Don’t tell me. I’ll read your mind. You are thinking you’d like to be my super helper.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p29" onclick="say(c29)"><span style="color:blue">YOUNG MAN:</span> I was not thinking that.</div>
+<div class="f-grid-col" id="p30" onclick="say(c30)"><span style="color:red">ANNA:</span> ... that you’d like to live in a treehouse.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p31" onclick="say(c31)"><span style="color:blue">YOUNG MAN:</span> No.</div>
+<div class="f-grid-col" id="p32" onclick="say(c32)"><span style="color:red">ANNA:</span> … that you should eat more vegetables.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p33" onclick="say(c33)"><span style="color:blue">YOUNG MAN:</span> Please, stop talking. You really should get some help.</div>
+<div class="f-grid-col" id="p34" onclick="say(c34)"><span style="color:red">ANNA:</span> Mind reading is not my superpower. Maybe I can <strong>become invisible.</strong> I … am … invisible!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p35" onclick="say(c35)"><span style="color:blue">ANNA:</span> You can’t see me. Who am I? I’m not here. You can’t see me.</div>
+<div class="f-grid-col" id="p36" onclick="say(c36)"><span style="color:red">YOUNG MAN:</span> I can see you and so can everybody else.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p37" onclick="say(c37)"><span style="color:blue">ANNA:</span> No <strong>power </strong>of invisibility. Maybe I can <strong>create </strong>a <strong>force field</strong>. I feel it working. Nothing can hurt –</div>
+<div class="f-grid-col" id="p38" onclick="say(c38)"><span style="color:red">ANNA:</span> Ow, that wasn’t very nice. I see I have a lot of work to do. Well, goodbye, non-super person!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p39" onclick="say(c39)"><span style="color:blue">YOUNG MAN:</span> Wait. <u>I’d better</u> go with you. You might get worse…if that’s even possible.</div>
+<div class="f-grid-col" id="p40" onclick="say(c40)"><span style="color:red">ANNA:</span> That's very nice of you, ordinary <strong>human</strong>. But I’<u>d rather</u> go by myself. This is a <strong>quest.</strong></div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p41" onclick="say(c41)"><span style="color:blue">YOUNG MAN:</span> Every time you speak, I get more confused.</div>
+<div class="f-grid-col" id="p42" onclick="say(c42)"><span style="color:red">ANNA:</span> A quest is a part of all superhero stories. You really need to work on your superhero studies. Now, <strong>stand </strong>back. I’ve never flown before.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p43" onclick="say(c43)"><span style="color:blue">YOUNG MAN:</span> And you’re not flying now.</div>
+<div class="f-grid-col" id="p44" onclick="say(c44)"><span style="color:red">ANNA:</span> Flying is also not my superpower. That’s too bad. It's going to be expensive to <strong>Uber </strong>everywhere. You know, I'<u>d rather</u> walk. It’s a nice day. Goodbye, non-super person.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p45" onclick="say(c45)"><span style="color:blue">YOUNG MAN:</span> I am not talking to strangers again.</div>
+<div class="f-grid-col" id="p46" onclick="say(c46)"><span style="color:red">ANNOUNCER:</span> Will Lightning Bolt Lady find her superpowers … ever? Ouch! Did that <strong>brick wall</strong> hurt? Will the young man ever talk to a stranger again?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p47" onclick="say(c47)"><span style="color:blue">ANNOUNCER:</span> Find out on the next episode of Let’s Learn English!</div>
+<div class="f-grid-col" id="p47" onclick="say(c47)"></div>
+</div>
+<script>
+var cabai=document.getElementById("cbai").innerHTML;
+var c1=document.getElementById("p1").innerHTML;
+cabai=cabai+". "+c1;
+var c2=document.getElementById("p2").innerHTML;
+cabai=cabai+". "+c2;
+var c3=document.getElementById("p3").innerHTML;
+cabai=cabai+". "+c3;
+var c4=document.getElementById("p4").innerHTML;
+cabai=cabai+". "+c4;
+var c5=document.getElementById("p5").innerHTML;
+cabai=cabai+". "+c5;
+var c6=document.getElementById("p6").innerHTML;
+cabai=cabai+". "+c6;
+var c7=document.getElementById("p7").innerHTML;
+cabai=cabai+". "+c7;
+var c8=document.getElementById("p8").innerHTML;
+cabai=cabai+". "+c8;
+var c9=document.getElementById("p9").innerHTML;
+cabai=cabai+". "+c9;
+var c10=document.getElementById("p10").innerHTML;
+cabai=cabai+". "+c10;
+var c11=document.getElementById("p11").innerHTML;
+cabai=cabai+". "+c11;
+var c12=document.getElementById("p12").innerHTML;
+cabai=cabai+". "+c12;
+var c13=document.getElementById("p13").innerHTML;
+cabai=cabai+". "+c13;
+var c14=document.getElementById("p14").innerHTML;
+cabai=cabai+". "+c14;
+var c15=document.getElementById("p15").innerHTML;
+cabai=cabai+". "+c15;
+var c16=document.getElementById("p16").innerHTML;
+cabai=cabai+". "+c16;
+var c17=document.getElementById("p17").innerHTML;
+cabai=cabai+". "+c17;
+var c18=document.getElementById("p18").innerHTML;
+cabai=cabai+". "+c18;
+var c19=document.getElementById("p19").innerHTML;
+cabai=cabai+". "+c19;
+var c20=document.getElementById("p20").innerHTML;
+cabai=cabai+". "+c20;
+var c21=document.getElementById("p21").innerHTML;
+cabai=cabai+". "+c21;
+var c22=document.getElementById("p22").innerHTML;
+cabai=cabai+". "+c22;
+var c23=document.getElementById("p23").innerHTML;
+cabai=cabai+". "+c23;
+var c24=document.getElementById("p24").innerHTML;
+cabai=cabai+". "+c24;
+var c25=document.getElementById("p25").innerHTML;
+cabai=cabai+". "+c25;
+var c26=document.getElementById("p26").innerHTML;
+cabai=cabai+". "+c26;
+var c27=document.getElementById("p27").innerHTML;
+cabai=cabai+". "+c27;
+var c28=document.getElementById("p28").innerHTML;
+cabai=cabai+". "+c28;
+var c29=document.getElementById("p29").innerHTML;
+cabai=cabai+". "+c29;
+var c30=document.getElementById("p30").innerHTML;
+cabai=cabai+". "+c30;
+var c31=document.getElementById("p31").innerHTML;
+cabai=cabai+". "+c31;
+var c32=document.getElementById("p32").innerHTML;
+cabai=cabai+". "+c32;
+var c33=document.getElementById("p33").innerHTML;
+cabai=cabai+". "+c33;
+var c34=document.getElementById("p34").innerHTML;
+cabai=cabai+". "+c34;
+var c35=document.getElementById("p35").innerHTML;
+cabai=cabai+". "+c35;
+var c36=document.getElementById("p36").innerHTML;
+cabai=cabai+". "+c36;
+var c37=document.getElementById("p37").innerHTML;
+cabai=cabai+". "+c37;
+var c38=document.getElementById("p38").innerHTML;
+cabai=cabai+". "+c38;
+var c39=document.getElementById("p39").innerHTML;
+cabai=cabai+". "+c39;
+var c40=document.getElementById("p40").innerHTML;
+cabai=cabai+". "+c40;
+var c41=document.getElementById("p41").innerHTML;
+cabai=cabai+". "+c41;
+var c42=document.getElementById("p42").innerHTML;
+cabai=cabai+". "+c42;
+var c43=document.getElementById("p43").innerHTML;
+cabai=cabai+". "+c43;
+var c44=document.getElementById("p44").innerHTML;
+cabai=cabai+". "+c44;
+var c45=document.getElementById("p45").innerHTML;
+cabai=cabai+". "+c45;
+var c46=document.getElementById("p46").innerHTML;
+cabai=cabai+". "+c46;
+var c47=document.getElementById("p47").innerHTML;
+cabai=cabai+". "+c47;
+cabai=cabai.replaceAll('</strong>','');
+cabai=cabai.replaceAll('<strong>','');
+cabai=cabai.replaceAll('</span>','');
+cabai=cabai.replaceAll('<span style="color:blue">','');
+cabai=cabai.replaceAll('<span style="color:red">','');
+cabai=cabai.replaceAll("<em>","");
+cabai=cabai.replaceAll("</em>","");
+cabai=cabai.replaceAll("<u>","");
+cabai=cabai.replaceAll("</u>","");
+cabai=cabai.replaceAll('<span style="color:#0070C0"','');
+cabai=cabai.replaceAll('<span lang="EN" style="color:#0070C0"','');
+</script>
+
+<script>
+function say(message){
+    
+message=message.replaceAll('<span style="color:blue">', '');
+message=message.replaceAll('<span style="color:red">', '');
+message=message.replaceAll('</span>', '');
+message=message.replaceAll('</strong>','');
+message=message.replaceAll('<strong>','');
+
+message=message.replaceAll("<em>","");
+message=message.replaceAll("</em>","");
+message=message.replaceAll("<u>","");
+message=message.replaceAll("</u>","");
+message=message.replaceAll('<span style="color:#0070C0"','');
+message=message.replaceAll('<span lang="EN" style="color:#0070C0"','');
+
+
+message=message.slice(message.indexOf(":")+1, -1);
+ndluu=message;  
+let speech = new SpeechSynthesisUtterance(message);
+speech.lang = "en";
+window.speechSynthesis.speak(speech);}
+</script>              
+
+<script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.interimResults = true;
+        let p = document.createElement("p");
+        p.classList.add("para");
+        p.addEventListener("click", function() {
+            danhgiacau(document.querySelector(".para").innerHTML);
+        });
+        let words = document.querySelector(".words");
+        words.appendChild(p);
+        let mic = document.querySelector("#circlein");
+        let speechToText = "";
+        recognition.addEventListener("result", e => {
+            let interimTranscript = '';
+            for (let i = e.resultIndex, len = e.results.length; i < len; i++) {
+                let transcript = e.results[i][0].transcript;
+                console.log(transcript);
+                if (e.results[i].isFinal) {
+                    //speechToText += transcript+'   ';
+                    speechToText = transcript;
+                
+                } else {
+                    //interimTranscript += transcript+'   ';
+                    //interimTranscript = transcript+'   ';
+                }
+            }
+            recognition.addEventListener('soundend', () => {
+                mic.style.backgroundColor = null;
+                }
+            );
+            document.querySelector(".para").innerHTML = speechToText + interimTranscript;
+        })
+        mic.addEventListener("click", () => {
+            //document.querySelector(".para").innerHTML='';
+            recognition.start();
+            mic.style.backgroundColor = "#6BD6E1";
+        })
+        </script>
+<script>
+          function danhgiacau(ndcau){
+            //ndluu=ndluu.replace('</strong>','');
+            //ndluu=ndluu.replace('<strong>','').trim();
+            ndluu=ndluu.toLowerCase();
+
+            ndcau=ndcau.replaceAll('.','');
+            ndcau=ndcau.replaceAll(',','');
+            ndcau=ndcau.replaceAll(';','');
+            ndcau=ndcau.replaceAll('!','');
+            ndcau=ndcau.replaceAll(':','');
+            ndcau=ndcau.replaceAll('-','');
+            ndcau=ndcau.replaceAll('?','');
+            ndcau=ndcau.toLowerCase();
+            const lndluu=ndluu.split(" ");
+            const lndcau=ndcau.split(" ");
+            
+            var tsdmax=lndluu.length;
+            var tstcau=lndcau.length;
+
+            var tsd=0;
+            var ch='';
+            for (let j = 0; j < tstcau; j++)
+            {   ch=lndcau[j].trim();
+                if (ndluu.indexOf(ch)>=0){
+                    tsd++;
+                    ndluu.replace(ch,'');
+                }
+            }
+                alert('Câu bạn vừa nói so với câu máy đọc đạt tỉ lệ : '+Math.round((100*tsd/tsdmax))+'%'); 
+        }
+</script>
+<br><br><br>
+<div class="footer">
+  <p>Website này do vantiensg2002@yahoo.com soạn chỉ để học tiếng Anh theo voatiengviet.com.</p>
+</div>
+
+</body>
+</html>
