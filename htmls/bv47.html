@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Quiz</title>
+<style>
+#ans1,#ans2,#ans3,#ans4,#ans5,#ans6{color:blue;text-align: center;}
+.center {text-align: center}
+h2 {text-align: center;}
+.btn {background:green;color:yellow;height:40px;width:200px;margin:auto;display:block;}
+.tieude {background:lightgreen;}
+p {font-size: 14pt;}
+.bdy {background:#f7e6cd;}
+.f-grid {display: flex;justify-content: space-between;margin-left:-0.5rem;flex-flow: row wrap;}
+.f-grid-col {flex: 3 0;background-color: rgba(184,245,114,0.883);margin-left: 0.5rem;margin-bottom: 1rem;padding: 1rem;font-size: 14pt;}
+</style>
+<script>var chtlroi='';var ndluu='';</script>
+<style>
+#fixNav{
+  width:98.8%;
+  height: 120px;
+background-color:green;
+  color:yellow;
+  display: block;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5); /*Đổ bóng cho menu*/
+  position: fixed; /*Cho menu cố định 1 vị trí với top và left*/
+  top: 0; /*Nằm trên cùng*/
+  z-index: 100000; /*Hiển thị lớp trên cùng*/
+}
+#circlein {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    box-shadow: 0px -2px 15px #E0FF94;
+}
+.para{
+    text-align:center;
+}
+    
+.obj {
+    justify-content: center;
+    height: 100%;
+    margin-left: auto;
+}
+.mic-icon {
+    height: 15px;
+    position: absolute;
+    margin: 18px;
+}
+.footer {
+    background-color:green;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+
+</style>
+</head>
+<body class="bdy">
+    <nav id="fixNav">
+        <div class="words">
+        <div class="obj">
+            <div class="button" id="circlein">
+                <svg class="mic-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000"
+                    enable-background="new 0 0 1000 1000" xml:space="preserve" style="fill:#1E2D70">
+                    <g>
+                        <path
+                            d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+    </nav>
+
+<br><br><br><br><br><br>
+<div class="tieude">
+
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<h2 id="cbai" onclick="say(cabai)"> Lesson 47: How Can I help?</h2>
+<br>
+</div>
+<hr>
+<div class="f-grid">
+<div class="f-grid-col" id="p1" onclick="say(c1)"><span style="color:blue">Pete:</span> Oh! Hi, Anna. Right now, I am <strong>fixing</strong> my car.</div>
+<div class="f-grid-col" id="p2" onclick="say(c2)"><span style="color:red">Anna:</span> How’s it going?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p3" onclick="say(c3)"><span style="color:blue">Pete:</span> It’s going … not so good.</div>
+<div class="f-grid-col" id="p4" onclick="say(c4)"><span style="color:red">Anna:</span> How can I help? I was planning to visit some friends. But if you need help, I can help. I like helping.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p5" onclick="say(c5)"><span style="color:blue">Pete:</span> Anna, I can fix it myself. But thanks.</div>
+<div class="f-grid-col" id="p6" onclick="say(c6)"><span style="color:red">Anna:</span> Pete, I think I found your problem. These are <strong>spark plugs</strong>. <em>(holds them up)</em></div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p7" onclick="say(c7)"><span style="color:blue">Anna:</span> They start the engine.</div>
+<div class="f-grid-col" id="p8" onclick="say(c8)"><span style="color:red">Pete:</span> I know that, Anna. But there were too many spark plugs … in there. So I took out the extra ones.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p9" onclick="say(c9)"><span style="color:blue">Anna:</span> There are no extras, Pete. You need all of them. Pete, <em>can</em> you fix a car yourself?</div>
+<div class="f-grid-col" id="p10" onclick="say(c10)"><span style="color:red">Pete:</span> Well, Anna, last night I was watching the online <strong>video course</strong>, “You CAN Fix a Car Yourself!”</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p11" onclick="say(c11)"><span style="color:blue">Dan:</span> Yes, you CAN fix your car yourself!</div>
+<div class="f-grid-col" id="p12" onclick="say(c12)"><span style="color:red">Pete:</span> And I watched the first 10 lessons. So, I think I know what I’m doing.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p13" onclick="say(c13)"><span style="color:blue">Anna:</span> How many lessons are there?</div>
+<div class="f-grid-col" id="p14" onclick="say(c14)"><span style="color:red">Pete:</span> Four hundred and fifty.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p15" onclick="say(c15)"><span style="color:blue">Anna:</span> 450! That'll take too long! If I fix your car, I'll have it running in 10 to 15 minutes.</div>
+<div class="f-grid-col" id="p16" onclick="say(c16)"><span style="color:red">Anna:</span> Where’re your <strong>tools</strong>?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p17" onclick="say(c17)"><span style="color:blue">Pete:</span> I have this. <em>(puts a useless tool in her hand)</em>. And this. <em>(hands her another useless tool) </em></div>
+<div class="f-grid-col" id="p18" onclick="say(c18)"><span style="color:red">Anna:</span> Great. Um, I’ll get my tools. I’ll be back in a <strong>flash</strong>!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p19" onclick="say(c19)"><span style="color:blue">Pete:</span> But, Anna, I don’t need your ...</div>
+<div class="f-grid-col" id="p20" onclick="say(c20)"><span style="color:red">Pete:</span> … help.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p21" onclick="say(c21)"><span style="color:blue">Anna:</span> Pete, when I was a teenager, I was fixing cars -- myself. I learned from a <strong>master</strong>.</div>
+<div class="f-grid-col" id="p22" onclick="say(c22)"><span style="color:red">Anna:</span> You can trust me.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p23" onclick="say(c23)"><span style="color:blue">Pete:</span> Okay.</div>
+<div class="f-grid-col" id="p24" onclick="say(c24)"><span style="color:red">Anna:</span> Great! But we need teamwork. You sit in the car. When I say “go,” you start the engine.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p25" onclick="say(c25)"><span style="color:blue">Anna:</span> Okay, go! ​</div>
+<div class="f-grid-col" id="p26" onclick="say(c26)"><span style="color:red">Anna:</span> Stop!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p27" onclick="say(c27)"><span style="color:blue">Anna:</span> Okay, go! Huh. </div>
+<div class="f-grid-col" id="p28" onclick="say(c28)"><span style="color:red">Pete:</span> It's not starting! It’s not starting!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p29" onclick="say(c29)"><span style="color:blue">Anna:</span><em> </em>What’s wrong?</div>
+<div class="f-grid-col" id="p30" onclick="say(c30)"><span style="color:red">Pete:</span> This car is <strong>stupid</strong> … stupid, stupid!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p31" onclick="say(c31)"><span style="color:blue">Anna:</span> Pete, kicking the <strong>tires</strong> will not help.</div>
+<div class="f-grid-col" id="p32" onclick="say(c32)"><span style="color:red">Pete:</span> Well, you did not help, Anna. You did not help!!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p33" onclick="say(c33)"><span style="color:blue">Anna:</span> Pete, Pete! Pull yourself together, man. Give me the <strong>keys</strong>. I must feel the key in the <strong>ignition</strong> and turn it myself.</div>
+<div class="f-grid-col" id="p34" onclick="say(c34)"><span style="color:red">Master:</span> Use the key, Anna. Turn the key, Anna. What are you forgetting, Anna?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p35" onclick="say(c35)"><span style="color:blue">Anna:</span> Pete. Pete.</div>
+<div class="f-grid-col" id="p36" onclick="say(c36)"><span style="color:red">Pete:</span> What?</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p37" onclick="say(c37)"><span style="color:blue">Anna:</span> You are out of gas.</div>
+<div class="f-grid-col" id="p38" onclick="say(c38)"><span style="color:red">Pete:</span><em> </em>I can’t be out of gas. <em>(looks at gauge) </em>I’m out of gas. Sorry, Anna. I’ll go get some.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p39" onclick="say(c39)"><span style="color:blue">Anna:</span> Pete. You relax. Clean your <strong>face</strong>. You can watch the rest of your online video course. It’ll be faster if I go … in a flash. Until next time …</div>
+<div class="f-grid-col" id="p40" onclick="say(c40)"><span style="color:red">Dan (in the online video course):</span> “Lesson 11. Always make sure you have a full tank of gas!”</div>
+</div>
+<div class="f-grid">
+<script>
+var cabai=document.getElementById("cbai").innerHTML;
+var c1=document.getElementById("p1").innerHTML;
+cabai=cabai+". "+c1;
+var c2=document.getElementById("p2").innerHTML;
+cabai=cabai+". "+c2;
+var c3=document.getElementById("p3").innerHTML;
+cabai=cabai+". "+c3;
+var c4=document.getElementById("p4").innerHTML;
+cabai=cabai+". "+c4;
+var c5=document.getElementById("p5").innerHTML;
+cabai=cabai+". "+c5;
+var c6=document.getElementById("p6").innerHTML;
+cabai=cabai+". "+c6;
+var c7=document.getElementById("p7").innerHTML;
+cabai=cabai+". "+c7;
+var c8=document.getElementById("p8").innerHTML;
+cabai=cabai+". "+c8;
+var c9=document.getElementById("p9").innerHTML;
+cabai=cabai+". "+c9;
+var c10=document.getElementById("p10").innerHTML;
+cabai=cabai+". "+c10;
+var c11=document.getElementById("p11").innerHTML;
+cabai=cabai+". "+c11;
+var c12=document.getElementById("p12").innerHTML;
+cabai=cabai+". "+c12;
+var c13=document.getElementById("p13").innerHTML;
+cabai=cabai+". "+c13;
+var c14=document.getElementById("p14").innerHTML;
+cabai=cabai+". "+c14;
+var c15=document.getElementById("p15").innerHTML;
+cabai=cabai+". "+c15;
+var c16=document.getElementById("p16").innerHTML;
+cabai=cabai+". "+c16;
+var c17=document.getElementById("p17").innerHTML;
+cabai=cabai+". "+c17;
+var c18=document.getElementById("p18").innerHTML;
+cabai=cabai+". "+c18;
+var c19=document.getElementById("p19").innerHTML;
+cabai=cabai+". "+c19;
+var c20=document.getElementById("p20").innerHTML;
+cabai=cabai+". "+c20;
+var c21=document.getElementById("p21").innerHTML;
+cabai=cabai+". "+c21;
+var c22=document.getElementById("p22").innerHTML;
+cabai=cabai+". "+c22;
+var c23=document.getElementById("p23").innerHTML;
+cabai=cabai+". "+c23;
+var c24=document.getElementById("p24").innerHTML;
+cabai=cabai+". "+c24;
+var c25=document.getElementById("p25").innerHTML;
+cabai=cabai+". "+c25;
+var c26=document.getElementById("p26").innerHTML;
+cabai=cabai+". "+c26;
+var c27=document.getElementById("p27").innerHTML;
+cabai=cabai+". "+c27;
+var c28=document.getElementById("p28").innerHTML;
+cabai=cabai+". "+c28;
+var c29=document.getElementById("p29").innerHTML;
+cabai=cabai+". "+c29;
+var c30=document.getElementById("p30").innerHTML;
+cabai=cabai+". "+c30;
+var c31=document.getElementById("p31").innerHTML;
+cabai=cabai+". "+c31;
+var c32=document.getElementById("p32").innerHTML;
+cabai=cabai+". "+c32;
+var c33=document.getElementById("p33").innerHTML;
+cabai=cabai+". "+c33;
+var c34=document.getElementById("p34").innerHTML;
+cabai=cabai+". "+c34;
+var c35=document.getElementById("p35").innerHTML;
+cabai=cabai+". "+c35;
+var c36=document.getElementById("p36").innerHTML;
+cabai=cabai+". "+c36;
+var c37=document.getElementById("p37").innerHTML;
+cabai=cabai+". "+c37;
+var c38=document.getElementById("p38").innerHTML;
+cabai=cabai+". "+c38;
+var c39=document.getElementById("p39").innerHTML;
+cabai=cabai+". "+c39;
+var c40=document.getElementById("p40").innerHTML;
+cabai=cabai+". "+c40;
+cabai=cabai.replaceAll('</strong>','');
+cabai=cabai.replaceAll('<strong>','');
+cabai=cabai.replaceAll('</span>','');
+cabai=cabai.replaceAll('<span style="color:blue">','');
+cabai=cabai.replaceAll('<span style="color:red">','');
+cabai=cabai.replaceAll("<em>","");
+cabai=cabai.replaceAll("</em>","");
+cabai=cabai.replaceAll("<u>","");
+cabai=cabai.replaceAll("</u>","");
+cabai=cabai.replaceAll('<span style="color:#0070C0"','');
+cabai=cabai.replaceAll('<span lang="EN" style="color:#0070C0"','');
+</script>
+
+<script>
+function say(message){
+    
+message=message.replaceAll('<span style="color:blue">', '');
+message=message.replaceAll('<span style="color:red">', '');
+message=message.replaceAll('</span>', '');
+message=message.replaceAll('</strong>','');
+message=message.replaceAll('<strong>','');
+
+message=message.replaceAll("<em>","");
+message=message.replaceAll("</em>","");
+message=message.replaceAll("<u>","");
+message=message.replaceAll("</u>","");
+message=message.replaceAll('<span style="color:#0070C0"','');
+message=message.replaceAll('<span lang="EN" style="color:#0070C0"','');
+
+
+message=message.slice(message.indexOf(":")+1, -1);
+ndluu=message;  
+let speech = new SpeechSynthesisUtterance(message);
+speech.lang = "en";
+window.speechSynthesis.speak(speech);}
+</script>              
+
+<script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.interimResults = true;
+        let p = document.createElement("p");
+        p.classList.add("para");
+        p.addEventListener("click", function() {
+            danhgiacau(document.querySelector(".para").innerHTML);
+        });
+        let words = document.querySelector(".words");
+        words.appendChild(p);
+        let mic = document.querySelector("#circlein");
+        let speechToText = "";
+        recognition.addEventListener("result", e => {
+            let interimTranscript = '';
+            for (let i = e.resultIndex, len = e.results.length; i < len; i++) {
+                let transcript = e.results[i][0].transcript;
+                console.log(transcript);
+                if (e.results[i].isFinal) {
+                    //speechToText += transcript+'   ';
+                    speechToText = transcript;
+                
+                } else {
+                    //interimTranscript += transcript+'   ';
+                    //interimTranscript = transcript+'   ';
+                }
+            }
+            recognition.addEventListener('soundend', () => {
+                mic.style.backgroundColor = null;
+                }
+            );
+            document.querySelector(".para").innerHTML = speechToText + interimTranscript;
+        })
+        mic.addEventListener("click", () => {
+            //document.querySelector(".para").innerHTML='';
+            recognition.start();
+            mic.style.backgroundColor = "#6BD6E1";
+        })
+        </script>
+<script>
+        function danhgiacau(ndcau){
+          ndcau=ndcau.toLowerCase();
+          ndcau=ndcau.replaceAll('.','');
+          ndcau=ndcau.replaceAll(',','');
+          ndcau=ndcau.replaceAll(';','');
+          ndcau=ndcau.replaceAll('!','');
+          ndcau=ndcau.replaceAll(':','');
+          ndcau=ndcau.replaceAll('-','');
+          ndcau=ndcau.replaceAll('?','');
+
+          ndluu=ndluu.toLowerCase();
+          ndluu=ndluu.replaceAll('.','');
+          ndluu=ndluu.replaceAll(',','');
+          ndluu=ndluu.replaceAll(';','');
+          ndluu=ndluu.replaceAll('!','');
+          ndluu=ndluu.replaceAll(':','');
+          ndluu=ndluu.replaceAll('-','');
+          ndluu=ndluu.replaceAll('?','');
+          var tbao='Sorry!' ;
+         if (ndluu.indexOf(ndcau)>=0){tbao='Good!'}   
+        alert(tbao); 
+      }
+</script>
+<br><br><br>
+<div class="footer">
+  <p>Website này do vantiensg2002@yahoo.com soạn chỉ để học tiếng Anh theo voatiengviet.com.</p>
+</div>
+
+</body>
+</html>
