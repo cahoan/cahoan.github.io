@@ -2,55 +2,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Listening Quiz</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Learn English</title>
 <style>
-#ans1,#ans2,#ans3,#ans4,#ans5,#ans6{color:blue;text-align: center;}
-.center {text-align: center}
-h2 {text-align: center;}
-.btn {background:green;color:yellow;height:40px;width:200px;margin:auto;display:block;}
-.tieude {background:lightgreen;}
-p {font-size: 14pt;}
-.bdy {background:#f7e6cd;}
-.f-grid {display: flex;justify-content: space-between;margin-left:-0.5rem;flex-flow: row wrap;}
-.f-grid-col {flex: 3 0;background-color: rgba(184,245,114,0.883);margin-left: 0.5rem;margin-bottom: 1rem;padding: 1rem;font-size: 14pt;}
-</style>
-<script>var chtlroi='';var ndluu='';</script>
-<style>
-#fixNav{
-  width:98.8%;
-  height: 120px;
-background-color:green;
-  color:yellow;
+    body {
+    margin:0;
+    background:#f7e6cd;
+}
+.para{
+    text-align:center;
+    color:yellow;
+}
+.navbar {
+  overflow: hidden;
+  background-color:green;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
   display: block;
-  box-shadow: 0px 2px 2px rgba(0,0,0,0.5); /*Đổ bóng cho menu*/
-  position: fixed; /*Cho menu cố định 1 vị trí với top và left*/
-  top: 0; /*Nằm trên cùng*/
-  z-index: 100000; /*Hiển thị lớp trên cùng*/
+  color: green;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: green;
+  color: black;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 600px; /* Used in this example to enable scrolling */
 }
 #circlein {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     justify-content: center;
-    box-shadow: 0px -2px 15px #E0FF94;
+    /*box-shadow: 0px -2px 15px #E0FF94;*/
+    box-shadow: 1px 1px 15px #E0FF94;
 }
-.para{
-    text-align:center;
-}
-    
 .obj {
     justify-content: center;
     height: 100%;
     margin-left: auto;
 }
 .mic-icon {
-    height: 15px;
+    height: 12px;
     position: absolute;
-    margin: 18px;
-}
+    margin-top:18px;
+    margin-left:-6px;
+} 
+#ans1,#ans2,#ans3,#ans4,#ans5,#ans6{color:blue;text-align: center;}
+.center {text-align: center}
+h2 {text-align: center;}
+.btn {background:green;color:yellow;height:40px;width:200px;margin:auto;display:block;}
+.tieude {background:lightgreen;}
+p {font-size: 14pt;}
+.f-grid {display: flex;justify-content: space-between;margin-left:-0.5rem;flex-flow: row wrap;}
+.f-grid-col {flex: 3 0;background-color: rgba(184,245,114,0.883);margin-left: 0.5rem;margin-bottom: 1rem;padding: 1rem;font-size: 14pt;}
+</style>
+<script>var chtlroi='';var ndluu='';</script>
+<style>
 .footer {
     background-color:green;
     color: #ffffff;
@@ -58,12 +80,14 @@ background-color:green;
     font-size: 12px;
     padding: 15px;
 }
+</style>
 
 </style>
 </head>
-<body class="bdy">
-    <nav id="fixNav">
-        <div class="words">
+<body>
+<div class="navbar">
+    <a class="textnoi">  
+    <div class="words">
         <div class="obj">
             <div class="button" id="circlein">
                 <svg class="mic-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -77,16 +101,17 @@ background-color:green;
             </div>
         </div>
     </div>
-    </nav>
-
-<br><br><br><br><br><br>
-<div class="tieude">
-
-<div id="google_translate_element"></div>
-<script type="text/javascript">
-function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    </a>
+    </div>
+    <br><br><br>
+    <div class="main">
+        <div class="tieude">
+        
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+        function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <h2 id="cbai" onclick="say(cabai)"> Lesson 13: Happy Birthday, William Shakespeare!</h2>
 <br>
