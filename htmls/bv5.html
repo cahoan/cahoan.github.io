@@ -118,8 +118,48 @@ p {font-size: 14pt;}
 </div>
 <hr>
 <div class="f-grid">
+<div class="f-grid-col" id="p1" onclick="say(c1)"><span style="color:blue">Anna:</span> Hello, everyone! Today my friend Marsha is at her friend's house. She says it is beautiful. I want to see this house! Here we are!</div>
+<div class="f-grid-col" id="p2" onclick="say(c2)"><span style="color:red">Anna:</span> Marsha, I am in the kitchen! It is a beautiful kitchen!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p3" onclick="say(c3)"><span style="color:blue">Marsha:</span> It is beautiful. We cook in the kitchen.</div>
+<div class="f-grid-col" id="p4" onclick="say(c4)"><span style="color:red">Anna:</span> I eat in the kitchen.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p5" onclick="say(c5)"><span style="color:blue">Marsha:</span> We relax in the living room.</div>
+<div class="f-grid-col" id="p6" onclick="say(c6)"><span style="color:red">Anna:</span> I relax in the living room. Marsha, let’s go upstairs!</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p7" onclick="say(c7)"><span style="color:blue">Marsha:</span> Anna? Where are you?</div>
+<div class="f-grid-col" id="p8" onclick="say(c8)"><span style="color:red">Anna:</span> Marsha, I am in the bathroom! I wash in the bathroom.</div>
+</div>
+<div class="f-grid">
+<div class="f-grid-col" id="p9" onclick="say(c9)"><span style="color:blue">Marsha:</span> I am in the bedroom. We sleep in the bedroom.</div>
+<div class="f-grid-col" id="p10" onclick="say(c10)"><span style="color:red">Anna:</span> I sleep in the bedroom!</div>
+</div>
+<div class="f-grid">
 <script>
 var cabai=document.getElementById("cbai").innerHTML;
+var c1=document.getElementById("p1").innerHTML;
+cabai=cabai+". "+c1;
+var c2=document.getElementById("p2").innerHTML;
+cabai=cabai+". "+c2;
+var c3=document.getElementById("p3").innerHTML;
+cabai=cabai+". "+c3;
+var c4=document.getElementById("p4").innerHTML;
+cabai=cabai+". "+c4;
+var c5=document.getElementById("p5").innerHTML;
+cabai=cabai+". "+c5;
+var c6=document.getElementById("p6").innerHTML;
+cabai=cabai+". "+c6;
+var c7=document.getElementById("p7").innerHTML;
+cabai=cabai+". "+c7;
+var c8=document.getElementById("p8").innerHTML;
+cabai=cabai+". "+c8;
+var c9=document.getElementById("p9").innerHTML;
+cabai=cabai+". "+c9;
+var c10=document.getElementById("p10").innerHTML;
+cabai=cabai+". "+c10;
 cabai=cabai.replaceAll('</strong>','');
 cabai=cabai.replaceAll('<strong>','');
 cabai=cabai.replaceAll('</span>','');
