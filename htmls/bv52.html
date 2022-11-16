@@ -70,9 +70,6 @@ h2 {text-align: center;}
 p {font-size: 14pt;}
 .f-grid {display: flex;justify-content: space-between;margin-left:-0.5rem;flex-flow: row wrap;}
 .f-grid-col {flex: 3 0;background-color: rgba(184,245,114,0.883);margin-left: 0.5rem;margin-bottom: 1rem;padding: 1rem;font-size: 14pt;}
-</style>
-<script>var chtlroi='';var ndluu='';</script>
-<style>
 .footer {
     background-color:green;
     color: #ffffff;
@@ -82,7 +79,8 @@ p {font-size: 14pt;}
 }
 </style>
 
-</style>
+<script>var sl=1;</script>
+
 </head>
 <body>
 <div class="navbar">
@@ -113,109 +111,93 @@ p {font-size: 14pt;}
         </script>
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<h2 id="cbai" onclick="say(cabai)"> Lesson 52: Taking Chances</h2>
+<h2 id="cbai" onclick="saycb()"> Lesson 52: Taking Chances</h2>
+Repeat :   
+<input type="radio" id="mot" onclick=" checkButton()" name="slan" value="1" checked>1   
+<input type="radio" id="ba" onclick=" checkButton()" name="slan" value="3">3   
+<input type="radio" id="nam" onclick=" checkButton()" name="slan" value="5">5
+<br>  
+<script> 
+    function checkButton() {    
+        if(document.getElementById('mot').checked) {   
+            sl=1;   
+        }   
+        if(document.getElementById('ba').checked) {   
+            sl=3;   
+        }   
+        if(document.getElementById('nam').checked) {   
+            sl=5;   
+        }
+        
+    }       
+</script>   
 <br>
 </div>
 <hr>
 <div class="f-grid">
-<div class="f-grid-col" id="p1" onclick="say(c1)"><span style="color:blue">Anna:</span> Hello, it's Anna! I did it - Washington, D.C. is my home. Looking back over the past year, I’ve done so many amazing things! I have met people from all over the world. I’ve made many good friends. And I have a great job! And I've taken a lot of chances. And now I have some really big news! Wait for it… and 3, 2, 1…</div>
-<div class="f-grid-col" id="p2" onclick="say(c2)"><span style="color:red">Kelly:</span> Hello and welcome to “Around the Corner and Across the Street from the Actor’s Studio!” Many people dream of becoming actors. But very often, those dreams don’t come true.</div>
+<div class="f-grid-col" id="p1" onclick="layid(this.id)"><span style="color:blue">Anna:</span> Hello, it's Anna! I did it - Washington, D.C. is my home. Looking back over the past year, I’ve done so many amazing things! I have met people from all over the world. I’ve made many good friends. And I have a great job! And I've taken a lot of chances. And now I have some really big news! Wait for it… and 3, 2, 1…</div>
+<div class="f-grid-col" id="p2" onclick="layid(this.id)"><span style="color:red">Kelly:</span> Hello and welcome to “Around the Corner and Across the Street from the Actor’s Studio!” Many people dream of becoming actors. But very often, those dreams don’t come true.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p3" onclick="say(c3)"><span style="color:blue">Kelly:</span> Well, today we will meet a woman and -- her acting <strong>career</strong> has really <strong>taken off</strong>. In fact, she acted in my play, “The Woods Are Alive!” Oh. She really brought the part of Tree Number 15 to life! Let’s give a warm welcome to Anna Matteo!</div>
-<div class="f-grid-col" id="p4" onclick="say(c4)"><span style="color:red">Anna:</span> Thank you. Thank you so much for having me here.</div>
+<div class="f-grid-col" id="p3" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> Well, today we will meet a woman and -- her acting <strong>career</strong> has really <strong>taken off</strong>. In fact, she acted in my play, “The Woods Are Alive!” Oh. She really brought the part of Tree Number 15 to life! Let’s give a warm welcome to Anna Matteo!</div>
+<div class="f-grid-col" id="p4" onclick="layid(this.id)"><span style="color:red">Anna:</span> Thank you. Thank you so much for having me here.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p5" onclick="say(c5)"><span style="color:blue">Kelly:</span> Please, please, sit down. Here, here, let me help you.</div>
-<div class="f-grid-col" id="p6" onclick="say(c6)"><span style="color:red">Anna:</span> Thanks. Thanks. Wow, it is great to see you again, Director Kelly!</div>
+<div class="f-grid-col" id="p5" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> Please, please, sit down. Here, here, let me help you.</div>
+<div class="f-grid-col" id="p6" onclick="layid(this.id)"><span style="color:red">Anna:</span> Thanks. Thanks. Wow, it is great to see you again, Director Kelly!</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p7" onclick="say(c7)"><span style="color:blue">Kelly:</span> It’s great to see you too, Anna. I see you are still wearing your tree costume. Does this have anything to do with your big news?</div>
-<div class="f-grid-col" id="p8" onclick="say(c8)"><span style="color:red">Anna:</span> Yes. Yes, it does.</div>
+<div class="f-grid-col" id="p7" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> It’s great to see you too, Anna. I see you are still wearing your tree costume. Does this have anything to do with your big news?</div>
+<div class="f-grid-col" id="p8" onclick="layid(this.id)"><span style="color:red">Anna:</span> Yes. Yes, it does.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p9" onclick="say(c9)"><span style="color:blue">Kelly:</span> Well, Anna, please <strong>share</strong> that news with us.</div>
-<div class="f-grid-col" id="p10" onclick="say(c10)"><span style="color:red">Anna:</span> Kelly, I will be acting in three movies.</div>
+<div class="f-grid-col" id="p9" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> Well, Anna, please <strong>share</strong> that news with us.</div>
+<div class="f-grid-col" id="p10" onclick="layid(this.id)"><span style="color:red">Anna:</span> Kelly, I will be acting in three movies.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p11" onclick="say(c11)"><span style="color:blue">Kelly:</span> That is amazing! Anna, tell us more.</div>
-<div class="f-grid-col" id="p12" onclick="say(c12)"><span style="color:red">Anna:</span> Well, the first is a <strong>science fiction</strong> movie. The second is a <strong>romantic comedy</strong>. And the third is an <strong>action</strong> movie.</div>
+<div class="f-grid-col" id="p11" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> That is amazing! Anna, tell us more.</div>
+<div class="f-grid-col" id="p12" onclick="layid(this.id)"><span style="color:red">Anna:</span> Well, the first is a <strong>science fiction</strong> movie. The second is a <strong>romantic comedy</strong>. And the third is an <strong>action</strong> movie.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p13" onclick="say(c13)"><span style="color:blue">Kelly:</span> That is so great! Let me guess -- you’re playing a tree in all of them!</div>
-<div class="f-grid-col" id="p14" onclick="say(c14)"><span style="color:red">Anna:</span> Yes! This is what happened. To prepare for your play, I had to <strong>find out</strong> what it was like to BE a tree in the world. I had to find out where to eat, where to shop, where to meet people and how to <strong>get around</strong> the city.</div>
+<div class="f-grid-col" id="p13" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> That is so great! Let me guess -- you’re playing a tree in all of them!</div>
+<div class="f-grid-col" id="p14" onclick="layid(this.id)"><span style="color:red">Anna:</span> Yes! This is what happened. To prepare for your play, I had to <strong>find out</strong> what it was like to BE a tree in the world. I had to find out where to eat, where to shop, where to meet people and how to <strong>get around</strong> the city.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p15" onclick="say(c15)"><span style="color:blue">Kelly:</span> Amazing. I think big things are going to happen for you, Anna. So, tell me, will you be moving to Hollywood for a career in movies?</div>
-<div class="f-grid-col" id="p16" onclick="say(c16)"><span style="color:red">Anna:</span> No. I’ll make the movies and then <strong>come back</strong>. Washington, D.C. is my home.</div>
+<div class="f-grid-col" id="p15" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> Amazing. I think big things are going to happen for you, Anna. So, tell me, will you be moving to Hollywood for a career in movies?</div>
+<div class="f-grid-col" id="p16" onclick="layid(this.id)"><span style="color:red">Anna:</span> No. I’ll make the movies and then <strong>come back</strong>. Washington, D.C. is my home.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p17" onclick="say(c17)"><span style="color:blue">Kelly:</span> I’m sure your family is very <strong>proud</strong>.</div>
-<div class="f-grid-col" id="p18" onclick="say(c18)"><span style="color:red">Anna:</span> Yes, they are. You know, Kelly, not too long ago, I didn’t feel very good about my life. I had to make a change. So, I took some <strong>chances</strong>. Sometimes I succeeded. Sometimes I <strong>failed</strong>. But I will never stop trying.</div>
+<div class="f-grid-col" id="p17" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> I’m sure your family is very <strong>proud</strong>.</div>
+<div class="f-grid-col" id="p18" onclick="layid(this.id)"><span style="color:red">Anna:</span> Yes, they are. You know, Kelly, not too long ago, I didn’t feel very good about my life. I had to make a change. So, I took some <strong>chances</strong>. Sometimes I succeeded. Sometimes I <strong>failed</strong>. But I will never stop trying.</div>
 </div>
 <div class="f-grid">
-<div class="f-grid-col" id="p19" onclick="say(c19)"><span style="color:blue">Kelly:</span> Well, thank you for sharing your news and so much more with us, Anna.</div>
-<div class="f-grid-col" id="p20" onclick="say(c20)"><span style="color:red">Kelly:</span> Until next time …</div>
+<div class="f-grid-col" id="p19" onclick="layid(this.id)"><span style="color:blue">Kelly:</span> Well, thank you for sharing your news and so much more with us, Anna.</div>
+<div class="f-grid-col" id="p20" onclick="layid(this.id)"><span style="color:red">Kelly:</span> Until next time …</div>
 </div>
-<div class="f-grid">
 <script>
-var cabai=document.getElementById("cbai").innerHTML;
-var c1=document.getElementById("p1").innerHTML;
-cabai=cabai+". "+c1;
-var c2=document.getElementById("p2").innerHTML;
-cabai=cabai+". "+c2;
-var c3=document.getElementById("p3").innerHTML;
-cabai=cabai+". "+c3;
-var c4=document.getElementById("p4").innerHTML;
-cabai=cabai+". "+c4;
-var c5=document.getElementById("p5").innerHTML;
-cabai=cabai+". "+c5;
-var c6=document.getElementById("p6").innerHTML;
-cabai=cabai+". "+c6;
-var c7=document.getElementById("p7").innerHTML;
-cabai=cabai+". "+c7;
-var c8=document.getElementById("p8").innerHTML;
-cabai=cabai+". "+c8;
-var c9=document.getElementById("p9").innerHTML;
-cabai=cabai+". "+c9;
-var c10=document.getElementById("p10").innerHTML;
-cabai=cabai+". "+c10;
-var c11=document.getElementById("p11").innerHTML;
-cabai=cabai+". "+c11;
-var c12=document.getElementById("p12").innerHTML;
-cabai=cabai+". "+c12;
-var c13=document.getElementById("p13").innerHTML;
-cabai=cabai+". "+c13;
-var c14=document.getElementById("p14").innerHTML;
-cabai=cabai+". "+c14;
-var c15=document.getElementById("p15").innerHTML;
-cabai=cabai+". "+c15;
-var c16=document.getElementById("p16").innerHTML;
-cabai=cabai+". "+c16;
-var c17=document.getElementById("p17").innerHTML;
-cabai=cabai+". "+c17;
-var c18=document.getElementById("p18").innerHTML;
-cabai=cabai+". "+c18;
-var c19=document.getElementById("p19").innerHTML;
-cabai=cabai+". "+c19;
-var c20=document.getElementById("p20").innerHTML;
-cabai=cabai+". "+c20;
-cabai=cabai.replaceAll('</strong>','');
-cabai=cabai.replaceAll('<strong>','');
-cabai=cabai.replaceAll('</span>','');
-cabai=cabai.replaceAll('<span style="color:blue">','');
-cabai=cabai.replaceAll('<span style="color:red">','');
-cabai=cabai.replaceAll("<em>","");
-cabai=cabai.replaceAll("</em>","");
-cabai=cabai.replaceAll("<u>","");
-cabai=cabai.replaceAll("</u>","");
-cabai=cabai.replaceAll('<span style="color:#0070C0"','');
-cabai=cabai.replaceAll('<span lang="EN" style="color:#0070C0"','');
+    function layid(tenidl){
+        var message=document.getElementById(tenidl).innerHTML;
+        for (let i = 1; i <= sl; i++) {
+            if (message.indexOf('<span style="color:blue">')==-1){giongnoi='en-GB';} else {giongnoi='en';}
+                say(message, giongnoi);
+        }
+    }
+</script>
+<script>
+function saycb(){
+    for (let j = 1; j <= sl; j++) {
+    for (let i = 1; i < 30; i++) {
+        var tenid='p'+i.toString();
+        var message=document.getElementById(tenid).innerHTML;
+        if (message.indexOf('<span style="color:blue">')){giongnoi='en-GB';} else {giongnoi='en';}
+            say(message,giongnoi);
+    }
+    }
+}
 </script>
 
 <script>
-function say(message){
-    
+function say(message,giongnoi){
 message=message.replaceAll('<span style="color:blue">', '');
 message=message.replaceAll('<span style="color:red">', '');
 message=message.replaceAll('</span>', '');
@@ -231,9 +213,8 @@ message=message.replaceAll('<span lang="EN" style="color:#0070C0"','');
 
 
 message=message.slice(message.indexOf(":")+1, -1);
-ndluu=message;  
 let speech = new SpeechSynthesisUtterance(message);
-speech.lang = "en";
+speech.lang = giongnoi;
 window.speechSynthesis.speak(speech);}
 </script>              
 
