@@ -575,9 +575,3 @@ function updateVoices() {
   });
 }
 
-function clear_text(){
-  //alert('KKK');
-  resultsdich.innerHTML='';
-  results.innerHTML='';
-
-}
