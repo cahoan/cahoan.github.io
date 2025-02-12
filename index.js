@@ -565,7 +565,7 @@ function updateVoices() {
         const isAlreadyAdded = [...voiceInEl.options].some(option => option.value === voice.voiceURI);
         if (!isAlreadyAdded) {
             const option = new Option(voice.name, voice.voiceURI, voice.default, voice.default);
-            if (option.value.search("English")>0){
+            if ((option.value.search("English")>0) || (option.value.search("en-US")>0)){
                 //console.log(option);
                 voiceInEl.add(option);
             }    
