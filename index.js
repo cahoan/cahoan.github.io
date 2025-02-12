@@ -260,6 +260,7 @@ let listUrlYt = [
     //maHoaLaiAK();
 //-apiKey--chat--------------------------------------------    
 var apiKey=maHoaLaiAK();
+const start_img= document.getElementById("start_img");
 
 //document.addEventListener("DOMContentLoaded", async () => {
 //    try {
@@ -572,4 +573,11 @@ function updateVoices() {
         }
     
   });
+}
+
+function clear_text(){
+  //alert('KKK');
+  resultsdich.innerHTML='';
+  results.innerHTML='';
+
 }
