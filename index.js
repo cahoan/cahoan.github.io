@@ -488,21 +488,25 @@ return s.replace(first_char, function(m) { return m.toUpperCase(); });
 
 //---Khi micro duoc click ------------
 $("#start_button").click(function () {
-if (recognizing) {
-  recognition.stop();
-  return;
-}
-final_transcript = '';
+    if (recognizing) { // neu recognizing === true tuc la da click 1 lan, lan click nay la lan 2
+      //alert(recognizing);
+      recognition.stop();
+      return;
+    }
+    //alert(recognizing); // click lan 1 (lan le) recognizing===false
 
-//recognition.lang = select_source_dialect.value;
-//alert(recognition.lang); //thu cho nay thay dung roi khi nhap nut button start
-recognition.start();
-ignore_onend = false;
-final_span.innerHTML = '';
-interim_span.innerHTML = '';
-start_img.src = 'icons/mic-slash.gif';
-showInfo('allow');
-start_timestamp = event.timeStamp;
+    final_transcript = '';
+
+    //recognition.lang = select_source_dialect.value;
+    //alert(recognition.lang); //thu cho nay thay dung roi khi nhap nut button start
+    recognition.start();
+    ignore_onend = false;
+    final_span.innerHTML = '';
+    interim_span.innerHTML = '';
+    //start_img.src = 'icons/mic-slash.gif'; //neu co dong nay thi ben iphone hien ra bang hoi xin bat mic
+    //alert(start_img.src);
+    showInfo('allow');
+    start_timestamp = event.timeStamp;
 });
 
 
