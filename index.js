@@ -440,7 +440,11 @@ if (!('webkitSpeechRecognition' in window)) {
       return;
     }
     showInfo('stop');
-    //translate();
+    //translate(); gui truy van chatgpt tu co nay
+    console.log(final_transcript);
+    sendMessage(final_transcript);
+    //--------------------------------
+
   };
 
   recognition.onresult = function(event) {
@@ -459,7 +463,7 @@ if (!('webkitSpeechRecognition' in window)) {
       final_span.innerHTML = linebreak(final_transcript);
       interim_span.innerHTML = linebreak(interim_transcript);
 
-      sendMessage(final_transcript);
+      //sendMessage(final_transcript);
   
     //final_transcript la global nen no van ton tai ca cac thay doi, den khi ta click nghe thi moi dich
     //resultsdich.innerHTML=translate(final_transcript);     
