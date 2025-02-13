@@ -260,6 +260,10 @@ let listUrlYt = [
     //maHoaLaiAK();
 //-apiKey--chat--------------------------------------------    
 var apiKey=maHoaLaiAK();
+var demClickGPT=0;
+document.getElementById("results").style.display = "none";
+document.getElementById("resultsdich").style.display = "none";
+
 const start_img= document.getElementById("start_img");
 
 //document.addEventListener("DOMContentLoaded", async () => {
@@ -583,3 +587,17 @@ function updateVoices() {
   });
 }
 
+function anHienText_GPT(){
+  demClickGPT += 1;
+  if (demClickGPT%2 === 1){
+    document.getElementById("results").style.display = "block";
+    document.getElementById("resultsdich").style.display = "block";
+  }else{
+    document.getElementById("results").style.display = "none";
+    document.getElementById("resultsdich").style.display = "none";
+
+    //document.getElementById("results").style.clipPath = "inset(0%)";
+    //document.getElementById("resultsdich").style.clipPath = "inset(0%)";
+
+  } 
+}
