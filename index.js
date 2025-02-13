@@ -316,6 +316,10 @@ async function sendMessage(transcript) {
       utterance.rate = rateInEl.value;
       //utterance.volume = volumeInEl.value;
       utterance.volume = 1;
+      utterance.addEventListener('start', handleStart);
+      utterance.addEventListener('end', handleEnd);
+
+  
       // speak that utterance
       window.speechSynthesis.speak(utterance);
     }
@@ -332,6 +336,9 @@ function reSpeak(){
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
   utterance.volume = 1;
+  utterance.addEventListener('start', handleStart);
+  utterance.addEventListener('end', handleEnd);
+  
   // speak that utterance
   window.speechSynthesis.speak(utterance);
 }
@@ -502,7 +509,8 @@ $("#start_button").click(function () {
       return;
     }
     //alert(recognizing); // click lan 1 (lan le) recognizing===false
-
+    window.speechSynthesis.cancel(); // cho stop cai dang tra loi
+    handleEnd();
     final_transcript = '';
 
     //recognition.lang = select_source_dialect.value;
@@ -600,4 +608,15 @@ function anHienText_GPT(){
     //document.getElementById("resultsdich").style.clipPath = "inset(0%)";
 
   } 
+}
+
+const listen_img = document.getElementById("listen_img") ;
+//==============
+function handleStart() {
+  listen_img.src = 'icons/mic-animation.gif';
+}
+
+
+function handleEnd() {
+  listen_img.src = 'icons/bot.png';
 }
