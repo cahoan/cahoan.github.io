@@ -259,12 +259,27 @@ let listUrlYt = [
     }
     //maHoaLaiAK();
 //-apiKey--chat--------------------------------------------    
+
+const resultsEl = document.getElementById('results');
+const resultsdichEl = document.getElementById('resultsdich');
+const voiceInEl = document.getElementById('voice');
+const pitchInEl = document.getElementById('pitch');
+const rateInEl = document.getElementById('rate');
+const pitchOutEl = document.querySelector('output[for="pitch"]');
+const rateOutEl = document.querySelector('output[for="rate"]');
+const speakEl = document.getElementById('listen_button');
+const start_imgEl = document.getElementById("start_img");
+const listen_imgEl = document.getElementById("listen_img");
+
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
-document.getElementById("results").style.display = "none";
-document.getElementById("resultsdich").style.display = "none";
+var text='';
 
-const start_img= document.getElementById("start_img");
+//const results = document.getElementById("results");
+//const resultsdich = document.getElementById("resultsdich");
+resultsEl.style.display = "none";
+resultsdichEl.style.display = "none";
+
 
 //document.addEventListener("DOMContentLoaded", async () => {
 //    try {
@@ -279,7 +294,8 @@ const start_img= document.getElementById("start_img");
 //});
 
 //--chatgpt-----------------------------
-var text='';
+
+
 async function sendMessage(transcript) {
     let userInput = transcript;
     //alert(userInput);
@@ -302,7 +318,7 @@ async function sendMessage(transcript) {
   
     let data = await response.json();
     let reply = data.choices[0].message.content;
-    resultsdich.textContent = reply;
+    resultsdichEl.textContent = reply;
     
     function speakText(text) {
       // stop any speaking in progress
@@ -328,7 +344,7 @@ async function sendMessage(transcript) {
 
 function reSpeak(){
   window.speechSynthesis.cancel();
-  text = resultsdich.textContent;
+  text = resultsdichEl.innerText;
   utterance = new SpeechSynthesisUtterance(text);
   // create new utterance with all the properties
   utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
@@ -337,7 +353,8 @@ function reSpeak(){
   //utterance.volume = volumeInEl.value;
   utterance.volume = 1;
   utterance.addEventListener('start', handleStart);
-  utterance.addEventListener('end', handleEnd);
+  utterance.addEventListener('end', handleEnd2);
+  utterance.addEventListener('boundary', handleBoundary);
   
   // speak that utterance
   window.speechSynthesis.speak(utterance);
@@ -354,7 +371,7 @@ function aboutapp(){
 
 
 //--Cac bien toan cuc--
-var text='';
+//var text='';
 var demah=0;
 var messages = {//kieu dic
 "start": {
@@ -400,7 +417,7 @@ if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
   showInfo('start'); 
-  resultsdich.innerHTML=''; //khi dang chuan bi thi cai nay phai empty
+  resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
   start_button.style.display = 'inline-block';
   recognition = new webkitSpeechRecognition();
   recognition.lang = 'en-US';
@@ -412,25 +429,25 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('speak_now');
-    resultsdich.innerHTML=''; //khi dang chuan bi thi cai nay phai empty
-    start_img.src = 'icons/mic-animation.gif';
+    resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
+    start_imgEl.src = 'icons/mic-animation.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = 'icons/mic.gif';
+      start_imgEl.src = 'icons/mic.gif';
       showInfo('no_speech');
-      resultsdich.innerHTML=''; 
+      resultsdichEl.textContent=''; 
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = 'icons/mic.gif';
+      start_imgEl.src = 'icons/mic.gif';
       showInfo('no_microphone');
-      resultsdich.innerHTML=''; 
+      resultsdichEl.textContent=''; 
       ignore_onend = true;
     }
     if (event.error == 'not-allowed') {
-      resultsdich.innerHTML=''; 
+      resultsdichEl.textContent=''; 
       if (event.timeStamp - start_timestamp < 100) {
         showInfo('blocked');
       } else {
@@ -445,22 +462,23 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = 'icons/mic.gif';
+    start_imgEl.src = 'icons/mic.gif';
     if (!final_transcript) {
       showInfo('start');
       return;
     }
     showInfo('stop');
+    //-------------------------------------------------------------------------
     //translate(); gui truy van chatgpt tu co nay
     console.log(final_transcript);
     sendMessage(final_transcript);
-    //--------------------------------
-
+    //alert(final_transcript.length);
+    //--------------------------------------------------------------------------
   };
 
   recognition.onresult = function(event) {
       var interim_transcript = '';
-      resultsdich.innerHTML=''; //khi dang chuan bi thi cai nay phai empty
+      resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
       //chu y rang van de kq trung gian va cuoi cung hien ra cho ta thay ct dang chay
       //nhung cuoi cung thi dich moi hien ra 
       for (var i = event.resultIndex; i < event.results.length; ++i) {
@@ -471,13 +489,13 @@ if (!('webkitSpeechRecognition' in window)) {
           }
       }
       final_transcript = capitalize(final_transcript);
-      final_span.innerHTML = linebreak(final_transcript);
-      interim_span.innerHTML = linebreak(interim_transcript);
+      final_span.textContent = linebreak(final_transcript);
+      interim_span.textContent = linebreak(interim_transcript);
 
       //sendMessage(final_transcript);
   
     //final_transcript la global nen no van ton tai ca cac thay doi, den khi ta click nghe thi moi dich
-    //resultsdich.innerHTML=translate(final_transcript);     
+    //resultsdichEl.innerHTML=translate(final_transcript);     
     //translate(final_transcript);     
   };
 
@@ -517,8 +535,8 @@ $("#start_button").click(function () {
     //alert(recognition.lang); //thu cho nay thay dung roi khi nhap nut button start
     recognition.start();
     ignore_onend = false;
-    final_span.innerHTML = '';
-    interim_span.innerHTML = '';
+    final_span.textContent = '';
+    interim_span.textContent = '';
     //start_img.src = 'icons/mic-slash.gif'; //neu co dong nay thi ben iphone hien ra bang hoi xin bat mic
     //alert(start_img.src);
     showInfo('allow');
@@ -555,14 +573,7 @@ rateOutEl.textContent = rateInEl.value;
 
 //--------lay cua net dan vao
 // grab the UI elements to work with
-const textEl = document.getElementById('resultsdich');
-const voiceInEl = document.getElementById('voice');
-const pitchInEl = document.getElementById('pitch');
-const rateInEl = document.getElementById('rate');
-const pitchOutEl = document.querySelector('output[for="pitch"]');
-const rateOutEl = document.querySelector('output[for="rate"]');
-
-const speakEl = document.getElementById('listen_button');
+//DN cac phan tu
 
 // add UI event handlers
 pitchInEl.addEventListener('change', updateOutputs);
@@ -598,11 +609,11 @@ function updateVoices() {
 function anHienText_GPT(){
   demClickGPT += 1;
   if (demClickGPT%2 === 1){
-    document.getElementById("results").style.display = "block";
-    document.getElementById("resultsdich").style.display = "block";
+    resultsEl.style.display = "block";
+    resultsdichEl.style.display = "block";
   }else{
-    document.getElementById("results").style.display = "none";
-    document.getElementById("resultsdich").style.display = "none";
+    resultsEl.style.display = "none";
+    resultsdichEl.style.display = "none";
 
     //document.getElementById("results").style.clipPath = "inset(0%)";
     //document.getElementById("resultsdich").style.clipPath = "inset(0%)";
@@ -610,13 +621,38 @@ function anHienText_GPT(){
   } 
 }
 
-const listen_img = document.getElementById("listen_img") ;
 //==============
 function handleStart() {
-  listen_img.src = 'icons/mic-animation.gif';
+  listen_imgEl.src = 'icons/mic-animation.gif';
 }
 
 
 function handleEnd() {
-  listen_img.src = 'icons/bot.png';
+  listen_imgEl.src = 'icons/bot.png';
+}
+function handleEnd2() {
+  listen_imgEl.src = 'icons/bot.png';
+  resultsdichEl.innerHTML = text;
+}
+
+function handleBoundary(event) {
+  if (event.name === 'sentence') {
+    // we only care about word boundaries
+    return;
+  }
+
+  const wordStart = event.charIndex;
+
+  let wordLength = event.charLength;
+  if (wordLength === undefined) {
+    // Safari doesn't provide charLength, so fall back to a regex to find the current word and its length (probably misses some edge cases, but good enough for this demo)
+    const match = text.substring(wordStart).match(/^[a-z\d']*/i);
+    wordLength = match[0].length;
+  }
+  
+  // wrap word in <mark> tag
+  const wordEnd = wordStart + wordLength;
+  const word = text.substring(wordStart, wordEnd);
+  const markedText = text.substring(0, wordStart) + '<mark>' + word + '</mark>' + text.substring(wordEnd);
+  resultsdichEl.innerHTML = markedText; //phan nay co ma trong resultsdichEl nen phai innerHTML
 }
