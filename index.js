@@ -593,13 +593,16 @@ function updateOutputs() {
 function updateVoices() {
   // add an option for each available voice that isn't already added
   window.speechSynthesis.getVoices().forEach(voice => {
-    
+        opvalue="";
         const isAlreadyAdded = [...voiceInEl.options].some(option => option.value === voice.voiceURI);
         if (!isAlreadyAdded) {
             const option = new Option(voice.name, voice.voiceURI, voice.default, voice.default);
             if ((option.value.search("English")>0) || (option.value.search("en-US")>0) || (option.value.search("Linh")>0) || (option.value.search("An")>0) || (option.value.search("vi-VN")>0)){
                 //console.log(option);
-                voiceInEl.add(option);
+                opvalue = opvalue + option.value+" ";
+                if  (opvalue.search(option.value)<=0){
+                  voiceInEl.add(option);
+                }
             }    
         }
     
