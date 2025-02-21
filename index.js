@@ -340,7 +340,7 @@ async function sendMessage(transcript) {
       utterance.pitch = pitchInEl.value;
       utterance.rate = rateInEl.value;
       //utterance.volume = volumeInEl.value;
-      utterance.volume = 1;
+      utterance.volume = 2;
       utterance.addEventListener('start', handleStart);
       utterance.addEventListener('end', handleEnd);
 
@@ -360,7 +360,7 @@ function reSpeak(){
   utterance.pitch = pitchInEl.value;
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
-  utterance.volume = 1;
+  utterance.volume = 2;
   utterance.addEventListener('start', handleStart);
   utterance.addEventListener('end', handleEnd2);
   utterance.addEventListener('boundary', handleBoundary);
@@ -692,8 +692,9 @@ function speakTextViT(){
           const speech = new SpeechSynthesisUtterance();
           speech.lang = "vi-VN"; // Đọc tiếng Vi
           speech.text = translated;
-          speech.rate = 0.5;
-          speech.pitch = 0.5;
+          speech.rate = 1;
+          speech.pitch = 1;
+          speech.volume = 2;
           speechSynthesis.speak(speech);
       
           
@@ -710,6 +711,7 @@ function speakTextVi(){
     speech.text = textNoi;
     speech.rate = 1;
     speech.pitch = 1;
+    speech.volume = 2;
     speechSynthesis.speak(speech);
 }
 //--------------------
@@ -851,5 +853,6 @@ speech.lang = "en-US"; // Đọc tiếng Anh
 speech.text = text;
 speech.rate = 1.0;
 speech.pitch = 1.0;
+speech.volume = 2;
 speechSynthesis.speak(speech);
 }
