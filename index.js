@@ -317,8 +317,9 @@ async function sendMessage(transcript) {
     });
   
     let data = await response.json();
+    console.log(data);
     let reply = data.choices[0].message.content;
-    resultsdichEl.textContent = reply;
+    resultsdichEl.innerHTML = reply;
     
     function speakText(text) {
       // stop any speaking in progress
@@ -429,6 +430,7 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('speak_now');
+    //resultsEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
     resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
     start_imgEl.src = 'icons/mic-animation.gif';
   };
@@ -658,4 +660,34 @@ function handleBoundary(event) {
   const word = text.substring(wordStart, wordEnd);
   const markedText = text.substring(0, wordStart) + '<mark>' + word + '</mark>' + text.substring(wordEnd);
   resultsdichEl.innerHTML = markedText; //phan nay co ma trong resultsdichEl nen phai innerHTML
+}
+
+// 📝 Hàm dịch văn bản sử dụng API miễn phí
+async function translateText(text) {
+    const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|vi`);
+    const data = await response.json();
+    return data.responseData.translatedText;
+}
+
+
+//
+function speakTextVi(){
+  let text = resultsEl.innerText.trim() + " . " + resultsdichEl.innerText.trim();
+  if (text.length > 0) {
+      //Dich text dau vao
+      translateText(text).then(translated => {
+          //translatedText.value = translated;
+          console.log(translated);
+          //Doc text da dich ra TV
+          const speech = new SpeechSynthesisUtterance();
+          speech.lang = "vi-VN"; // Đọc tiếng Vi
+          speech.text = translated;
+          speech.rate = 0.5;
+          speech.pitch = 0.5;
+          speechSynthesis.speak(speech);
+      
+          
+      });
+
+  } 
 }
