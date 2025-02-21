@@ -348,7 +348,7 @@ async function sendMessage(transcript) {
       // speak that utterance
       window.speechSynthesis.speak(utterance);
     }
-    speakText(reply);
+    speakText(resultsdichEl.innerText);
 }
 
 function reSpeak(){
@@ -619,7 +619,13 @@ function updateVoices() {
             if ((option.value.search("English")>0) || (option.value.search("Samantha")>0) || ((option.value.search("An")>0 && option.value.search("Anna")<0)) || (option.value.search("Zira")>0) || (option.value.search("Linh")>0) ){
                 //console.log(option);
                 voiceInEl.add(option);
-            }    
+                if (option.value.search("Samantha")>0){
+                  option.selected = true;
+                } else if (option.value.search("David")>0){   
+                  option.selected = true;
+                }
+            }
+                
         }
     
   });
@@ -833,7 +839,7 @@ speakButton.style.display = "none";
 
 // Khi nhấn nút đọc 🔊
 speakButton.addEventListener("click", () => {
-speakText(translatedText.value);
+speakTextAPI(translatedText.value);
 });
 
 }, 100);
@@ -847,7 +853,7 @@ return data.responseData.translatedText;
 }
 
 // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
-function speakText(text) {
+function speakTextAPI(text) {
 const speech = new SpeechSynthesisUtterance();
 speech.lang = "en-US"; // Đọc tiếng Anh
 speech.text = text;
