@@ -706,13 +706,15 @@ function speakTextViT(){
 }
 //------------------------
 function speakTextVi(){
-  let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
-  const speech = new SpeechSynthesisUtterance();
-  speech.lang = "vi-VN"; // Đọc tiếng Vi
-  speech.text = textNoi;
-  speech.rate = 0.5;
-  speech.pitch = 0.5;
-  speechSynthesis.speak(speech);
+  if (resultsdichViqEl.innerText.trim() !=="" && resultsdichViaEl.innerText.trim() !==""){
+    let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "vi-VN"; // Đọc tiếng Vi
+    speech.text = textNoi;
+    speech.rate = 1;
+    speech.pitch = 1;
+    speechSynthesis.speak(speech);
+  }
 
 }
 //----------------
