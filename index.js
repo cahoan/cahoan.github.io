@@ -270,6 +270,9 @@ const rateOutEl = document.querySelector('output[for="rate"]');
 const speakEl = document.getElementById('listen_button');
 const start_imgEl = document.getElementById("start_img");
 const listen_imgEl = document.getElementById("listen_img");
+const resultsdichViqEl = document.getElementById("resultsdichViQ");
+const resultsdichViaEl = document.getElementById("resultsdichViA");
+
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
@@ -319,7 +322,12 @@ async function sendMessage(transcript) {
     let data = await response.json();
     console.log(data);
     let reply = data.choices[0].message.content;
-    resultsdichEl.innerHTML = reply;
+    resultsdichEl.innerText = reply;
+
+    let textCanDich = resultsdichEl.innerText.trim() ;
+    let ptchua = resultsdichViaEl;
+    dichRaVi(textCanDich,ptchua);
+
     
     function speakText(text) {
       // stop any speaking in progress
@@ -418,6 +426,7 @@ if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
   showInfo('start'); 
+  resultsEl.innerText='';
   resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
   start_button.style.display = 'inline-block';
   recognition = new webkitSpeechRecognition();
@@ -432,6 +441,7 @@ if (!('webkitSpeechRecognition' in window)) {
     showInfo('speak_now');
     //resultsEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
     resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
+    resultsEl.innerText='';
     start_imgEl.src = 'icons/mic-animation.gif';
   };
 
@@ -439,12 +449,14 @@ if (!('webkitSpeechRecognition' in window)) {
     if (event.error == 'no-speech') {
       start_imgEl.src = 'icons/mic.gif';
       showInfo('no_speech');
+      resultsEl.innerText='';
       resultsdichEl.textContent=''; 
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
       start_imgEl.src = 'icons/mic.gif';
       showInfo('no_microphone');
+      resultsEl.innerText='';
       resultsdichEl.textContent=''; 
       ignore_onend = true;
     }
@@ -472,9 +484,14 @@ if (!('webkitSpeechRecognition' in window)) {
     showInfo('stop');
     //-------------------------------------------------------------------------
     //translate(); gui truy van chatgpt tu co nay
-    console.log(final_transcript);
+    //console.log(final_transcript);
+    resultsEl.innerText = final_transcript;
+    let textCanDich = resultsEl.innerText.trim() ;
+    let ptchua = resultsdichViqEl;
+    dichRaVi(textCanDich,ptchua);
     sendMessage(final_transcript);
     //alert(final_transcript.length);
+
     //--------------------------------------------------------------------------
   };
 
@@ -616,6 +633,7 @@ function anHienText_GPT(){
   if (demClickGPT%2 === 1){
     resultsEl.style.display = "block";
     resultsdichEl.style.display = "block";
+
   }else{
     resultsEl.style.display = "none";
     resultsdichEl.style.display = "none";
@@ -625,6 +643,8 @@ function anHienText_GPT(){
 
   } 
 }
+resultsdichViqEl.style.display = "none";
+resultsdichViaEl.style.display = "none";
 
 //==============
 function handleStart() {
@@ -662,16 +682,9 @@ function handleBoundary(event) {
   resultsdichEl.innerHTML = markedText; //phan nay co ma trong resultsdichEl nen phai innerHTML
 }
 
-// 📝 Hàm dịch văn bản sử dụng API miễn phí
-async function translateText(text) {
-    const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|vi`);
-    const data = await response.json();
-    return data.responseData.translatedText;
-}
-
 
 //
-function speakTextVi(){
+function speakTextViT(){
   let text = resultsEl.innerText.trim() + " . " + resultsdichEl.innerText.trim();
   if (text.length > 0) {
       //Dich text dau vao
@@ -690,4 +703,49 @@ function speakTextVi(){
       });
 
   } 
+}
+//------------------------
+function speakTextVi(){
+  let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
+  const speech = new SpeechSynthesisUtterance();
+  speech.lang = "vi-VN"; // Đọc tiếng Vi
+  speech.text = textNoi;
+  speech.rate = 0.5;
+  speech.pitch = 0.5;
+  speechSynthesis.speak(speech);
+
+}
+//----------------
+function GoOff(){
+  resultsEl.innerText="";
+  resultsdichEl.innerText="";
+  start_imgEl.src = "icons/mic.gif";
+  listen_imgEl.src = "icons/bot.png";
+  resultsdichViqEl.innerText = "";
+  resultsdichViaEl.innerText = "";
+   
+
+}
+
+//----Ham Dich ra Vi
+function dichRaVi(textCanDich,ptchua){
+  const inputText = textCanDich;
+  let sourceLanguage = 'en';
+  let targetLanguage = 'vi';
+
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200){
+        const responseReturned = JSON.parse(this.responseText);
+        const translations = responseReturned[0].map((text) => text[0]);
+        const outputText = translations.join(" ");
+        console.log(outputText);
+        ptchua.innerText = ' '+outputText;
+    }
+  };
+  xhttp.open("GET", url);
+  xhttp.send();
+
 }
