@@ -706,17 +706,17 @@ function speakTextViT(){
 }
 //------------------------
 function speakTextVi(){
-  if (resultsdichViqEl.innerText.trim() !=="" && resultsdichViaEl.innerText.trim() !==""){
     let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
+    if (textNoi.trim()==="."){return;}
     const speech = new SpeechSynthesisUtterance();
     speech.lang = "vi-VN"; // Đọc tiếng Vi
     speech.text = textNoi;
     speech.rate = 1;
     speech.pitch = 1;
     speechSynthesis.speak(speech);
-  }
-
 }
+
+
 //----------------
 function GoOff(){
   resultsEl.innerText="";
