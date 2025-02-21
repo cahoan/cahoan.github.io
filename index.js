@@ -618,7 +618,7 @@ function updateVoices() {
             //if ((option.value.search("English")>0) || (option.value.search("en-US")>0) || (option.value.search("Linh")>0) || (option.value.search("An")>0) || (option.value.search("vi-VN")>0)){
             if ((option.value.search("English")>0) || (option.value.search("Samantha")>0) || ((option.value.search("An")>0 && option.value.search("Anna")<0)) || (option.value.search("Zira")>0) || (option.value.search("Linh")>0) ){
                 //console.log(option);
-                if (option.value.search("Samantha")>0){
+                if (option.value.search("Samantha")>=0){
                   option.selected=true;
                 }
                 voiceInEl.add(option);
