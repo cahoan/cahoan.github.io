@@ -297,8 +297,6 @@ resultsdichEl.style.display = "none";
 //});
 
 //--chatgpt-----------------------------
-
-
 async function sendMessage(transcript) {
     let userInput = transcript;
     //alert(userInput);
@@ -320,13 +318,17 @@ async function sendMessage(transcript) {
     });
   
     let data = await response.json();
-    console.log(data);
+    //console.log(data);
     let reply = data.choices[0].message.content;
-    resultsdichEl.innerText = reply;
+    if (transcript.search("giải thích cụm từ tiếng Anh sau đây và định dạng kết quả bằng Markdown")>0){
+      //console.log(reply);
+      HienThiTrongSwal(reply);
+    }else{
+      resultsdichEl.innerText = reply;
 
-    let textCanDich = resultsdichEl.innerText.trim() ;
-    let ptchua = resultsdichViaEl;
-    dichRaVi(textCanDich,ptchua);
+      let textCanDich = resultsdichEl.innerText.trim() ;
+      let ptchua = resultsdichViaEl;
+      dichRaVi(textCanDich,ptchua);
 
     
     function speakText(text) {
@@ -349,6 +351,8 @@ async function sendMessage(transcript) {
       window.speechSynthesis.speak(utterance);
     }
     speakText(resultsdichEl.innerText);
+  }
+
 }
 
 function reSpeak(){
@@ -765,33 +769,34 @@ function dichRaVi(textCanDich,ptchua){
 
 }
 
-//----------------------------
+//----------------- html de chat t Vi voi GPT -----------------------
 let finalSpeechText = ""; // Biến toàn cục để lưu văn bản khi nhấn OK
 
 function chatTiengViet() {
 Swal.fire({
-title: "Hỗ trợ tiếng Việt",
-html: `
-<textarea id="input-text" class="swal2-input" placeholder="Nhập văn bản"></textarea>
-<textarea id="translated-text" class="swal2-textarea" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..." readonly></textarea>
-<br>
-<button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
-`,
+    title: "<span style='color:darkgreen;'>Chat bằng văn bản</span>",
+    html: `
+      <textarea id="input-text" class="swal2-input" placeholder="Nhập văn bản tiếng Việt hoặc Anh" ondblclick="alert('ttttt')"></textarea>
+      <textarea id="translated-text" class="swal2-textarea" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây để tập nghe và nói."></textarea>
+      <br>
+      <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
+      `,
 showCancelButton: true,
-confirmButtonText: "OK với tiếng Anh",
+confirmButtonText: "OK gửi đi",
 cancelButtonText: "Hủy",
 }).then((result) => {
   if (result.isConfirmed) {
     finalSpeechText = document.getElementById("translated-text").value; // Lưu văn bản vào biến
     console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
     //--luc nay chua co dich TV nen phai lam----
-
+    if (finalSpeechText.trim()!==''){
     resultsEl.innerText = finalSpeechText;
     let textCanDich = resultsEl.innerText.trim() ;
     let ptchua = resultsdichViqEl;
     dichRaVi(textCanDich,ptchua);
 
     sendMessage(resultsEl.innerText);
+    } else {alert('Không gửi vì chưa nhập gì!')};
     /////////////////////////////
   }
 });
@@ -823,15 +828,14 @@ setTimeout(() => {
 }
 
 // Khi nhập tay, cũng tự động dịch
-inputText.addEventListener("input", () => {
-  let text = inputText.value.trim();
-  if (text.length > 0) {
-    translateText(text).then(translated => {
-      translatedText.value = translated;
-      speakButton.style.display = "inline-block";
-    });
+inputText.addEventListener("change", () => {
+  //alert(inputText.value);
+  let textCanDich = inputText.value.trim();
+  if (textCanDich.length > 0) {
+    translateText(textCanDich,translatedText);
+    speakButton.style.display = "inline-block";
   } else {
-    translatedText.value = "";
+    translatedText.value='';
     speakButton.style.display = "none";
   }
 });
@@ -845,11 +849,29 @@ speakButton.addEventListener("click", () => {
 }
 
 //📝 Hàm dịch văn bản sử dụng API miễn phí
-async function translateText(text) {
-  const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=vi|en`);
-  const data = await response.json();
-  return data.responseData.translatedText;
+function translateText(textCanDich,ptchua) {
+  const inputText = textCanDich;
+  let sourceLanguage = 'vi';
+  let targetLanguage = 'en';
+
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200){
+        const responseReturned = JSON.parse(this.responseText);
+        const translations = responseReturned[0].map((text) => text[0]);
+        const outputText = translations.join(" ");
+        console.log(outputText);
+        ptchua.value = ' '+outputText;
+        
+    }
+  };
+  xhttp.open("GET", url);
+  xhttp.send();
+
 }
+
 
 // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
 function speakTextAPI(text) {
@@ -860,4 +882,35 @@ speech.rate = 1.0;
 speech.pitch = 1.0;
 speech.volume = 2;
 speechSynthesis.speak(speech);
+}
+//--xu li cum tu boi dam----
+function  endSelection(){
+  let selectedText = window.getSelection().toString().trim();
+  if (selectedText.length > 0) {
+      //console.log("Bôi đậm cụm từ:", selectedText);
+      let vbyeucau = "Hãy giải thích cụm từ tiếng Anh sau đây và định dạng kết quả bằng Markdown : " + "'" + selectedText + "'";
+      sendMessage(vbyeucau);
+      
+  }
+}  
+
+function readSelectedText() {
+  let isSelecting = false; // Kiểm tra có đang bôi đậm hay không
+
+  // Xử lý khi bắt đầu bôi đậm (dùng cả chuột và cảm ứng)
+  resultsdichEl.addEventListener("mousedown", () => isSelecting = true);
+  resultsdichEl.addEventListener("touchstart", () => isSelecting = true);
+  
+  // Xử lý khi kết thúc bôi đậm
+  resultsdichEl.addEventListener("mouseup", () => endSelection());
+  resultsdichEl.addEventListener("touchend", () => endSelection());
+}
+//----------
+function HienThiTrongSwal(replytrave){
+  Swal.fire({
+    title: "ChatGPT Reply",
+    html: marked.parse(replytrave), // Hiển thị Markdown dưới dạng HTML
+    width: "600px",
+    confirmButtonText: "OK"
+  });
 }
