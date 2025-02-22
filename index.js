@@ -320,7 +320,7 @@ async function sendMessage(transcript) {
     let data = await response.json();
     //console.log(data);
     let reply = data.choices[0].message.content;
-    if (transcript.search("giải thích cụm từ tiếng Anh sau đây và định dạng kết quả bằng Markdown")>0){
+    if (transcript.search("giải thích từ ngữ tiếng Anh sau đây và định dạng kết quả bằng Markdown")>0){
       //console.log(reply);
       HienThiTrongSwal(reply);
     }else{
@@ -883,29 +883,7 @@ speech.pitch = 1.0;
 speech.volume = 2;
 speechSynthesis.speak(speech);
 }
-//--xu li cum tu boi dam----
-function  endSelection(){
-  let selectedText = window.getSelection().toString().trim();
-  if (selectedText.length > 0) {
-      //console.log("Bôi đậm cụm từ:", selectedText);
-      let vbyeucau = "Hãy giải thích cụm từ tiếng Anh sau đây và định dạng kết quả bằng Markdown : " + "'" + selectedText + "'";
-      sendMessage(vbyeucau);
-      
-  }
-}  
-
-function readSelectedText() {
-  let isSelecting = false; // Kiểm tra có đang bôi đậm hay không
-
-  // Xử lý khi bắt đầu bôi đậm (dùng cả chuột và cảm ứng)
-  resultsdichEl.addEventListener("mousedown", () => isSelecting = true);
-  resultsdichEl.addEventListener("touchstart", () => isSelecting = true);
-  
-  // Xử lý khi kết thúc bôi đậm
-  resultsdichEl.addEventListener("mouseup", () => endSelection());
-  resultsdichEl.addEventListener("touchend", () => endSelection());
-}
-//----------
+//----------------------------------
 function HienThiTrongSwal(replytrave){
   Swal.fire({
     title: "ChatGPT Reply",
@@ -913,4 +891,42 @@ function HienThiTrongSwal(replytrave){
     width: "600px",
     confirmButtonText: "OK"
   });
+}
+//---Tu lay khi click---
+resultsdichEl.addEventListener("click", function(event) {
+  let selectedText = getWordAtClick(event);
+  if (selectedText) {
+    //console.log("Từ được chọn:", selectedText);
+    //alert(word);
+    if (selectedText.length > 0) {
+        let vbyeucau = "Hãy giải thích từ ngữ tiếng Anh sau đây và định dạng kết quả bằng Markdown : " + "'" + selectedText + "'";
+        sendMessage(vbyeucau);
+    }
+  
+  }
+});
+  
+function getWordAtClick(event) {
+  let range, textNode, offset;
+  
+  if (document.caretRangeFromPoint) { // Cho Chrome, Edge, Firefox
+    range = document.caretRangeFromPoint(event.clientX, event.clientY);
+  } else if (document.caretPositionFromPoint) { // Cho Safari
+    let pos = document.caretPositionFromPoint(event.clientX, event.clientY);
+    range = document.createRange();
+    range.setStart(pos.offsetNode, pos.offset);
+  }
+  
+  if (range) {
+    textNode = range.startContainer;
+    offset = range.startOffset;
+  
+    if (textNode.nodeType === Node.TEXT_NODE) {
+      let text = textNode.nodeValue;
+      let before = text.slice(0, offset).split(/\s+/).pop(); // Lấy từ trước con trỏ
+      let after = text.slice(offset).split(/\s+/)[0]; // Lấy từ sau con trỏ
+      return before + after; // Ghép lại thành từ đầy đủ
+    }
+  }
+  return null;
 }
