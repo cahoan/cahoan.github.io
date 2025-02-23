@@ -2,39 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/web-speech.css">
+    <title>Tiensg89 Learn Tictac For Listening</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Import SweetAlert2 -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" href="index.css">
+
 </head>
 <body>
-    <main>
-        <div class="container mt-3">
-            <h3 class="text-center">Web Speech <span id="langNoi">en-US</span> Demo</h3>
-            <div id="info"></div>
-            <div class="float-right">
-              <button id="start_button">
-                <img id="start_img" src="images/mic.gif" alt="Start"></button>
-            </div>
-            <div id="results">
-              <span id="final_span" class="final"></span>
-              <span id="interim_span" class="interim"></span>
-              <p>
-            </div>
-            <div class="row col-12 p-0 m-0">
-              <div class="row col-12 col-md-8 col-lg-6 p-0 m-0">
-              </div>
-              <div class="col-12 col-md-4 col-lg-6 mt-3 mt-md-0 p-0 m-0">
-                <div class="float-right">
-                  <button id="copy_button" class="btn btn-primary ">Copy</button>
-                </div>
-              </div>
-            </div>
+<!--TIEU DE-->
+<h2 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for List<span id="langtalk">en</span>ing</h2>  
 
-        </div>
-    </main>
-    <script src="index.js"></script>
+<!--MENU CHON BAI-->
+<div class="unit_chons">
+    <select id="unit_chon" onchange="chonUnit()">
+        <option style="text-align: center;color:blue;" value="" translate="no">--Select a Unit--</option>
+    </select>
+</div><br>
+
+<!-- DAT VIDEO YT-->
+<div class="video-wrapper">
+    <iframe id="iframe_yt" src="" >
+    </iframe>
+</div><br>
+
+<!-- TIEU DE CHAT TALK GPT-->
+<div class="wrapper">
+  <div  id="infoB" translate="no">Practice to <span onclick="chatTiengViet()" style="color:lightblue;">speak</span> English with chat<span onclick="anHienText_GPT()" style="color:yellow;">GPT</span></div>
+</div>
+<hr>
+
+<!-- THAN CHAT TABLE-->
+<div class="wrapper">
+  <table > 
+    <tr class="center">
+      <td translate="no" class="alignL" >&nbsp;&nbsp;User<button id="start_button"><img id="start_img" src="icons/mic.gif" alt="Start"></button></td>
+
+      <td translate="no" id="results" class="alignC" style="color:white";>
+        <span id="final_span" class="final"></span>
+        <span id="interim_span" class="interim"></span>
+      </td>
+
+      <td translate="no" class="alignR"><button id="listen_button" ><img id="listen_img" src="icons/bot.png" alt="Respeak"></button>Gpt&nbsp;&nbsp;</td>
+
+    </tr>
+    <tr class="center">
+        <td class="alignL"></td>
+
+        <td translate="no" class="alignC" id="resultsdich" style="color:yellow"; onclick="readSelectedText()"></td>
+  
+        <td class="alignR"></td>
+  
+    </tr>
+
+    <tr class="center">
+      <td class="alignL"></td>
+      <td translate="no" class="alignC" id="resultsdichViQ" style="color:darkgreen";></td>
+      <td class="alignR"></td>
+    </tr>
+    <tr class="center">
+      <td class="alignL"></td>
+      <td translate="no" class="alignC" id="resultsdichViA" style="color:darkgreen";></td>
+      <td class="alignR"></td>
+    </tr>
+
+  </table>
+</div> 
+
+<!--CAC NUT DK AM THANH NOI-->
+<hr>
+<div class="properties">
+  <label for="rate" translate="no">&nbsp;&nbsp;Rate:</label>
+  <input id="rate" type="range" min="0.1" max="2" step="0.1" value="1" translate="no">
+  <output for="rate" translate="no" onclick="speakTextVi()">1</output>
+
+  <label for="pitch" translate="no">&nbsp;&nbsp;Pitch:</label>
+  <input id="pitch" type="range" min="0.1" max="2" step="0.1" value="1" translate="no">
+  <output for="pitch" translate="no">1</output>
+
+  <label for="voice">Voice:</label>
+  <select id="voice"></select>
+  <output for="voice" translate="no" onclick="GoOff()">OFF</output>
+  <div></div>
+  
+</div>
+
+<!--CAC LINK PDF TACTIC-->
+<div class="wrapper">
+<div class="buttons4">
+  <button translate="no"><a href="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html" style="color:lightgreen; font-size: small;"  >BASIC Tactics For Listening PDF</a></button>
+  <button translate="no"><a href="https://online.flipbuilder.com/sdtta/kjol/" style="color:rgb(236, 194, 179);font-size: small;">DEVELOPING Tactics For Listening PDF</a></button>
+  <button translate="no"><a href="https://online.flipbuilder.com/sdtta/vlyh/" style="color:rgb(206, 206, 244);font-size: small;">EXPANDING Tactics For Listening PDF</a></button>
+</div>
+</div>
+
+<!-- JAVASCRIP CHO IFRAME VIDEO YT BAT BUOC PHAI HERE -->
+<script>//Ma duoi day bat buoc phai dat o html, neu dat trong tep js ben ngoai (hoc_en_tactics) se khong chay
+    //-- Cho NEN video ifram youtube-----------------------
+    let id = "Xj8Amv0Z52w";
+    const selectb = document.getElementById("unit_chon");
+    var videoIDcurrent="Xj8Amv0Z52w"; //nen la id luu last
+    document.getElementById("iframe_yt").src="https://youtube.com/embed/" + videoIDcurrent;
+    //----Ham chon bai YT
+    function chonUnit(){ //chon unit khac va update iframe
+        videoIDcurrent = list_id[selectb.selectedIndex];
+        //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
+        document.getElementById("iframe_yt").src="https://youtube.com/embed/" + videoIDcurrent;
+    }
+</script>  
+
+<script src="index.js"></script> 
+
 </body>
 </html>
