@@ -272,11 +272,13 @@ const start_imgEl = document.getElementById("start_img");
 const listen_imgEl = document.getElementById("listen_img");
 const resultsdichViqEl = document.getElementById("resultsdichViQ");
 const resultsdichViaEl = document.getElementById("resultsdichViA");
+const langtalkEl = document.getElementById("langtalk");
 
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
 var text='';
+var langtalknow='en-US';
 
 //const results = document.getElementById("results");
 //const resultsdich = document.getElementById("resultsdich");
@@ -338,7 +340,8 @@ async function sendMessage(transcript) {
       // create new utterance with all the properties
       //const text = textEl.value;
       utterance = new SpeechSynthesisUtterance(text);
-      utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
+      //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
+      utterance.lang = langtalknow;
       utterance.pitch = pitchInEl.value;
       utterance.rate = rateInEl.value;
       //utterance.volume = volumeInEl.value;
@@ -434,7 +437,7 @@ if (!('webkitSpeechRecognition' in window)) {
   resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
   start_button.style.display = 'inline-block';
   recognition = new webkitSpeechRecognition();
-  recognition.lang = 'en-US';
+  recognition.lang = langtalknow;
   //recognition.lang = 'vi-VN';
 
   recognition.continuous = true;
@@ -930,3 +933,16 @@ function getWordAtClick(event) {
   }
   return null;
 }
+//----------------
+langtalkEl.addEventListener('click', function(even) {
+  if (langtalknow ==='en-US') {
+    langtalknow ='vi-VN';
+    langtalkEl.innerText='vi';
+    recognition.lang=langtalknow;
+  }else{
+    langtalknow ='en-US';
+    langtalkEl.innerText='en';
+    recognition.lang=langtalknow;
+  }
+  //alert(recognition.lang);
+});
