@@ -297,6 +297,19 @@ resultsdichEl.style.display = "none";
         //document.getElementById("env-value").textContent = "Lỗi khi tải dữ liệu.";
 //    }
 //});
+//----------------
+langtalkEl.addEventListener('click', function(even) {
+  if (langtalknow ==='en-US') {
+    langtalknow ='vi-VN';
+    langtalkEl.innerText='vi';
+    //recognition.lang=langtalknow;
+  }else{
+    langtalknow ='en-US';
+    langtalkEl.innerText='en';
+    //recognition.lang=langtalknow;
+  }
+  //alert(recognition.lang);
+});
 
 //--chatgpt-----------------------------
 async function sendMessage(transcript) {
@@ -783,49 +796,37 @@ cancelButtonText: "Hủy",
 
 // Chờ SweetAlert2 render xong rồi mới gán sự kiện
 setTimeout(() => {
-    const voiceButton = document.getElementById("voice-button");
     const inputText = document.getElementById("input-text");
     const translatedText = document.getElementById("translated-text");
     const speakButton = document.getElementById("speak-button");
-
-    if (voiceButton) {
-      voiceButton.addEventListener("click", () => {
-      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = langtalknow;
-      recognition.start();
-
-      recognition.onresult = (event) => {
-        let speechText = event.results[0][0].transcript; // Lấy văn bản từ giọng nói
-        inputText.value = speechText; // Hiển thị ngay trong input
-
-        // Gọi API dịch ngay lập tức
-        translateText(inputText.value).then(translated => {
-          translatedText.value = translated;
-          speakButton.style.display = "inline-block"; // Hiện nút đọc nếu có bản dịch
-        });
-      };
-  });
-}
-
-// Khi nhập tay, cũng tự động dịch
-inputText.addEventListener("change", () => {
-  //alert(inputText.value);
-  let textCanDich = inputText.value.trim();
-  if (textCanDich.length > 0) {
-    translateText(textCanDich,translatedText);
-    speakButton.style.display = "inline-block";
-  } else {
-    translatedText.value='';
-    speakButton.style.display = "none";
+    // Khi nhập tay, cũng tự động dịch
+    inputText.addEventListener("change", () => {
+      //alert(inputText.value);
+      let textCanDich = inputText.value.trim();
+      if (textCanDich.length > 0) {
+        translateText(textCanDich,translatedText);
+        speakButton.style.display = "inline-block";
+      } else {
+        translatedText.value='';
+        speakButton.style.display = "none";
+      }
+    });
+    // Khi nhấn nút đọc 🔊
+    speakButton.addEventListener("click", () => {
+      speakTextAPI(translatedText.value);
+    });
+  }, 100);
+  // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
+  function speakTextAPI(text) {
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US"; // Đọc tiếng Anh
+    speech.text = text;
+    speech.rate = 1.0;
+    speech.pitch = 1.0;
+    speech.volume = 2;
+    speechSynthesis.speak(speech);
   }
-});
 
-// Khi nhấn nút đọc 🔊
-speakButton.addEventListener("click", () => {
-  speakTextAPI(translatedText.value);
-});
-
-}, 100);
 }
 
 //📝 Hàm dịch văn bản sử dụng API miễn phí
@@ -850,18 +851,6 @@ function translateText(textCanDich,ptchua) {
   xhttp.open("GET", url);
   xhttp.send();
 
-}
-
-
-// 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
-function speakTextAPI(text) {
-const speech = new SpeechSynthesisUtterance();
-speech.lang = "en-US"; // Đọc tiếng Anh
-speech.text = text;
-speech.rate = 1.0;
-speech.pitch = 1.0;
-speech.volume = 2;
-speechSynthesis.speak(speech);
 }
 //----------------------------------
 function HienThiTrongSwal(replytrave){
@@ -910,16 +899,3 @@ function getWordAtClick(event) {
   }
   return null;
 }
-//----------------
-langtalkEl.addEventListener('click', function(even) {
-  if (langtalknow ==='en-US') {
-    langtalknow ='vi-VN';
-    langtalkEl.innerText='vi';
-    recognition.lang=langtalknow;
-  }else{
-    langtalknow ='en-US';
-    langtalkEl.innerText='en';
-    recognition.lang=langtalknow;
-  }
-  //alert(recognition.lang);
-});
