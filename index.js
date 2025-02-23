@@ -274,12 +274,14 @@ const resultsdichViqEl = document.getElementById("resultsdichViQ");
 const resultsdichViaEl = document.getElementById("resultsdichViA");
 const langtalkEl = document.getElementById("langtalk");
 
+const final_spanEl = document.getElementById("final_span");
+const interim_spanEl = document.getElementById("interim_span");
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
 var text='';
-var langtalknow='en-US';
-
+var langtalknow=0;
+var langNoi='en-US';
 //const results = document.getElementById("results");
 //const resultsdich = document.getElementById("resultsdich");
 resultsEl.style.display = "none";
@@ -299,16 +301,14 @@ resultsdichEl.style.display = "none";
 //});
 //----------------
 langtalkEl.addEventListener('click', function(even) {
-  if (langtalknow ==='en-US') {
-    langtalknow ='vi-VN';
+  langtalknow = langtalknow+1;
+  if (langtalknow%2 === 1) {
     langtalkEl.innerText='vi';
-    //recognition.lang=langtalknow;
+    langNoi='vi-VN';
   }else{
-    langtalknow ='en-US';
     langtalkEl.innerText='en';
-    //recognition.lang=langtalknow;
+    langNoi='en-US';
   }
-  //alert(recognition.lang);
 });
 
 //--chatgpt-----------------------------
@@ -354,7 +354,7 @@ async function sendMessage(transcript) {
       //const text = textEl.value;
       utterance = new SpeechSynthesisUtterance(text);
       //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-      utterance.lang = langtalknow;
+      utterance.lang = langNoi;
       utterance.pitch = pitchInEl.value;
       utterance.rate = rateInEl.value;
       //utterance.volume = volumeInEl.value;
@@ -377,7 +377,7 @@ function reSpeak(){
   utterance = new SpeechSynthesisUtterance(text);
   // create new utterance with all the properties
   //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-  utterance.lang = langtalknow;
+    utterance.lang = langNoi;
   utterance.pitch = pitchInEl.value;
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
@@ -451,9 +451,8 @@ if (!('webkitSpeechRecognition' in window)) {
   resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
   start_button.style.display = 'inline-block';
   recognition = new webkitSpeechRecognition();
-  recognition.lang = langtalknow;
-  //recognition.lang = 'vi-VN';
-
+  recognition.lang = langNoi;
+  console.log(recognition.lang);
   recognition.continuous = true;
   recognition.interimResults = true;
 
@@ -529,8 +528,8 @@ if (!('webkitSpeechRecognition' in window)) {
           }
       }
       final_transcript = capitalize(final_transcript);
-      final_span.textContent = linebreak(final_transcript);
-      interim_span.textContent = linebreak(interim_transcript);
+      final_spanEl.textContent = linebreak(final_transcript);
+      interim_spanEl.textContent = linebreak(interim_transcript);
 
       //sendMessage(final_transcript);
   
@@ -561,6 +560,8 @@ return s.replace(first_char, function(m) { return m.toUpperCase(); });
 
 //---Khi micro duoc click ------------
 $("#start_button").click(function () {
+  console.log("TTT",langNoi);
+  recognition.lang=langNoi;
     if (recognizing) { // neu recognizing === true tuc la da click 1 lan, lan click nay la lan 2
       //alert(recognizing);
       recognition.stop();
@@ -574,9 +575,12 @@ $("#start_button").click(function () {
     //recognition.lang = select_source_dialect.value;
     //alert(recognition.lang); //thu cho nay thay dung roi khi nhap nut button start
     recognition.start();
+    recognition.lang=langNoi;
+    
+
     ignore_onend = false;
-    final_span.textContent = '';
-    interim_span.textContent = '';
+    final_spanEl.textContent = '';
+    interim_spanEl.textContent = '';
     //start_img.src = 'icons/mic-slash.gif'; //neu co dong nay thi ben iphone hien ra bang hoi xin bat mic
     //alert(start_img.src);
     showInfo('allow');
