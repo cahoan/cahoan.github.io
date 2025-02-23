@@ -363,7 +363,8 @@ function reSpeak(){
   text = resultsdichEl.innerText;
   utterance = new SpeechSynthesisUtterance(text);
   // create new utterance with all the properties
-  utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
+  //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
+  utterance.lang = langtalknow;
   utterance.pitch = pitchInEl.value;
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
@@ -690,30 +691,6 @@ function handleBoundary(event) {
   const markedText = text.substring(0, wordStart) + '<mark>' + word + '</mark>' + text.substring(wordEnd);
   resultsdichEl.innerHTML = markedText; //phan nay co ma trong resultsdichEl nen phai innerHTML
 }
-
-
-//
-function speakTextViT(){
-  let text = resultsEl.innerText.trim() + " . " + resultsdichEl.innerText.trim();
-  if (text.length > 0) {
-      //Dich text dau vao
-      translateText(text).then(translated => {
-          //translatedText.value = translated;
-          console.log(translated);
-          //Doc text da dich ra TV
-          const speech = new SpeechSynthesisUtterance();
-          speech.lang = "vi-VN"; // Đọc tiếng Vi
-          speech.text = translated;
-          speech.rate = 1;
-          speech.pitch = 1;
-          speech.volume = 2;
-          speechSynthesis.speak(speech);
-      
-          
-      });
-
-  } 
-}
 //------------------------
 function speakTextVi(){
     let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
@@ -814,7 +791,7 @@ setTimeout(() => {
     if (voiceButton) {
       voiceButton.addEventListener("click", () => {
       const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = "vi-VN"; // Nghe tiếng Việt
+      recognition.lang = langtalknow;
       recognition.start();
 
       recognition.onresult = (event) => {
