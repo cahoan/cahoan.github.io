@@ -280,7 +280,6 @@ const interim_spanEl = document.getElementById("interim_span");
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
 var text='';
-var langtalknow=0;
 var langNoi='en-US';
 //const results = document.getElementById("results");
 //const resultsdich = document.getElementById("resultsdich");
@@ -301,8 +300,7 @@ resultsdichEl.style.display = "none";
 //});
 //----------------
 langtalkEl.addEventListener('click', function(even) {
-  langtalknow = langtalknow+1;
-  if (langtalknow%2 === 1) {
+  if (langtalkEl.innerText==='en') {
     langtalkEl.innerText='vi';
     langNoi='vi-VN';
   }else{
@@ -358,7 +356,7 @@ async function sendMessage(transcript) {
       utterance.pitch = pitchInEl.value;
       utterance.rate = rateInEl.value;
       //utterance.volume = volumeInEl.value;
-      utterance.volume = 2;
+      utterance.volume = 1;
       utterance.addEventListener('start', handleStart);
       utterance.addEventListener('end', handleEnd);
 
@@ -381,7 +379,7 @@ function reSpeak(){
   utterance.pitch = pitchInEl.value;
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
-  utterance.volume = 2;
+  utterance.volume = 1;
   utterance.addEventListener('start', handleStart);
   utterance.addEventListener('end', handleEnd2);
   utterance.addEventListener('boundary', handleBoundary);
@@ -452,11 +450,6 @@ if (!('webkitSpeechRecognition' in window)) {
   start_button.style.display = 'inline-block';
 
   recognition = new webkitSpeechRecognition();
-  if (langtalkEl.innerText === 'vi') {
-    recognition.lang='vi-VN';
-  }else{
-    recognition.lang='en-US';
-  }    
 
   recognition.continuous = true;
   recognition.interimResults = true;
@@ -577,11 +570,7 @@ $("#start_button").click(function () {
   
     final_transcript = '';
 
-    if (langtalkEl.innerText === 'vi') {
-      recognition.lang='vi-VN';
-    }else{
-      recognition.lang='en-US';
-    }    
+    recognition.lang = langNoi;
 
     recognition.start();
     
@@ -835,7 +824,7 @@ setTimeout(() => {
     speech.text = text;
     speech.rate = 1.0;
     speech.pitch = 1.0;
-    speech.volume = 2;
+    speech.volume = 1;
     speechSynthesis.speak(speech);
   }
 
