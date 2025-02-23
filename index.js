@@ -450,9 +450,14 @@ if (!('webkitSpeechRecognition' in window)) {
   resultsEl.innerText='';
   resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
   start_button.style.display = 'inline-block';
+
   recognition = new webkitSpeechRecognition();
-  recognition.lang = langNoi;
-  console.log(recognition.lang);
+  if (langtalkEl.innerText === 'vi') {
+    recognition.lang='vi-VN';
+  }else{
+    recognition.lang='en-US';
+  }    
+
   recognition.continuous = true;
   recognition.interimResults = true;
 
@@ -560,8 +565,7 @@ return s.replace(first_char, function(m) { return m.toUpperCase(); });
 
 //---Khi micro duoc click ------------
 $("#start_button").click(function () {
-  console.log("TTT",langNoi);
-  recognition.lang=langNoi;
+  
     if (recognizing) { // neu recognizing === true tuc la da click 1 lan, lan click nay la lan 2
       //alert(recognizing);
       recognition.stop();
@@ -570,12 +574,16 @@ $("#start_button").click(function () {
     //alert(recognizing); // click lan 1 (lan le) recognizing===false
     window.speechSynthesis.cancel(); // cho stop cai dang tra loi
     handleEnd();
+  
     final_transcript = '';
 
-    //recognition.lang = select_source_dialect.value;
-    //alert(recognition.lang); //thu cho nay thay dung roi khi nhap nut button start
+    if (langtalkEl.innerText === 'vi') {
+      recognition.lang='vi-VN';
+    }else{
+      recognition.lang='en-US';
+    }    
+
     recognition.start();
-    recognition.lang=langNoi;
     
 
     ignore_onend = false;
