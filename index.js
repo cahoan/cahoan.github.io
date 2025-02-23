@@ -64,17 +64,17 @@ var messages = {
       recognition.onstart = function() {
         recognizing = true;
         showInfo('speak_now');
-        start_img.src = 'images/mic-animation.gif';
+        start_img.src = 'icons/mic-animation.gif';
       };
   
       recognition.onerror = function(event) {
         if (event.error == 'no-speech') {
-          start_img.src = 'images/mic.gif';
+          start_img.src = 'icons/mic.gif';
           showInfo('no_speech');
           ignore_onend = true;
         }
         if (event.error == 'audio-capture') {
-          start_img.src = 'images/mic.gif';
+          start_img.src = 'icons/mic.gif';
           showInfo('no_microphone');
           ignore_onend = true;
         }
@@ -93,7 +93,7 @@ var messages = {
         if (ignore_onend) {
           return;
         }
-        start_img.src = 'images/mic.gif';
+        start_img.src = 'icons/mic.gif';
         if (!final_transcript) {
           showInfo('start');
           return;
@@ -178,7 +178,7 @@ var messages = {
     ignore_onend = false;
     final_span.innerHTML = '';
     interim_span.innerHTML = '';
-    start_img.src = 'images/mic-slash.gif';
+    start_img.src = 'icons/mic-slash.gif';
     showInfo('allow');
     start_timestamp = event.timeStamp;
   });
