@@ -374,8 +374,8 @@ function reSpeak(){
   text = resultsdichEl.innerText;
   utterance = new SpeechSynthesisUtterance(text);
   // create new utterance with all the properties
-  //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-    utterance.lang = langNoi;
+  utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
+  //utterance.lang = langNoi;
   utterance.pitch = pitchInEl.value;
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
@@ -638,7 +638,7 @@ function updateVoices() {
         if (!isAlreadyAdded) {
             const option = new Option(voice.name, voice.voiceURI, voice.default, voice.default);
             //if ((option.value.search("English")>0) || (option.value.search("en-US")>0) || (option.value.search("Linh")>0) || (option.value.search("An")>0) || (option.value.search("vi-VN")>0)){
-            if ( (option.value.search("Samantha")>0) || ((option.value.search("An")>0 && option.value.search("Anna")<0)) || (option.value.search("Zira")>0)  ){
+            if ( (option.value.search("English")>0) || (option.value.search("en-US")>0)  ){
                 //console.log(option);
                 if (option.value.search("Samantha")>=0){
                   option.selected=true;
