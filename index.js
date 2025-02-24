@@ -276,6 +276,8 @@ const langtalkEl = document.getElementById("langtalk");
 
 const final_spanEl = document.getElementById("final_span");
 const interim_spanEl = document.getElementById("interim_span");
+const chattextEl = document.getElementById("chattext");
+const chatlangEl = document.getElementById("chatlang");
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
@@ -298,16 +300,6 @@ resultsdichEl.style.display = "none";
         //document.getElementById("env-value").textContent = "Lỗi khi tải dữ liệu.";
 //    }
 //});
-//----------------
-langtalkEl.addEventListener('click', function(even) {
-  if (langtalkEl.innerText==='en') {
-    langtalkEl.innerText='vi';
-    langNoi='vi-VN';
-  }else{
-    langtalkEl.innerText='en';
-    langNoi='en-US';
-  }
-});
 
 //--chatgpt-----------------------------
 async function sendMessage(transcript) {
@@ -341,8 +333,12 @@ async function sendMessage(transcript) {
 
       let textCanDich = resultsdichEl.innerText.trim() ;
       let ptchua = resultsdichViaEl;
-      dichRaVi(textCanDich,ptchua);
+      if (langNoi==='en-US'){
+        dichRaVi(textCanDich,ptchua);
+      }else{
+        dichRaEn(textCanDich,ptchua);
 
+      }  
     
     function speakText(text) {
       // stop any speaking in progress
@@ -374,8 +370,8 @@ function reSpeak(){
   text = resultsdichEl.innerText;
   utterance = new SpeechSynthesisUtterance(text);
   // create new utterance with all the properties
-  utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-  //utterance.lang = langNoi;
+  //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
+  utterance.lang = langNoi;
   utterance.pitch = pitchInEl.value;
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
@@ -450,7 +446,14 @@ if (!('webkitSpeechRecognition' in window)) {
   start_button.style.display = 'inline-block';
 
   recognition = new webkitSpeechRecognition();
+  if (chatlangEl.innerText ==='English'){
+    langNoi='en-US';
+    recognition.lang = langNoi;
+  }else{
+    langNoi='vi-VN';
+    recognition.lang = langNoi;
 
+  }
   recognition.continuous = true;
   recognition.interimResults = true;
 
@@ -506,7 +509,12 @@ if (!('webkitSpeechRecognition' in window)) {
     resultsEl.innerText = final_transcript;
     let textCanDich = resultsEl.innerText.trim() ;
     let ptchua = resultsdichViqEl;
-    dichRaVi(textCanDich,ptchua);
+    if (chatlangEl.innerText==='English'){
+      dichRaVi(textCanDich,ptchua);
+    }else{
+      dichRaEn(textCanDich,ptchua);
+
+    }
     sendMessage(final_transcript);
     //alert(final_transcript.length);
 
@@ -570,10 +578,19 @@ $("#start_button").click(function () {
   
     final_transcript = '';
 
-    recognition.lang = langNoi;
 
     recognition.start();
-    
+    if (chatlangEl.innerText ==='English'){
+      langNoi='en-US';
+      recognition.lang = langNoi;
+    }else{
+      langNoi='vi-VN';
+      recognition.lang = langNoi;
+  
+    }
+  
+    //recognition.lang = langNoi;
+    //console.log(recognition.lang);
 
     ignore_onend = false;
     final_spanEl.textContent = '';
@@ -638,7 +655,7 @@ function updateVoices() {
         if (!isAlreadyAdded) {
             const option = new Option(voice.name, voice.voiceURI, voice.default, voice.default);
             //if ((option.value.search("English")>0) || (option.value.search("en-US")>0) || (option.value.search("Linh")>0) || (option.value.search("An")>0) || (option.value.search("vi-VN")>0)){
-            if ( (option.value.search("English")>0) || (option.value.search("en-US")>0)  ){
+            if ( (option.value.search("English")>0) || (option.value.search("en-US")>0) || (option.value.search("An")>0) || (option.value.search("Linh")>0)  ){
                 //console.log(option);
                 if (option.value.search("Samantha")>=0){
                   option.selected=true;
@@ -706,11 +723,16 @@ function handleBoundary(event) {
   resultsdichEl.innerHTML = markedText; //phan nay co ma trong resultsdichEl nen phai innerHTML
 }
 //------------------------
-function speakTextVi(){
+function speakTextVi(){ //ham nay doc QA noi bi mat
     let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
     if (textNoi.trim()==="."){return;}
     const speech = new SpeechSynthesisUtterance();
-    speech.lang = "vi-VN"; // Đọc tiếng Vi
+    if (langNoi==='en-US'){
+      speech.lang = "vi-VN"; // Đọc tiếng Vi
+    }else{
+      speech.lang = "en-US"; // Đọc tiếng Vi
+
+    }  
     speech.text = textNoi;
     speech.rate = 1;
     speech.pitch = 1;
@@ -740,7 +762,7 @@ function GoOff(){
   stopVideo();  
 }
 
-//----Ham Dich ra Vi
+//----Ham Dich ra Vi------------------
 function dichRaVi(textCanDich,ptchua){
   const inputText = textCanDich;
   let sourceLanguage = 'en';
@@ -754,7 +776,29 @@ function dichRaVi(textCanDich,ptchua){
         const responseReturned = JSON.parse(this.responseText);
         const translations = responseReturned[0].map((text) => text[0]);
         const outputText = translations.join(" ");
-        console.log(outputText);
+        //console.log(outputText);
+        ptchua.innerText = ' '+outputText;
+    }
+  };
+  xhttp.open("GET", url);
+  xhttp.send();
+
+}
+//----Ham Dich ra En------------------
+function dichRaEn(textCanDich,ptchua){
+  const inputText = textCanDich;
+  let sourceLanguage = 'vi';
+  let targetLanguage = 'En';
+
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200){
+        const responseReturned = JSON.parse(this.responseText);
+        const translations = responseReturned[0].map((text) => text[0]);
+        const outputText = translations.join(" ");
+        //console.log(outputText);
         ptchua.innerText = ' '+outputText;
     }
   };
@@ -768,10 +812,10 @@ let finalSpeechText = ""; // Biến toàn cục để lưu văn bản khi nhấn
 
 function chatTiengViet() {
 Swal.fire({
-    title: "<span style='color:darkgreen;'>Chat bằng văn bản</span>",
+    title: "<span style='color:darkgreen;'>Chat bằng tiếng Việt</span>",
     html: `
-      <textarea id="input-text" class="swal2-input" placeholder="Nhập văn bản tiếng Việt hoặc Anh" ondblclick="alert('ttttt')"></textarea>
-      <textarea id="translated-text" class="swal2-textarea" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây để tập nghe và nói."></textarea>
+      <textarea id="input-text" class="swal2-input" placeholder="Nhập văn bản tiếng Việt" ondblclick="alert('ttttt')"></textarea>
+      <textarea id="translated-text" class="swal2-textarea" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..."></textarea>
       <br>
       <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
       `,
@@ -780,14 +824,17 @@ confirmButtonText: "OK gửi đi",
 cancelButtonText: "Hủy",
 }).then((result) => {
   if (result.isConfirmed) {
-    finalSpeechText = document.getElementById("translated-text").value; // Lưu văn bản vào biến
-    console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
-    //--luc nay chua co dich TV nen phai lam----
+    finalSpeechText = document.getElementById("input-text").value; // Lưu văn bản vào biến
+    //console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
+
+    //--text Vi vua input duoc ghi vao elem hoi----
     if (finalSpeechText.trim()!==''){
     resultsEl.innerText = finalSpeechText;
+  
+    //text nay can dich sang tieng Anh ghi vao noi bi mat de co the doc len sau nay
     let textCanDich = resultsEl.innerText.trim() ;
     let ptchua = resultsdichViqEl;
-    dichRaVi(textCanDich,ptchua);
+    dichRaEn(textCanDich,ptchua);
 
     sendMessage(resultsEl.innerText);
     } else {alert('Không gửi vì chưa nhập gì!')};
@@ -805,7 +852,7 @@ setTimeout(() => {
       //alert(inputText.value);
       let textCanDich = inputText.value.trim();
       if (textCanDich.length > 0) {
-        translateText(textCanDich,translatedText);
+        translateTextRaEn(textCanDich,translatedText);
         speakButton.style.display = "inline-block";
       } else {
         translatedText.value='';
@@ -814,11 +861,11 @@ setTimeout(() => {
     });
     // Khi nhấn nút đọc 🔊
     speakButton.addEventListener("click", () => {
-      speakTextAPI(translatedText.value);
+      speakTextAPIen(translatedText.value);
     });
   }, 100);
   // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
-  function speakTextAPI(text) {
+  function speakTextAPIen(text) {
     const speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US"; // Đọc tiếng Anh
     speech.text = text;
@@ -831,7 +878,7 @@ setTimeout(() => {
 }
 
 //📝 Hàm dịch văn bản sử dụng API miễn phí
-function translateText(textCanDich,ptchua) {
+function translateTextRaEn(textCanDich,ptchua) {
   const inputText = textCanDich;
   let sourceLanguage = 'vi';
   let targetLanguage = 'en';
@@ -844,7 +891,7 @@ function translateText(textCanDich,ptchua) {
         const responseReturned = JSON.parse(this.responseText);
         const translations = responseReturned[0].map((text) => text[0]);
         const outputText = translations.join(" ");
-        console.log(outputText);
+        //console.log(outputText);
         ptchua.value = ' '+outputText;
         
     }
@@ -900,3 +947,112 @@ function getWordAtClick(event) {
   }
   return null;
 }
+//----------------------------
+chattextEl.addEventListener("click", function(event) {
+  if (chatlangEl.innerText==='English'){
+    langNoi='en-US';
+    chatTiengAnh();
+  }else{
+    langNoi='vi-VN';
+    chatTiengViet();
+  }
+});
+//----------------
+chatlangEl.addEventListener("click", function(event) {
+  if (chatlangEl.innerText==='English'){
+    chatlangEl.innerText='Vietnamese';
+  }else{
+    chatlangEl.innerText='English';
+  }
+});
+//--------------------------------------------------------------------
+function chatTiengAnh() {
+  Swal.fire({
+      title: "<span style='color:darkgreen;'>Chat in English</span>",
+      html: `
+        <textarea id="input-text" class="swal2-input" placeholder="Enter English text"></textarea>
+        <textarea id="translated-text" class="swal2-textarea" placeholder="Vietnamese translation will display here..."></textarea>
+        <br>
+        <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
+        `,
+  showCancelButton: true,
+  confirmButtonText: "OK gửi đi",
+  cancelButtonText: "Hủy",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      finalSpeechText = document.getElementById("input-text").value; // Lưu văn bản vào biến
+      //console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
+      //--text in put se dc dat noi cau hoi tru van
+      if (finalSpeechText.trim()!==''){
+      resultsEl.innerText = finalSpeechText;
+      
+      //--text in put cung se dc dich ra vi dat noi bi mat de tham khao roi se send toi gpt
+      let textCanDich = resultsEl.innerText.trim() ;
+      let ptchua = resultsdichViqEl;
+      dichRaVi(textCanDich,ptchua);
+      //text input dc gui di cho gpt  
+      sendMessage(resultsEl.innerText);
+      } else {alert('Không gửi vì chưa nhập gì!')};
+      /////////////////////////////
+    }
+  });
+  
+  // Chờ SweetAlert2 render xong rồi mới gán sự kiện
+  setTimeout(() => {
+      const inputText = document.getElementById("input-text");
+      const translatedText = document.getElementById("translated-text");
+      const speakButton = document.getElementById("speak-button");
+      // Khi nhập tay, cũng tự động dịch
+      inputText.addEventListener("change", () => {
+        //alert(inputText.value);
+        let textCanDich = inputText.value.trim();
+        if (textCanDich.length > 0) {
+          translateTextRaVi(textCanDich,translatedText);
+          speakButton.style.display = "inline-block";
+        } else {
+          translatedText.value='';
+          speakButton.style.display = "none";
+        }
+      });
+      // Khi nhấn nút đọc 🔊
+      speakButton.addEventListener("click", () => {
+        speakTextAPIvi(translatedText.value);
+      });
+    }, 100);
+    // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
+    function speakTextAPIvi(text) {
+      const speech = new SpeechSynthesisUtterance();
+      speech.lang = "vi-VN"; // Đọc tiếng Anh
+      speech.text = text;
+      speech.rate = 1.0;
+      speech.pitch = 1.0;
+      speech.volume = 1;
+      speechSynthesis.speak(speech);
+    }
+  
+  }
+  
+  //📝 Hàm dịch văn bản sử dụng API miễn phí
+  function translateTextRaVi(textCanDich,ptchua) {
+    const inputText = textCanDich;
+    let sourceLanguage = 'en';
+    let targetLanguage = 'vi';
+  
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
+  
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200){
+          const responseReturned = JSON.parse(this.responseText);
+          const translations = responseReturned[0].map((text) => text[0]);
+          const outputText = translations.join(" ");
+          //console.log(outputText);
+          ptchua.value = ' '+outputText;
+          
+      }
+    };
+    xhttp.open("GET", url);
+    xhttp.send();
+  
+  }
+  

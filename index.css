@@ -158,9 +158,11 @@ textarea {
 }
 #infoB{
     border-radius: 0%;
-    color:pink;
+    color:aqua;
     border:0;
     text-align: center;
+    font-size:x-large ;
+
 }
 mark {
     color: #000;
