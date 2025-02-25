@@ -370,6 +370,7 @@ async function sendMessage(transcript) {
 function reSpeak(){
   if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
     listen_imgEl.src = 'icons/bot.png';
+    resultsdichEl.innerHTML =   resultsdichEl.innerText;
     return;
   }
 
