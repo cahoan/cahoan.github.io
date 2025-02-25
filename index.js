@@ -278,6 +278,8 @@ const final_spanEl = document.getElementById("final_span");
 const interim_spanEl = document.getElementById("interim_span");
 const chattextEl = document.getElementById("chattext");
 const chatlangEl = document.getElementById("chatlang");
+const lbbimatEl = document.getElementById("lbbimat");
+
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
@@ -366,6 +368,11 @@ async function sendMessage(transcript) {
 }
 
 function reSpeak(){
+  if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
+    listen_imgEl.src = 'icons/bot.png';
+    return;
+  }
+
   window.speechSynthesis.cancel();
   text = resultsdichEl.innerText;
   utterance = new SpeechSynthesisUtterance(text);
@@ -724,6 +731,10 @@ function handleBoundary(event) {
 }
 //------------------------
 function speakTextVi(){ //ham nay doc QA noi bi mat
+  if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
+    return;
+  }
+
     let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
     if (textNoi.trim()==="."){return;}
     const speech = new SpeechSynthesisUtterance();
@@ -1087,4 +1098,19 @@ function chatTiengAnh() {
     xhttp.send();
   
   }
-  
+  //------
+lbbimatEl.addEventListener('click', function(event){
+    
+    let qq = resultsdichViqEl.innerText;
+    let aa = resultsdichViaEl.innerText;
+    Swal.fire({
+      title: "<span style='color:darkgreen;'>Translated Text</span>",
+      html: `
+        <div id="hienbdQ" style="text-align: left;  color:orange;">Q: `+qq+`</div>
+        <div id="hienbdA" style="text-align: left;  color:green;">A: `+aa+`</div>
+	      `,
+      
+      confirmButtonText: "OK",
+  })
+
+});
