@@ -814,7 +814,13 @@ function chatTiengViet() {
 Swal.fire({
     title: "<span style='color:darkgreen;'>Chat bằng tiếng Việt</span>",
     html: `
-      <textarea id="input-text" class="swal2-input" placeholder="Nhập văn bản tiếng Việt" ondblclick="alert('ttttt')"></textarea>
+  <p style="text-align: left; color:orange;">Chọn một yêu cầu để thiết lập trước cụm từ sẽ được nhập:</p>
+	<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="" checked>(để trống)</div>
+	<div style="text-align: left; color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có chứa từ sau : ">Đưa ra một ví dụ về một câu tiếng Việt có chứa từ sau : </div>
+	<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : ">Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : </div>
+	<div style="text-align: left;  color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : ">Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : </div>
+	<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : ">Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : </div>
+      <textarea id="input-text" class="swal2-input" placeholder="Nhập văn bản tiếng Việt" ></textarea>
       <textarea id="translated-text" class="swal2-textarea" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..."></textarea>
       <br>
       <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
@@ -824,16 +830,24 @@ confirmButtonText: "OK gửi đi",
 cancelButtonText: "Hủy",
 }).then((result) => {
   if (result.isConfirmed) {
-    finalSpeechText = document.getElementById("input-text").value; // Lưu văn bản vào biến
+    var cauhoi='';
+    var ele = document.getElementsByName('pre-sentence');
+    for (i = 0; i < ele.length; i++) {
+			if (ele[i].checked){
+        cauhoi = ele[i].value;
+		  }
+    }    
+    finalSpeechText = cauhoi + '"' + document.getElementById("input-text").value.trim()+ '"'; // Lưu văn bản vào biến
     //console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
 
     //--text Vi vua input duoc ghi vao elem hoi----
     if (finalSpeechText.trim()!==''){
-    resultsEl.innerText = finalSpeechText;
+      resultsEl.innerText = finalSpeechText;
   
     //text nay can dich sang tieng Anh ghi vao noi bi mat de co the doc len sau nay
     let textCanDich = resultsEl.innerText.trim() ;
-    let ptchua = resultsdichViqEl;
+      //alert(textCanDich);
+      let ptchua = resultsdichViqEl;
     dichRaEn(textCanDich,ptchua);
 
     sendMessage(resultsEl.innerText);
@@ -970,7 +984,16 @@ function chatTiengAnh() {
   Swal.fire({
       title: "<span style='color:darkgreen;'>Chat in English</span>",
       html: `
-        <textarea id="input-text" class="swal2-input" placeholder="Enter English text"></textarea>
+  <p style="text-align: left; color:orange;">Select a request to pre-set the phrase to be entered:</p>
+	<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="" checked>(leave blank)</div>
+	<div style="text-align: left; color:darkgreen;"><input type="radio" name="pre-sentence" value="Give an example of an English sentence with the following word : ">Give an example of an English sentence with the following word : </div>
+	<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Give an example of an English sentence with the following phrase : ">Give an example of an English sentence with the following phrase : </div>
+	<div style="text-align: left;  color:darkgreen;"><input type="radio" name="pre-sentence" value="Give an example of an English statement whose answer could be as follows : ">Give an example of an English statement whose answer could be as follows : </div>
+	<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Say an English sentence that would make me answer like this : ">Say an English sentence that would make me answer like this : </div>
+
+  <br>
+
+      <textarea id="input-text" class="swal2-input" placeholder="Enter English text"></textarea>
         <textarea id="translated-text" class="swal2-textarea" placeholder="Vietnamese translation will display here..."></textarea>
         <br>
         <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
@@ -980,14 +1003,23 @@ function chatTiengAnh() {
   cancelButtonText: "Hủy",
   }).then((result) => {
     if (result.isConfirmed) {
+      var cauhoi='';
+      var ele = document.getElementsByName('pre-sentence');
+      for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked){
+          cauhoi = ele[i].value;
+        }
+      }    
+  
       finalSpeechText = document.getElementById("input-text").value; // Lưu văn bản vào biến
       //console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
       //--text in put se dc dat noi cau hoi tru van
       if (finalSpeechText.trim()!==''){
-      resultsEl.innerText = finalSpeechText;
+      resultsEl.innerText = cauhoi + '"' + finalSpeechText + '"';
       
       //--text in put cung se dc dich ra vi dat noi bi mat de tham khao roi se send toi gpt
       let textCanDich = resultsEl.innerText.trim() ;
+      //alert(textCanDich);
       let ptchua = resultsdichViqEl;
       dichRaVi(textCanDich,ptchua);
       //text input dc gui di cho gpt  
