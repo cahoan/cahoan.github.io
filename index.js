@@ -283,6 +283,8 @@ const exerciseEl = document.getElementById("exercise");
 const selectexerciseEl = document.getElementById('selectexercise');
 
 const helpexerciseEl = document.getElementById("helpexercise");
+const questionOutputEl = document.getElementById("questionOutputEl");
+
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
@@ -672,10 +674,12 @@ function anHienText_GPT(){
   if (demClickGPT%2 === 1){
     resultsEl.style.display = "block";
     resultsdichEl.style.display = "block";
+    questionOutputEl.style.display = "block";
 
   }else{
     resultsEl.style.display = "none";
     resultsdichEl.style.display = "none";
+    questionOutputEl.style.display = "none";
 
   } 
 }
