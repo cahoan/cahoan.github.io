@@ -1,17 +1,17 @@
 //Noi dung cau hoi cho tung bai----------------------
 const originalLists = {
     L1_Epage_1: [ 
-        "1. I don't think we've met.",
-        "2. Hi! I haven't seen you for a long time!",
-        "3. Hello. My name's Kate.",
-        "4. Hi, nice to see you again.",
-        "5. Hi. I'm Don. I just started working here.",
-        "6. Betsy! How are you doing?",
-        "7. Hey, aren't you in my class? I'm Tom Crane."],
+        "I don't think we've met.",
+        "Hi! I haven't seen you for a long time!",
+        "Hello. My name's Kate.",
+        "Hi, nice to see you again.",
+        "Hi. I'm Don. I just started working here.",
+        "Betsy! How are you doing?",
+        "Hey, aren't you in my class? I'm Tom Crane."],
     L2_Epage_3: [
-        "A. I don't think we've met.",
-        "B. Hi! I haven't seen you for a long time!",
-        "C. Hello. My name's Kate."],
+        "I don't think we've met.",
+        "Hi! I haven't seen you for a long time!",
+        "Hello. My name's Kate."],
 };
 
 //lay list tde bt dem vao menu------------------
