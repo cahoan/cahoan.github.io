@@ -16,20 +16,21 @@ body {
     color: #fff;
     font: 1rem/1 'Poppins', sans-serif;
 }
+/*
 .video-wrapper {
-    width: 400px;
+    width: 320px;
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;}
 .video-wrapper iframe {
-    width: 400px;
+    width: 320px;
     position: absolute;
     top:0;
     left: 0;
     width: 100%;
     height: 100%;}
-
+*/
 .container{
 position: relative;
 top:0;
@@ -42,7 +43,7 @@ width:96%;
 
 }
 .button-container{
-    width: 420px;
+    width: 320px;
     display:flex;
     justify-content: space-between;
     
@@ -84,7 +85,7 @@ width:96%;
 } 
 .buttons3{
     background-color: #6d5c1a;;
-    width: 480px;
+    width: 320px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
@@ -96,7 +97,7 @@ width:96%;
 }
 .buttons4{
     background-color: #6d5c1a;;
-    width: 480px;
+    width: 320px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
@@ -131,7 +132,7 @@ width:96%;
 
 }
 .scroll-container{
-    width: 460px;
+    width: 320px;
     height:48px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -141,76 +142,75 @@ width:96%;
 </head>
 <body>
 <div class="container">
-<!--TIEU DE-->
-<h2 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for Listening</h2>  
+    <!--TIEU DE-->
+    <h2 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for Listening</h2>  
 
-<!--MENU CHON BAI-->
-<div class="unit_chons">
-    <select id="unit_chon" onchange="chonUnit()">
-        <option style="text-align: center;color:blue;" value="" translate="no">--Select a Unit--</option>
-    </select>
-</div><br>
+    <!--MENU CHON BAI-->
+    <div class="unit_chons">
+        <select id="unit_chon" onchange="chonUnit()">
+            <option style="text-align: center;color:blue;" value="" translate="no">--Select a Unit--</option>
+        </select>
+    </div>
 
-<!-- DAT VIDEO YT-->
-<div class="video-wrapper">
-    <iframe id="iframe_yt" src="">
-    </iframe>
-</div><br>
+    <!-- DAT VIDEO YT-->
+    <div class="video-wrapper">
+        <iframe id="iframe_yt" src="" style="width:320;height:290;">
+        </iframe>
+    </div>
 
-<!-- TIEU DE CHAT TALK GPT-->
-<div  id="infoB" translate="no"><span id='chattext'>Chat</span> with <span onclick="anHienText_GPT()">GPT</span> in <span id='chatlang'>English</span></div>
+    <!-- TIEU DE CHAT TALK GPT-->
+    <div  id="infoB" translate="no"><span id='chattext'>Chat</span> with <span onclick="anHienText_GPT()">GPT</span> in <span id='chatlang'>English</span></div>
 
-<!-- hai nut mic va bot-->
-<div class="button-container">
-    <button id="start_button" ><img id="start_img" src="icons/mic.gif" alt="Start"></button>
-    <button id="listen_button" ><img id="listen_img" src="icons/bot.png" alt="Respeak"></button>
-</div>
+    <!-- hai nut mic va bot-->
+    <div class="button-container">
+        <button id="start_button" ><img id="start_img" src="icons/mic.gif" alt="Start"></button>
+        <button id="listen_button" ><img id="listen_img" src="icons/bot.png" alt="Respeak"></button>
+    </div>
 
-<!--phan hien cau hoi -->
-<div id="results">
-    <span id="final_span" class="final">final</span>
-    <span id="interim_span" class="interim">interim</span>
-</div>   
+    <!--phan hien cau hoi -->
+    <div id="results">
+        <span id="final_span" class="final">final</span>
+        <span id="interim_span" class="interim">interim</span>
+    </div>   
 
-<!--Hien reply va dich yc va dich reply-->    
-<div class="scroll-container" translate="no" id="resultsdich" onclick="readSelectedText()">reply</div>
-<div translate="no" id="resultsdichViQ">dich yc</div>
-<div translate="no" id="resultsdichViA">dich reply</div>
+    <!--Hien reply va dich yc va dich reply-->    
+    <div class="scroll-container" translate="no" id="resultsdich" onclick="readSelectedText()">reply</div>
+    <div translate="no" id="resultsdichViQ">dich yc</div>
+    <div translate="no" id="resultsdichViA">dich reply</div>
 
 
-<!--CAC NUT DK AM THANH NOI-->
+    <!--CAC NUT DK AM THANH NOI-->
+    <div>
+        <label for="rate" translate="no" id="lbbimat">&nbsp;&nbsp;Rate:</label>
+        <input id="rate" type="range" min="0.1" max="1.9" step="0.1" value="1.1" translate="no">
+        <output for="rate" translate="no" ><span onclick="speakTextVi()">&nbsp;&nbsp;1.1&nbsp;&nbsp;</span></output>
+        <!--Khi nhap vao 1.1 thi doc ban dich anh/viet/tat am-->
+    </div>
 
-<div>
-  <label for="rate" translate="no" id="lbbimat">&nbsp;&nbsp;Rate:</label>
-  <input id="rate" type="range" min="0.1" max="1.9" step="0.1" value="1.1" translate="no">
-  <output for="rate" translate="no" ><span onclick="speakTextVi()">&nbsp;&nbsp;1.1&nbsp;&nbsp;</span></output>
-    <!--Khi nhap vao 1.1 thi doc ban dich anh/viet/tat am-->
-</div>
+    <div>
+        <label for="pitch" translate="no">&nbsp;&nbsp;Pitch:</label>
+        <input id="pitch" type="range" min="0.1" max="1.9" step="0.1" value="1.1" translate="no">
+        <output for="pitch" translate="no" ><span onclick="GoOff()">&nbsp;&nbsp;1.1&nbsp;&nbsp;</span></output>
+        <!--Khi nhap vao 1.1 thi clear/ off-->
+    </div>
 
-<div>
-    <label for="pitch" translate="no">&nbsp;&nbsp;Pitch:</label>
-    <input id="pitch" type="range" min="0.1" max="1.9" step="0.1" value="1.1" translate="no">
-    <output for="pitch" translate="no" ><span onclick="GoOff()">&nbsp;&nbsp;1.1&nbsp;&nbsp;</span></output>
-    <!--Khi nhap vao 1.1 thi clear/ off-->
-</div>
+    <div class="buttons4">
+        <select id="selectexercise"></select>
+        <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">🎲Question</button></label>
+        <label onclick="resetList()"><button id="buttonR">🔄Reset</button></label>
+        <label for="selectexercise" translate="no"><button id="helpexercise">❓Help</button></label>
+    </div>  
 
-<div class="buttons4">
-  <select id="selectexercise"></select>
-  <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">🎲Question</button></label>
-  <label onclick="resetList()"><button id="buttonR">🔄Reset</button></label>
-  <label for="selectexercise" translate="no"><button id="helpexercise">❓Help</button></label>
-</div>  
+    <!--CAC LINK PDF TACTIC-->
+    <div class="buttons3">
+        <button id="wordLength" style="background-color: darkgreen;" translate="no"><a style="color:lightgreen; font-size: small;"  >Basic TFL Pdf</a></button>
+        <button id="developingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(236, 194, 179);font-size: small;">Developing TFL Pdf</a></button>
+        <button id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding TFL Pdf</a></button>
+    </div>
 
-<!--CAC LINK PDF TACTIC-->
-<div class="buttons3">
-  <button id="wordLength" style="background-color: darkgreen;" translate="no"><a style="color:lightgreen; font-size: small;"  >Basic TFL Pdf</a></button>
-  <button id="developingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(236, 194, 179);font-size: small;">Developing TFL Pdf</a></button>
-  <button id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding TFL Pdf</a></button>
-</div>
+    <!--CHO BAI TAP-->
+    <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
 
-<!--CHO BAI TAP-->
-
-<div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
 </div>
 
 
