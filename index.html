@@ -160,7 +160,7 @@ width:96%;
 
     <!-- DAT VIDEO YT-->
     <div class="video-wrapper">
-        <iframe id="iframe_yt" src="" style="width:340px;height:255px;">
+        <iframe id="iframe_yt" src="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html" style="width:340px;height:255px;">
         </iframe>
     </div><br>
 
@@ -209,9 +209,9 @@ width:96%;
 
     <!--CAC LINK PDF TACTIC-->
     <div class="buttons3">
-        <button id="wordLength" style="background-color: darkgreen;" translate="no"><a style="color:lightgreen; font-size: small;"  >&nbsp;&nbsp;&nbsp;&nbsp;Basic&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;TFL Pdf</a></button>
-        <button id="developingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(236, 194, 179);font-size: small;">Developing &nbsp;&nbsp;TFL Pdf</a></button>
-        <button id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding &nbsp;TFL Pdf</a></button>
+        <button onclick="hthipdf1()" id="wordLength" style="background-color: darkgreen;" translate="no"><a style="color:lightgreen; font-size: small;"  >&nbsp;&nbsp;&nbsp;&nbsp;Basic&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;TFL Pdf</a></button>
+        <button onclick="hthipdf2()" id="developingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(236, 194, 179);font-size: small;">Developing &nbsp;&nbsp;TFL Pdf</a></button>
+        <button onclick="hthipdf3()" id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding &nbsp;TFL Pdf</a></button>
     </div>
 
     <!--CHO BAI TAP-->
@@ -222,37 +222,43 @@ width:96%;
 
 <!-- JAVASCRIP CHO IFRAME VIDEO YT BAT BUOC PHAI HERE -->
 <script>//Ma duoi day bat buoc phai dat o html, neu dat trong tep js ben ngoai (hoc_en_tactics) se khong chay
-    //-- Cho NEN video ifram youtube-----------------------
-    let id = "Xj8Amv0Z52w";
+const iframe_ytEl = document.getElementById("iframe_yt");
+const basicpdfEl = document.getElementById("basicpdf");
+const developingpdfEl = document.getElementById("developingpdf");
+const expandingpdfEl = document.getElementById("expandingpdf");
+
+//-- Cho NEN video ifram youtube-----------------------
+    //let id = "";
+    var videoIDcurrent;
     const selectb = document.getElementById("unit_chon");
-    var videoIDcurrent="Xj8Amv0Z52w"; //nen la id luu last
+     //nen la id luu last
     //document.getElementById("iframe_yt").src="https://youtube.com/embed/" + videoIDcurrent;
-    document.getElementById("iframe_yt").src="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+    //cai nay default Basic PDF
+    let iframe_ytEl_src_goc = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
     //----Ham chon bai YT
     function chonUnit(){ //chon unit khac va update iframe
         if (selectb.selectedIndex===0){
-            document.getElementById("iframe_yt").src="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+            iframe_ytEl.src = iframe_ytEl_src_goc;
         }else{
             videoIDcurrent = list_id[selectb.selectedIndex];
             //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
-            document.getElementById("iframe_yt").src="https://youtube.com/embed/" + videoIDcurrent;
+            iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent;
         }
     }
     //------
-    document.getElementById("basicpdf").addEventListener('click', function(){
-        document.getElementById("iframe_yt").src="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
-
-    });
-    document.getElementById("developingpdf").addEventListener('click', function(){
-        document.getElementById("iframe_yt").src="https://online.flipbuilder.com/sdtta/kjol";
-
-    });
-    document.getElementById("expandingpdf").addEventListener('click', function(){
-        document.getElementById("iframe_yt").src="https://online.flipbuilder.com/sdtta/vlyh";
-
-    });
     //lay basic pdf dua vao iframe dang co src=""
-    document.getElementById("basicpdf").click();
+    //document.getElementById("basicpdf").click();
+    function hthipdf1(){
+        iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+    }
+    function hthipdf2(){
+        iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/kjol";
+    }
+    function hthipdf3(){
+        iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/vlyh";
+    }
+
+
 </script>  
 
 <script src="index.js"></script> 
