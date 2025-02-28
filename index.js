@@ -286,6 +286,7 @@ const helpexerciseEl = document.getElementById("helpexercise");
 const questionOutputEl = document.getElementById("questionOutputEl");
 
 
+
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
 var text='';
@@ -403,13 +404,6 @@ function reSpeak(){
 }
 
 
-function aboutapp(){
-    var dong1 = "- Bộ sách 'Tactics for lístening' của Jack C. Richards do Đại học Oxford  phát hành, được rất nhiều người dùng .\n";
-    var dong2 = "- tiensg89@gmail.com tìm thấy trên mạng nên góp nhặt tải về và lập trang web này để thuận tiện sử dụng và giúp người khác trong việc tự học nghe tiếng Anh.\n";
-    var dong3 = "- Nó có 3 cuốn, mỗi cuốn có 24 unit kèm theo audio để nghe. Sách có dạng 'pdf flip' rất hay.\n";
-    var dong4 = "- Cách sử dụng để học là do người dùng tự khám phá và hoạch định. Bộ tài liệu nảy rất tuyệt.";
-    alert(dong1+dong2+dong3+dong4);
-}
 
 
 //--Cac bien toan cuc--
@@ -1163,3 +1157,43 @@ exerciseEl.addEventListener('click', function(event){
 
 });
 //----------------------------
+function aboutapp(){
+  var dong1 = "";
+  var dong2 = "";
+  var dong3 = "";
+  var dong4 = "";
+  //alert(dong1+dong2+dong3+dong4);
+
+  Swal.fire({
+    title: "<span style='color:darkgreen;'>About</span>",
+    html: 
+      '<p style="text-align: left;  color:grey;">- Bộ sách <span style="color:darkblue;">Tactics for lístening</span> của <span style="color:darkblue;">Jack C. Richards</span> do Đại học <span style="color:darkblue;">Oxford</span>  phát hành, được rất nhiều người dùng .\n</p>'+
+      '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">tiensg89@gmail.com</span> tìm thấy trên mạng nên góp nhặt tải về và lập trang web này để thuận tiện sử dụng và giúp người khác trong việc tự học nghe tiếng Anh.\n</p>'+
+      '<p style="text-align: left;  color:grey;">- Nó có 3 cuốn, mỗi cuốn có 24 unit kèm theo audio để nghe. Sách có dạng <span style="color:darkblue;">pdf flip</span> rất hay.\n</p>'+
+      '<p style="text-align: left;  color:grey;">- Cách sử dụng để học là do người dùng tự khám phá và hoạch định. Bộ tài liệu nảy rất tuyệt.\n</p>'+
+      '<p style="text-align: left;  color:grey;">Riêng tôi đã từng làm giáo viên giảng dạy và quản lý nhà trường, tự học lập trình bằng <span style="color:darkblue;">Visual Foxpro Basic, Python, Javascript, Html,...</span>trong nhiều năm'+
+      ' nên đã lập trình để tự hoc tiếng Anh theo tài liệu này.'+' </p>'+
+      '<p style="text-align: left;  color:grey;">Đặc biệt tôi đã tiếp cận được <span>chatGPT</span>và dùng <span style="color:darkblue;">Javascript</span để lập trình phuc vụ cho việc tập nghe và nói tiếng Anh qua viêc chat với GPT'+
+      ' '+' </p>'+
+   
+      '<p style="text-align: left;  color:grey;"><span style="color:red;">1-</span> Bạn co thể sử dụng chatGPT trong app này'+
+      ' '+'</p>'+
+      '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">để hỏi hoặc yêu cầu GPT trả lời hoặc cho biết các thông tin nào đó'+
+      ' bằng tiếng nói hoặc văn bản nhập vào bằng tiếng Anh hoặc tiếng Việt.</span>'+' </p>'+
+      '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">GPT sẽ hồi đáp bằng âm thanh, văn bản bằng tiếng Anh hoặc tiếng việt qua những nút bấm.</span></p>'+
+
+      '<p style="text-align: left;  color:grey;"><span style="color:red;">2-</span> Bạn cũng có thể sử dụng các bài luyện tập nghe và nói tiếng Anh, tiếng Việt vói chatGPT'+
+      ' do tôi biên soạn theo tài liệu nêu trên. <span style="color:darkblue;">Các bài tập này bổ sung cho việc luyện nghe và nói bất cứ lúc nào. Chỉ cần chọn bài và bấm nút Ques.</span>'+
+      ' '+'</p>'+
+
+      '<p style="text-align: left;  color:grey;"><span style="color:red;">3-</span> Và <span style="color:darkblue;">hướng phát triển tiếp theo là nhờ GPT nhận xét các trả lời của bạn đã hợp logic hay chưa.</span>'+
+      ' Và còn nhiều thứ nữa chúng ta sẽ khám phá qua việc chơi và học với chatGPT.'+'</p>',
+
+    confirmButtonText: "OK", 
+  });
+  //.then((result) => {
+  //  if (result.isConfirmed) {
+  //    alert('hhhh');
+  //  }    
+}
+
