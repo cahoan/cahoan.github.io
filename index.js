@@ -262,11 +262,11 @@ let listUrlYt = [
 
 const resultsEl = document.getElementById('results');
 const resultsdichEl = document.getElementById('resultsdich');
-const voiceInEl = document.getElementById('voice');
 const pitchInEl = document.getElementById('pitch');
-const rateInEl = document.getElementById('rate');
 const pitchOutEl = document.querySelector('output[for="pitch"]');
 const rateOutEl = document.querySelector('output[for="rate"]');
+const rateInEl = document.getElementById('rate');
+
 const speakEl = document.getElementById('listen_button');
 const start_imgEl = document.getElementById("start_img");
 const listen_imgEl = document.getElementById("listen_img");
@@ -279,12 +279,16 @@ const interim_spanEl = document.getElementById("interim_span");
 const chattextEl = document.getElementById("chattext");
 const chatlangEl = document.getElementById("chatlang");
 const lbbimatEl = document.getElementById("lbbimat");
+const exerciseEl = document.getElementById("exercise");
+const selectexerciseEl = document.getElementById('selectexercise');
 
+const helpexerciseEl = document.getElementById("helpexercise");
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
 var text='';
 var langNoi='en-US';
+
 //const results = document.getElementById("results");
 //const resultsdich = document.getElementById("resultsdich");
 resultsEl.style.display = "none";
@@ -375,6 +379,7 @@ function reSpeak(){
   }
 
   window.speechSynthesis.cancel();
+
   text = resultsdichEl.innerText;
   utterance = new SpeechSynthesisUtterance(text);
   // create new utterance with all the properties
@@ -384,9 +389,12 @@ function reSpeak(){
   utterance.rate = rateInEl.value;
   //utterance.volume = volumeInEl.value;
   utterance.volume = 1;
+
   utterance.addEventListener('start', handleStart);
   utterance.addEventListener('end', handleEnd2);
   utterance.addEventListener('boundary', handleBoundary);
+
+
   
   // speak that utterance
   window.speechSynthesis.speak(utterance);
@@ -647,36 +655,18 @@ rateInEl.addEventListener('change', updateOutputs);
 speakEl.addEventListener('click', reSpeak);
 
 // update voices immediately and whenever they are loaded
-updateVoices();
-window.speechSynthesis.onvoiceschanged = updateVoices;
+//updateVoices();
+//window.speechSynthesis.onvoiceschanged = updateVoices;
 
 function updateOutputs() {
   // display current values of all range inputs
   pitchOutEl.textContent = pitchInEl.value;
   rateOutEl.textContent = rateInEl.value;
 }
+//---------------
 
-function updateVoices() {
-  // add an option for each available voice that isn't already added
-  window.speechSynthesis.getVoices().forEach(voice => {
-        const isAlreadyAdded = [...voiceInEl.options].some(option => option.value === voice.voiceURI);
-        if (!isAlreadyAdded) {
-            const option = new Option(voice.name, voice.voiceURI, voice.default, voice.default);
-            //if ((option.value.search("English")>0) || (option.value.search("en-US")>0) || (option.value.search("Linh")>0) || (option.value.search("An")>0) || (option.value.search("vi-VN")>0)){
-            if ( (option.value.search("English")>0) || (option.value.search("en-US")>0) || (option.value.search("An")>0) || (option.value.search("Linh")>0)  ){
-                //console.log(option);
-                if (option.value.search("Samantha")>=0){
-                  option.selected=true;
-                }
-                voiceInEl.add(option);
-            }
-                
-        }
-    
-  });
-  
-}
 
+//---------------------------
 function anHienText_GPT(){
   demClickGPT += 1;
   if (demClickGPT%2 === 1){
@@ -686,9 +676,6 @@ function anHienText_GPT(){
   }else{
     resultsEl.style.display = "none";
     resultsdichEl.style.display = "none";
-
-    //document.getElementById("results").style.clipPath = "inset(0%)";
-    //document.getElementById("resultsdich").style.clipPath = "inset(0%)";
 
   } 
 }
@@ -716,19 +703,29 @@ function handleBoundary(event) {
   }
 
   const wordStart = event.charIndex;
-
+  //t them
+  //console.log('chi muc cua wordStart:',wordStart);
   let wordLength = event.charLength;
+  //t them
+  //console.log('chieu dai cua char:',wordLength);
+  
   if (wordLength === undefined) {
     // Safari doesn't provide charLength, so fall back to a regex to find the current word and its length (probably misses some edge cases, but good enough for this demo)
     const match = text.substring(wordStart).match(/^[a-z\d']*/i);
     wordLength = match[0].length;
   }
-  
   // wrap word in <mark> tag
   const wordEnd = wordStart + wordLength;
   const word = text.substring(wordStart, wordEnd);
   const markedText = text.substring(0, wordStart) + '<mark>' + word + '</mark>' + text.substring(wordEnd);
   resultsdichEl.innerHTML = markedText; //phan nay co ma trong resultsdichEl nen phai innerHTML
+  //t them: tim cac "mark" de thuc thi ham scrollIntoView() de cuon div chua text doc
+  let markElement = document.querySelector("mark");
+  if (markElement){
+    markElement.scrollIntoView({
+      behavior: "smooth", block: "center"
+    });
+  }
 }
 //------------------------
 function speakTextVi(){ //ham nay doc QA noi bi mat
@@ -771,7 +768,7 @@ function GoOff(){
   const synth = window.speechSynthesis;
   if (synth.speaking) {synth.cancel();}
 
-  stopVideo();  
+  //stopVideo();  
 }
 
 //----Ham Dich ra Vi------------------
@@ -1110,8 +1107,55 @@ lbbimatEl.addEventListener('click', function(event){
         <div id="hienbdQ" style="text-align: left;  color:orange;">Q: `+qq+`</div>
         <div id="hienbdA" style="text-align: left;  color:green;">A: `+aa+`</div>
 	      `,
-      
       confirmButtonText: "OK",
   })
+});
+//-----BT-1-----
+function BT1_Epage_page_1(){
+  let listAnswer=[
+    "I don't think we've met.",
+    "Hi! I haven't seen you for a long time!",
+    "Hello. My name's Kate.",
+    "Hi, nice to see you again.",
+    "Hi. I'm Don. I just started working here.",
+    "Betsy! How are you doing?",
+    "Hey, aren't you in my class? I'm Tom Crane."
+  ];
+  
+  function shuffleAndRemove(arr) {
+    while (arr.length > 0) {
+      // Chọn ngẫu nhiên một chỉ mục trong mảng
+      let randomIndex = Math.floor(Math.random() * arr.length);
+    
+      // Lấy phần tử ngẫu nhiên
+      let removedElement = arr.splice(randomIndex, 1)[0];
+    
+      console.log("Lấy phần tử:", removedElement); // In phần tử đã lấy
+    
+      // Nếu cần làm gì đó với phần tử, có thể xử lý ở đây
+      let cauQ = "Say an English sentence that would make me answer like this : " + removedElement;
+      resultsEl.innerText=cauQ;
+      sendMessage(cauQ);
+      return;
+    }
+    console.log("Mảng đã rỗng!");
+
+  }
+  if (listAnswer.length>0){
+    shuffleAndRemove(listAnswer);
+  }else{
+    return;
+  }  
+  
+}
+//---------doi chuoi gt nenu thanh ten ham------------
+exerciseEl.addEventListener('click', function(event){
+  let functionName = voiceInEl.value;
+  if (typeof window[functionName]==="function"){
+    window[functionName]();
+  }else{
+    alert('Ham khong ton tai!');
+  }
 
 });
+//----------------------------
