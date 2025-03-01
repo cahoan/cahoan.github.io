@@ -11,6 +11,15 @@
 
     <!--<link rel="stylesheet" href="index.css">-->
 <style>
+html, body {
+overflow-x: hidden; /* Chặn cuộn ngang */
+width: 100vw; /* Đảm bảo không vượt quá chiều rộng thiết bị */
+max-width: 100%; /* Tránh nội dung tràn ra ngoài */
+margin: 0;
+padding: 0;
+touch-action: manipulation; /* Ngăn chặn thao tác vuốt không mong muốn */
+}
+
 body {
     background-image: linear-gradient(-45deg, #f4d03f, #160223); 
     color: #fff;
