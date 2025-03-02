@@ -49,6 +49,7 @@ function getRandomQuestion() {
     let btn = document.getElementById("getQuestionBtn");
 
     if (currentList.length === 0) {
+
         output.textContent = "🎯 Hết câu hỏi! Nhấn 'Làm mới' để chơi lại.";
         output.classList.add("shake"); // Hiệu ứng rung khi hết câu hỏi
         return;

@@ -283,7 +283,8 @@ const exerciseEl = document.getElementById("exercise");
 const selectexerciseEl = document.getElementById('selectexercise');
 
 const helpexerciseEl = document.getElementById("helpexercise");
-const questionOutputEl = document.getElementById("questionOutputEl");
+const questionOutputEl = document.getElementById("questionOutput");
+const infoBEl = document.getElementById("infoB");
 
 
 
@@ -1181,6 +1182,7 @@ function aboutapp(){
       '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">để hỏi hoặc yêu cầu GPT trả lời hoặc cho biết các thông tin nào đó'+
       ' bằng tiếng nói hoặc văn bản nhập vào bằng tiếng Anh hoặc tiếng Việt.</span>'+' </p>'+
       '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">GPT sẽ hồi đáp bằng âm thanh, văn bản bằng tiếng Anh hoặc tiếng việt qua những nút bấm.</span></p>'+
+      '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">Khi click vào một từ hồi đáp, GPT sẽ cung cấp các thông tin về ngữ nghĩa của từ đó.</span></p>'+
 
       '<p style="text-align: left;  color:grey;"><span style="color:red;">2-</span> Bạn cũng có thể sử dụng các bài luyện tập nghe và nói tiếng Anh, tiếng Việt vói chatGPT'+
       ' do tôi biên soạn theo tài liệu nêu trên. <span style="color:darkblue;">Các bài tập này bổ sung cho việc luyện nghe và nói bất cứ lúc nào. Chỉ cần chọn bài và bấm nút Ques.</span>'+

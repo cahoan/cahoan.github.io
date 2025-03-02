@@ -64,22 +64,22 @@ width:96%;
 
 #start_button{
     
-    width:50px;
-    height:50px;
+    width:60px;
+    height:60px;
     border-radius: 50%;
     left: 0;
 }
 #listen_button {
     
-    width:50px;
-    height:50px;
+    width:60px;
+    height:60px;
     border-radius: 50%;
     right: 0;
 
 }
 #start_img, #listen_img{
-    width:25px;
-    height:25px;
+    width:40px;
+    height:40px;
     border-radius: 50%;
     text-align: center;
 }
@@ -120,14 +120,29 @@ width:96%;
 
 }
 #buttonQ{
-    text-align: center;
-    background-color: darkgreen;
-    color:yellow;
+color:yellow;
 }
 #buttonR{
-    text-align: center;
-    background-color: darkgreen;
-    color:beige;
+color:beige;
+}
+#buttonH{
+color:rgb(206, 206, 244);
+}
+
+#buttonQ, #buttonR, #buttonH{
+background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%); /* Màu gradient 3D */
+font-size: 14px;
+padding: 2px 4px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 0px 5px 0px #1B5E20; /* Đổ bóng để tạo hiệu ứng nổi */
+transition: all 0.2s ease-in-out;
+}    
+
+#buttonQ:active, #buttonR:active, #buttonH:active{
+box-shadow: 0px 2px 0px #1B5E20; /* Giảm bóng khi nhấn */
+transform: translateY(3px); /* Hiệu ứng nhấn xuống */
 }
 #helpexercise{
     text-align: center;
@@ -206,15 +221,15 @@ width:96%;
     <!--CAC NUT DK AM THANH NOI-->
     <div>
         <label for="rate" translate="no" id="lbbimat">&nbsp;&nbsp;Rate:</label>
-        <input id="rate" type="range" min="0.1" max="1.9" step="0.1" value="1.1" translate="no">
-        <output for="rate" translate="no" ><span onclick="speakTextVi()">&nbsp;&nbsp;1.1&nbsp;&nbsp;</span></output>
+        <input id="rate" type="range" min="0.1" max="1.9" step="0.1" value="1" translate="no">
+        <output for="rate" translate="no" ><span onclick="speakTextVi()">&nbsp;&nbsp;1&nbsp;&nbsp;</span></output>
         <!--Khi nhap vao 1.1 thi doc ban dich anh/viet/tat am-->
     </div><br>
 
     <div>
         <label for="pitch" translate="no">&nbsp;&nbsp;Pitch:</label>
-        <input id="pitch" type="range" min="0.1" max="1.9" step="0.1" value="1.1" translate="no">
-        <output for="pitch" translate="no" ><span onclick="GoOff()">&nbsp;&nbsp;1.1&nbsp;&nbsp;</span></output>
+        <input id="pitch" type="range" min="0.1" max="1.9" step="0.1" value="1" translate="no">
+        <output for="pitch" translate="no" ><span onclick="GoOff()">&nbsp;&nbsp;1&nbsp;&nbsp;</span></output>
         <!--Khi nhap vao 1.1 thi clear/ off-->
     </div>
 
@@ -222,7 +237,7 @@ width:96%;
         <select id="selectexercise"></select>
         <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">🎲Ques</button></label>
         <label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>
-        <label for="selectexercise" translate="no"><button id="helpexercise">❓Help</button></label>
+        <label for="selectexercise" translate="no"><button id="buttonH">❓Help</button></label>
     </div>  
 
     <!--CAC LINK PDF TACTIC-->
