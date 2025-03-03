@@ -111,22 +111,25 @@ width:96%;
     background-color: #6d5c1a;;
     width: 340px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
     padding: 16px;
     border-top: 1px solid #fff3;
-
+    text-align: center;
 }
 #buttonQ{
 color:yellow;
+width:114px;
 }
 #buttonR{
 color:beige;
 }
 #buttonH{
-color:rgb(206, 206, 244);
+color:whitesmoke;
+width:114px;
+
 }
 
 #buttonQ, #buttonR, #buttonH{
@@ -234,10 +237,11 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     </div>
 
     <div class="buttons4">
-        <select id="selectexercise"></select>
-        <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">🎲Ques</button></label>
-        <label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>
-        <label for="selectexercise" translate="no"><button id="buttonH">❓Help</button></label>
+        <select id="selectexercise">
+        </select>
+        <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
+        <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
+        <label for="selectexercise" translate="no"><button id="buttonH" onclick="htTBhelp()" ><span id="cauhoin" style="color:yellow"></span>❓Help</button></label>
     </div>  
 
     <!--CAC LINK PDF TACTIC-->

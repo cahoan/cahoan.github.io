@@ -285,7 +285,7 @@ const selectexerciseEl = document.getElementById('selectexercise');
 const helpexerciseEl = document.getElementById("helpexercise");
 const questionOutputEl = document.getElementById("questionOutput");
 const infoBEl = document.getElementById("infoB");
-
+const cauhoinEl = document.getElementById("cauhoin");
 
 
 var apiKey=maHoaLaiAK();
@@ -1148,15 +1148,15 @@ function BT1_Epage_page_1(){
   
 }
 //---------doi chuoi gt nenu thanh ten ham------------
-exerciseEl.addEventListener('click', function(event){
-  let functionName = voiceInEl.value;
-  if (typeof window[functionName]==="function"){
-    window[functionName]();
-  }else{
-    alert('Ham khong ton tai!');
-  }
+//exerciseEl.addEventListener('click', function(event){
+//  let functionName = voiceInEl.value;
+//  if (typeof window[functionName]==="function"){
+//    window[functionName]();
+//  }else{
+//    alert('Ham khong ton tai!');
+//  }
 
-});
+//});
 //----------------------------
 function aboutapp(){
   var dong1 = "";
