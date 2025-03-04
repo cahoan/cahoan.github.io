@@ -267,9 +267,10 @@ const pitchOutEl = document.querySelector('output[for="pitch"]');
 const rateOutEl = document.querySelector('output[for="rate"]');
 const rateInEl = document.getElementById('rate');
 
+const start_buttonEl = document.getElementById('start_button');
 const speakEl = document.getElementById('listen_button');
-const start_imgEl = document.getElementById("start_img");
-const listen_imgEl = document.getElementById("listen_img");
+//const start_imgEl = document.getElementById("start_img");
+//const listen_imgEl = document.getElementById("listen_img");
 const resultsdichViqEl = document.getElementById("resultsdichViQ");
 const resultsdichViaEl = document.getElementById("resultsdichViA");
 const langtalkEl = document.getElementById("langtalk");
@@ -377,8 +378,10 @@ async function sendMessage(transcript) {
 
 function reSpeak(){
   if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
-    listen_imgEl.src = 'icons/bot.png';
-    resultsdichEl.innerHTML =   resultsdichEl.innerText;
+    //listen_imgEl.src = 'icons/bot.png';
+    speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
+
+        resultsdichEl.innerHTML =   resultsdichEl.innerText;
     return;
   }
 
@@ -476,19 +479,23 @@ if (!('webkitSpeechRecognition' in window)) {
     //resultsEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
     resultsdichEl.textContent=''; //khi dang chuan bi thi cai nay phai empty
     resultsEl.innerText='';
-    start_imgEl.src = 'icons/mic-animation.gif';
+    //start_imgEl.src = 'icons/mic-animation.gif';
+    start_buttonEl.style.backgroundImage = "url('icons/mic-animation.gif')"; // Set the background image
+
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_imgEl.src = 'icons/mic.gif';
+      //start_imgEl.src = 'icons/mic.gif';
+      start_buttonEl.style.backgroundImage = "url('icons/mic.gif')"; // Set the background image
       showInfo('no_speech');
       resultsEl.innerText='';
       resultsdichEl.textContent=''; 
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_imgEl.src = 'icons/mic.gif';
+      //start_imgEl.src = 'icons/mic.gif';
+      start_buttonEl.style.backgroundImage = "url('icons/mic.gif')"; // Set the background image
       showInfo('no_microphone');
       resultsEl.innerText='';
       resultsdichEl.textContent=''; 
@@ -510,7 +517,9 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_imgEl.src = 'icons/mic.gif';
+    //start_imgEl.src = 'icons/mic.gif';
+    start_buttonEl.style.backgroundImage = "url('icons/mic.gif')"; // Set the background image
+
     if (!final_transcript) {
       showInfo('start'); 
       return;
@@ -683,15 +692,18 @@ resultsdichViaEl.style.display = "none";
 
 //==============
 function handleStart() {
-  listen_imgEl.src = 'icons/mic-animation.gif';
+  speakEl.style.backgroundImage = "url('icons/mic-animation.gif')"; // Set the background image
+  //listen_imgEl.src = 'icons/mic-animation.gif';
 }
 
 
 function handleEnd() {
-  listen_imgEl.src = 'icons/bot.png';
+  speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
+  //   listen_imgEl.src = 'icons/bot.png';
 }
 function handleEnd2() {
-  listen_imgEl.src = 'icons/bot.png';
+  speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
+  //listen_imgEl.src = 'icons/bot.png';
   resultsdichEl.innerHTML = text;
 }
 
@@ -759,8 +771,12 @@ function stopVideo() {
 function GoOff(){
   resultsEl.innerText="";
   resultsdichEl.innerText="";
-  start_imgEl.src = "icons/mic.gif";
-  listen_imgEl.src = "icons/bot.png";
+
+  //start_imgEl.src = "icons/mic.gif";
+  start_buttonEl.style.backgroundImage = "url('icons/mic.gif')"; // Set the background image
+  //listen_imgEl.src = "icons/bot.png";
+  speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
+
   resultsdichViqEl.innerText = "";
   resultsdichViaEl.innerText = "";
    
@@ -1172,9 +1188,9 @@ function aboutapp(){
       '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">tiensg89@gmail.com</span> tìm thấy trên mạng nên góp nhặt tải về và lập trang web này để thuận tiện sử dụng và giúp người khác trong việc tự học nghe tiếng Anh.\n</p>'+
       '<p style="text-align: left;  color:grey;">- Nó có 3 cuốn, mỗi cuốn có 24 unit kèm theo audio để nghe. Sách có dạng <span style="color:darkblue;">pdf flip</span> rất hay.\n</p>'+
       '<p style="text-align: left;  color:grey;">- Cách sử dụng để học là do người dùng tự khám phá và hoạch định. Bộ tài liệu nảy rất tuyệt.\n</p>'+
-      '<p style="text-align: left;  color:grey;">Riêng tôi đã từng làm giáo viên giảng dạy và quản lý nhà trường, tự học lập trình bằng <span style="color:darkblue;">Visual Foxpro Basic, Python, Javascript, Html,...</span>trong nhiều năm'+
+      '<p style="text-align: left;  color:grey;">Riêng tôi đã từng làm giáo viên giảng dạy và quản lý nhà trường, '+
       ' nên đã lập trình để tự hoc tiếng Anh theo tài liệu này.'+' </p>'+
-      '<p style="text-align: left;  color:grey;">Đặc biệt tôi đã tiếp cận được <span>chatGPT</span>và dùng <span style="color:darkblue;">Javascript</span để lập trình phuc vụ cho việc tập nghe và nói tiếng Anh qua viêc chat với GPT'+
+      '<p style="text-align: left;  color:grey;">Đặc biệt tôi đã tiếp cận được <span>chatGPT</span>và biết cách dùng <span style="color:darkblue;">Javascript</span> để lập trình phuc vụ cho việc tập nghe và nói tiếng Anh qua viêc chat với GPT'+
       ' '+' </p>'+
    
       '<p style="text-align: left;  color:grey;"><span style="color:red;">1-</span> Bạn co thể sử dụng chatGPT trong app này'+
