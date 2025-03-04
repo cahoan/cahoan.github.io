@@ -36,8 +36,16 @@ let currentList = [];
 let selectedListName = selectexerciseEl.value;
 let cauhoiN=0;
 let socauhoi=0;
-document.getElementById("selectexercise").addEventListener("change", function() {
+let cauQ='';
 
+let chTenBt='';
+let chCauSo='';
+let chYcGpt='';
+let chGptReply='';
+let chListBt='';
+
+
+document.getElementById("selectexercise").addEventListener("change", function() {
     selectedListName = this.value;
     cauhoiN=0;
     //socauhoi=selectedListName.length;
@@ -51,45 +59,60 @@ function resetList() {
     //alert(socauhoi);
     document.getElementById("questionOutput").textContent = "[Chưa có câu hỏi]";
     //socauhoi=currentList.length;
-    document.getElementById("questionOutput").classList.remove("fade-in", "shake");
-    document.getElementById("getQuestionBtn").classList.remove("glow");
+    //document.getElementById("questionOutput").classList.remove("fade-in", "shake");
+    //document.getElementById("getQuestionBtn").classList.remove("glow");
     cauhoinEl.textContent = '';
+    cauhoiN=0;
 
 }
 
 function getRandomQuestion() {
+    if (selectedListName==="__Select__"){
+        alert('No excercise!');
+        return;
+    }  
+    if (cauhoiN===socauhoi){
+        htTBfresh();
+        
+        return;
+    }
+    if (cauhoiN<socauhoi){
+
+    //alert(resultsdichEl.innerText);
     resultsdichEl.innerText ='';
 
-    let output = document.getElementById("questionOutput");
-    let btn = document.getElementById("getQuestionBtn");
-
+    //let output = document.getElementById("questionOutput");
+    //let btn = document.getElementById("getQuestionBtn");
+    //alert(currentList.length);    
     if (currentList.length === 0) {
 
-        output.textContent = "🎯 Hết câu hỏi! Nhấn 'Làm mới' để chơi lại.";
+        //output.textContent = "🎯 Hết câu hỏi! Nhấn 'Làm mới' để chơi lại.";
+        //Neu het cau bai tap thi hien TB co muon reset lai khong? roi thoat ra
         htTBfresh();
-        output.textContent ='';
+        //output.textContent ='';
 
-        cauhoiN=0;
-        output.classList.add("shake"); // Hiệu ứng rung khi hết câu hỏi
+    
+        //output.classList.add("shake"); // Hiệu ứng rung khi hết câu hỏi
         return;
     }
 
     let randomIndex = Math.floor(Math.random() * currentList.length);
     let question = currentList.splice(randomIndex, 1)[0];
+
     cauhoiN = cauhoiN + 1;
+
     //alert(cauhoiN);
     cauhoinEl.textContent = cauhoiN.toString()+"/"+socauhoi.toString();
-    let cauQ = "Say an English sentence that would make me answer like this : " + question;
-    sendMessage(cauQ);
+    cauQ = 'Write an English sentence that would make me answer like this : \n' + '"'+question+'"';
+    sendMessage(cauQ); // Gửi yêu cầu tiếp theo sau 1 giây
+        
+
 
     //infoBEl.innerText=cauhoiN;
-    output.textContent =  cauQ;
-    output.classList.remove("fade-in"); // Reset hiệu ứng
-    void output.offsetWidth; // Trick để reset animation
-    output.classList.add("fade-in"); // Hiệu ứng hiện dần
-
-    btn.classList.add("glow"); // Nút phát sáng khi rút câu hỏi
-    setTimeout(() => btn.classList.remove("glow"), 1000); // Tắt sáng sau 1 giây
+    //output.textContent =  cauQ;
+    //alert(resultsdichEl.innerText);
+    
+}
 
 }
 
@@ -97,7 +120,7 @@ function getRandomQuestion() {
 //----------------------------------------------------------------------------
 function htTBfresh(){
     if (cauhoiN===0){return;}
-    let ndTB='Bạn đã làm xong Bài Tập '+selectedListName;
+    ndTB='Bạn đã làm xong Bài Tập '+selectedListName;
     let ndTB2='Nếu bạn muốn làm lại thì bấm OK, nếu không thì bấm HỦY.';
     Swal.fire({
         title: "<span style='color:darkgreen;'>Thông Báo</span>",
@@ -111,36 +134,49 @@ function htTBfresh(){
     }).then((result) => {
     if (result.isConfirmed) {
         resetList();
+    
     }
     });
 
-}
+} 
 function htTBhelp(){
-    if (cauhoiN===0 || resultsdichEl.innerText===''){return;}
-    let ndTB='Bạn đang làm Bài Tập : '+selectedListName;
-    let ndTB2='Gpt vừa nói rằng :';
-    let ndTB3 = resultsdichEl.innerText ;
+    //let chTenBt='';
+    //let chCauSo='';
+    //let chYcGpt='';
+    //let chGptReply='';
+    //let chListBt='';
 
-    let textl = "";
+    if (cauhoiN===0){return;}
+
+    chTenBt='Bài tập nghe và nói : '+selectedListName;
+    chCauSo='<span style="color:red;">'+ 'Câu số : '+cauhoinEl.textContent+'</span>';
+    chYcGpt='Đã yêu cầu GPT rằng : '+'<br>'+'<span style="color:darkgreen;">'+cauQ+'</span>';
+
+    chListBt='';
     currentList = [...originalLists[selectedListName]];
-
-    //const fruits = ["apple", "orange", "cherry"];
     currentList.forEach(myFunction);
-
-    //document.getElementById("demo").innerHTML = text;
-    
     function myFunction(item, index) {
-        textl += index+1 + ": " + item + "<br>"; 
+        let nn=(index+1).toString();
+        chListBt += '<span style="color:red;">'+ nn + ': </span>' + item + '<br>'; 
+    }
+    
+    if (resultsdichEl.textContent===''){
+        chGptReply='Gpt không hồi đáp!';
+    }else{    
+        chGptReply = 'Gpt vừa nói rằng :'+ '<br>' + '<span style="color:red;">' + resultsdichEl.textContent+'</span>' +
+        '<p>'+'Để phúc đáp, bạn phải chọn tương tự như một trong các phát biểu sau: '+'</p>'+
+        '<p style="color:blue;text-align:left;">' + chListBt +'</p>';
     }
 
+
     Swal.fire({
-        title: "<span style='color:darkgreen;'>Thông Báo</span>",
-        html:   `<p>`+ndTB+`</p>`+
-                `<p>`+ndTB2+`</p>`+
-                `<p style="color:orange;">`+ndTB3+`</p>`+
-                `<p>`+`Để phúc đáp, bạn phải chọn tương tự như một trong các phát biểu sau: `+`</p>`+
-                `<p style="color:blue;">`+textl+`</p>`,
+        title: '<span style="color:darkgreen;">'+chTenBt+'</span>',
+        html:   `<p>`+chCauSo+`</p>`+
+                `<p>`+chYcGpt+`</p>`+
+                chGptReply,
+
         confirmButtonText: "OK",
     })
 
 }
+//---tham khao

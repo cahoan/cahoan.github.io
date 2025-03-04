@@ -123,16 +123,13 @@ width:96%;
 color:yellow;
 width:114px;
 }
-#buttonR{
-color:beige;
-}
 #buttonH{
 color:whitesmoke;
 width:114px;
 
 }
 
-#buttonQ, #buttonR, #buttonH{
+#buttonQ,  #buttonH{
 background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%); /* Màu gradient 3D */
 font-size: 14px;
 padding: 2px 4px;
@@ -143,7 +140,7 @@ box-shadow: 0px 5px 0px #1B5E20; /* Đổ bóng để tạo hiệu ứng nổi *
 transition: all 0.2s ease-in-out;
 }    
 
-#buttonQ:active, #buttonR:active, #buttonH:active{
+#buttonQ:active, #buttonH:active{
 box-shadow: 0px 2px 0px #1B5E20; /* Giảm bóng khi nhấn */
 transform: translateY(3px); /* Hiệu ứng nhấn xuống */
 }
@@ -217,8 +214,8 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     <div class = "resultsdichcss">
 
         <div class="scroll-container" translate="no" id="resultsdich" onclick="readSelectedText()">reply</div>
-        <div translate="no" id="resultsdichViQ">dich yc</div>
-        <div translate="no" id="resultsdichViA">dich reply</div>
+        <div translate="no" id="resultsdichViQ"></div>
+        <div translate="no" id="resultsdichViA"></div>
      </div>   
 
     <!--CAC NUT DK AM THANH NOI-->
