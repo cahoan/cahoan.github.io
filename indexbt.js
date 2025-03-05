@@ -1,6 +1,24 @@
 //Noi dung cau hoi cho tung bai----------------------
 const originalLists = {
     __Select__:[],
+    BL1_Q_page_1: [
+        "What's your name?", 
+        "How are you?",
+        "What's your e-mail address?",
+        "Hello, Kyle.",
+        "Nice to meet you.",
+        "How do you spell your name?",
+        "What's your phone number?",
+        "Good morning, Kate."],
+    BL1_A_page_1: [
+        "It's kylejonesi@tmail.com.",
+        "Good marning.",
+        "It's Kyle Jones.",
+        "It's 555299.",
+        "I'm fine, thanks.",
+        "Hi,Sara.",
+        "Kyle.",
+        "Nice to meet you, too."],
     L1_Epage_1: [ 
         "I don't think we've met.",
         "Hi! I haven't seen you for a long time!",

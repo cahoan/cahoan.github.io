@@ -187,7 +187,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
 <body>
 <div class="container">
     <!--TIEU DE-->
-    <h3 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for Listening</h3>  
+    <h3 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for <span onclick="tdyt()">Listening</span></h3>  
 
     <!--MENU CHON BAI-->
     <div class="unit_chons">
@@ -198,7 +198,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
 
     <!-- DAT VIDEO YT-->
     <div class="video-wrapper">
-        <iframe id="iframe_yt" src="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html" style="width:340px;height:255px;">
+        <iframe id="iframe_yt" src="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html" width="340px" height="255px">
         </iframe>
     </div><br>
 
@@ -302,7 +302,17 @@ const expandingpdfEl = document.getElementById("expandingpdf");
     function hthipdf3(){
         iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/vlyh";
     }
+    function tdyt(){
+        //alert('tdyt');
+        if (document.getElementById("iframe_yt").style.width==="340px"){
+            document.getElementById("iframe_yt").style.width="1200px";
+            document.getElementById("iframe_yt").style.height="900px";
 
+        }else{
+            document.getElementById("iframe_yt").style.width="340px";
+            document.getElementById("iframe_yt").style.height="255px";
+        }
+    }
 
 </script>  
 
