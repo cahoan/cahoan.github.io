@@ -8,6 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Import SweetAlert2 -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.0.2/tesseract.min.js"></script>
+
 
     <!--<link rel="stylesheet" href="index.css">-->
 <style>
@@ -87,8 +89,15 @@ cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;
-    
-
+}
+#chonQA_button{
+width: 24px; /* Kích thước nút */
+height: 24px;
+border-radius: 0%; /* Làm cho nút tròn */
+margin-top: 14px;
+background-color: transparent;
+color:transparent ;
+border: transparent;
 }
 #resultsdich{
     color:yellow;
@@ -178,9 +187,9 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     width: 340px;
 
 }    
-#reresults{
-    width: 340px;
-
+#results{
+    width: 360px;
+    height: auto;
 }
 </style>
 </head>
@@ -203,11 +212,12 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     </div><br>
 
     <!-- TIEU DE CHAT TALK GPT-->
-    <div  id="infoB" translate="no"><span id='chattext'>Chat</span> with <span onclick="anHienText_GPT()">GPT</span> in <span id='chatlang'>English</span></div>
+    <div  id="infoB" translate="no"> <span id='chattext'> with </span>chat<span onclick="anHienText_GPT()">GPT</span> in <span id='chatlang'>English</span></div>
 
     <!-- hai nut mic va bot-->
     <div class="button-container">
-        <button id="start_button" ></button>
+        <button id="start_button"></button>
+        <button id="chonQA_button">2</button>
         <button id="listen_button"></button>
     </div>
 
@@ -236,7 +246,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     </div><br>
 
     <div>
-        <span style="color:transparent;">Am luon </span> 
+        <span id="chon2or1" style="color:transparent;" onclick="rutTextTuAnh()">Exac text </span>
         <label for="pitch" translate="no">Pitch:</label>
         <input id="pitch" type="range" min="0.1" max="1.9" step="0.1" value="1" translate="no">
         <output for="pitch" translate="no" >1</output>
@@ -287,7 +297,7 @@ const expandingpdfEl = document.getElementById("expandingpdf");
         }else{
             videoIDcurrent = list_id[selectb.selectedIndex];
             //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
-            iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent;
+            iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent + "?enablejsapi=1";
         }
     }
     //------
@@ -302,9 +312,16 @@ const expandingpdfEl = document.getElementById("expandingpdf");
     function hthipdf3(){
         iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/vlyh";
     }
+
     function tdyt(){
         //alert('tdyt');
         if (document.getElementById("iframe_yt").style.width==="340px"){
+       
+            document.getElementById("iframe_yt").style.width="800px";
+            document.getElementById("iframe_yt").style.height="600px";
+
+        }else if (document.getElementById("iframe_yt").style.width==="800px"){
+
             document.getElementById("iframe_yt").style.width="1200px";
             document.getElementById("iframe_yt").style.height="900px";
 
@@ -313,7 +330,29 @@ const expandingpdfEl = document.getElementById("expandingpdf");
             document.getElementById("iframe_yt").style.height="255px";
         }
     }
+    let chonQA_buttonEl = document.getElementById("chonQA_button");
+    chonQA_buttonEl.innerHTML='2';
+    chonQA_buttonEl.addEventListener('click', function(){
+        if (chonQA_buttonEl.innerHTML==='2'){
+            chonQA_buttonEl.innerHTML='1';
+        }else{
+            chonQA_buttonEl.innerHTML='2';
+        }
+    })
 
+    
+
+
+//khoi dong luc dau
+document.getElementById("iframe_yt").style.width="340px";
+document.getElementById("iframe_yt").style.height="255px";
+
+function rutTextTuAnh(){
+    iframe_ytEl.src = "https://tiengs.github.io/";
+}
+function tiensg(){
+
+}
 </script>  
 
 <script src="index.js"></script> 

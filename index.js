@@ -288,6 +288,7 @@ const questionOutputEl = document.getElementById("questionOutput");
 const infoBEl = document.getElementById("infoB");
 const cauhoinEl = document.getElementById("cauhoin");
 
+const tiensgEl = document.getElementById("tiensg");
 
 var apiKey=maHoaLaiAK();
 var demClickGPT=0;
@@ -336,6 +337,7 @@ async function sendMessage(transcript) {
   let data = await response.json();
   //console.log(data);
   let reply = data.choices[0].message.content;
+
   if (transcript.search("giải thích từ ngữ tiếng Anh sau đây và định dạng kết quả bằng Markdown")>0){
     //console.log(reply);
     HienThiTrongSwal(reply);
@@ -844,10 +846,11 @@ Swal.fire({
 <div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : ">Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : </div>
 <div style="text-align: left;  color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : ">Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : </div>
 <div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : ">Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : </div>
-    <textarea id="input-text" class="swal2-input" placeholder="Nhập văn bản tiếng Việt" ></textarea>
-    <textarea id="translated-text" class="swal2-textarea" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..."></textarea>
-    <br>
-    <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
+    
+<textarea id="input-text" class="swal2-tien" placeholder="Nhập văn bản tiếng Việt" rows="8" cols="30" style="font-size:20px" color:darkgreen></textarea>
+<textarea readonly id="translated-text" class="swal2-tien" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..." rows="8" cols="30" style="font-size:20px; color:orange;"></textarea>
+<br>
+<button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px; background:orange;">🔊 Đọc</button>
     `,
 showCancelButton: true,
 confirmButtonText: "OK gửi đi",
@@ -1017,10 +1020,10 @@ Swal.fire({
 
 <br>
 
-    <textarea id="input-text" class="swal2-input" placeholder="Enter English text"></textarea>
-      <textarea id="translated-text" class="swal2-textarea" placeholder="Vietnamese translation will display here..."></textarea>
+    <textarea id="input-text" class="swal2-tien" placeholder="Enter English text" rows="8" cols="30" style="font-size:20px"></textarea>
+      <textarea readonly id="translated-text" class="swal2-tien" placeholder="Vietnamese translation will display here..." rows="8" cols="30" style="font-size:20px;color:orange;"></textarea>
       <br>
-      <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px;">🔊 Đọc</button>
+      <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px; background:orange">🔊 Đọc</button>
       `,
 showCancelButton: true,
 confirmButtonText: "OK gửi đi",
@@ -1116,7 +1119,7 @@ lbbimatEl.addEventListener('click', function(event){
   
   let qq = resultsdichViqEl.innerText;
   let aa = resultsdichViaEl.innerText;
-  if (qq==="" || aa===""){return;}
+  if (qq==="" && aa===""){return;}
   Swal.fire({
     title: "<span style='color:darkgreen;'>Translated Text</span>",
     html: `
