@@ -208,8 +208,18 @@ function rutTextTuAnh(){
     <h2>📷 Tải ảnh lên và chọn vùng để nhận diện văn bản</h2>
     <input type="file" id="imageInput" accept="image/*">
     <br><br>
-    <canvas id="canvas" style="border: 2px solid black;margin-top: 10px;"></canvas>
-    <br>
+    <canvas id="canvas" style="
+        width: 240px;
+        height: 180px;
+        border-radius: 0%; 
+        background-size: cover; 
+        background-position: center;
+        border: 2px solid #333; 
+        align-items: center;
+        justify-content: center;">
+    </canvas>
+
+    <br><br>
     <button id="extractText" >📜 Trích xuất văn bản</button><br><br>
 
     <textarea id="output" class="swal2-tien" placeholder="Văn bản nhận diện sẽ hiển thị ở đây và có thể sửa..." rows="6" cols="20" style="font-size:20px"></textarea>
@@ -229,12 +239,12 @@ function rutTextTuAnh(){
 
     setTimeout(() => {
         let img = new Image();
-        let canvas = document.getElementById("canvas");
+        let imageInputEl = document.getElementById("imageInput");
         let ctx = canvas.getContext("2d");
         //let startX, startY, endX, endY;
         //let isSelecting = false;
 
-        document.getElementById("imageInput").addEventListener("change", function (event) {
+        imageInputEl.addEventListener("change", function (event) {
             let file = event.target.files[0];
             if (file) {
                 selectedImage = file;
@@ -247,14 +257,15 @@ function rutTextTuAnh(){
 
         });
         img.onload = function () {
-            canvas.width = img.width * 0.5 ; // Giảm kích thước ảnh để vừa màn hình
-            canvas.height = img.height * 0.5 ;
+            canvas.width = img.width ; 
+            canvas.height = img.height ;
             resetCanvas();
         };
         function resetCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         }
+
 
         document.getElementById("extractText").addEventListener("click", function () {
             if (!selectedImage) {
