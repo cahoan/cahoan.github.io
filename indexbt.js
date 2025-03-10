@@ -210,8 +210,10 @@ function rutTextTuAnh(){
     <br><br>
     <canvas id="canvas" style="border: 2px solid black;cursor: crosshair;margin-top: 10px;"></canvas>
     <br>
-    <button id="extractText" >📜 Trích xuất văn bản</button>
-    <p id="output" style="color:darkgreen;">Văn bản nhận diện sẽ hiển thị ở đây...</p>
+    <button id="extractText" >📜 Trích xuất văn bản</button><br><br>
+
+    <textarea id="output" class="swal2-tien" placeholder="Văn bản nhận diện sẽ hiển thị ở đây và có thể sửa..." rows="6" cols="24" style="font-size:20px"></textarea>
+    
         `,
     showCancelButton: true,
     confirmButtonText: "OK gửi đi",
@@ -219,7 +221,7 @@ function rutTextTuAnh(){
     }).then((result) => {
         if (result.isConfirmed) {
             //alert(document.getElementById("output").innerText);
-            sendMessage(document.getElementById("output").innerText);
+            sendMessage(document.getElementById("output").value);
         }    
     });  
         
@@ -229,22 +231,24 @@ function rutTextTuAnh(){
         let img = new Image();
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
-        let startX, startY, endX, endY;
-        let isSelecting = false;
+        //let startX, startY, endX, endY;
+        //let isSelecting = false;
 
         document.getElementById("imageInput").addEventListener("change", function (event) {
             let file = event.target.files[0];
             if (file) {
+                selectedImage = file;
                 let reader = new FileReader();
                 reader.onload = function (e) {
                     img.src = e.target.result;
                 };
                 reader.readAsDataURL(file);
             }
+
         });
         img.onload = function () {
-            canvas.width = img.width * 1 ; // Giảm kích thước ảnh để vừa màn hình
-            canvas.height = img.height * 1 ;
+            canvas.width = img.width * 0.5 ; // Giảm kích thước ảnh để vừa màn hình
+            canvas.height = img.height * 0.5 ;
             resetCanvas();
         };
         function resetCanvas() {
@@ -252,111 +256,29 @@ function rutTextTuAnh(){
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         }
 
-
-        // Xử lý chọn vùng trên ảnh
-        canvas.addEventListener("mousedown", function (e) {
-            startX = e.offsetX;
-            startY = e.offsetY;
-            isSelecting = true;
-        });
-
-        canvas.addEventListener("mousemove", function (e) {
-            if (!isSelecting) return;
-            endX = e.offsetX;
-            endY = e.offsetY;
-            redrawCanvas();
-        });
-
-        canvas.addEventListener("mouseup", function (e) {
-            endX = e.offsetX;
-            endY = e.offsetY;
-            isSelecting = false;
-        });
-
-        function redrawCanvas() {
-            resetCanvas();
-            if (startX !== undefined && startY !== undefined && endX !== undefined && endY !== undefined) {
-                let width = endX - startX;
-                let height = endY - startY;
-                ctx.strokeStyle = "red";
-                ctx.lineWidth = 2;
-                ctx.strokeRect(startX, startY, width, height);
-            }
-        }
         document.getElementById("extractText").addEventListener("click", function () {
-            if (startX === undefined || startY === undefined || endX === undefined || endY === undefined) {
-                document.getElementById("output").innerText = "⚠️ Hãy chọn một vùng trước!";
+            if (!selectedImage) {
+                alert("📌 Please upload an image first.");
                 return;
             }
 
-            let width = endX - startX;
-            let height = endY - startY;
+            document.getElementById("output").textContent = "⏳ Processing...";
 
-            if (width <= 0 || height <= 0) {
-                document.getElementById("output").innerText = "⚠️ Vùng chọn không hợp lệ!";
-                return;
-            }
-
-            // Tạo canvas mới chứa phần cắt từ ảnh
-            let croppedCanvas = document.createElement("canvas");
-            croppedCanvas.width = width;
-            croppedCanvas.height = height;
-            let croppedCtx = croppedCanvas.getContext("2d");
-
-            croppedCtx.drawImage(canvas, startX, startY, width, height, 0, 0, width, height);
-            let imageDataURL = croppedCanvas.toDataURL("image/png");
-
-            // Xử lý ảnh (phóng to + tăng tương phản) trước khi OCR
-            preprocessImage(imageDataURL, function (processedImage) {
-                document.getElementById("output").innerText = "🔄 Đang nhận diện văn bản...";
-                
-                Tesseract.recognize(processedImage, "eng+vie", {
-                    logger: (m) => console.log(m),
-                }).then(({ data: { text } }) => {
-                    document.getElementById("output").innerText = text.trim();
-                }).catch(error => {
-                    document.getElementById("output").innerText = "❌ Lỗi OCR!";
-                    console.error("Lỗi OCR:", error);
-                });
+            Tesseract.recognize(
+                selectedImage,
+                "eng+vie",
+                {
+                logger: (m) => console.log(m)
+                }
+            ).then(({ data: { text } }) => {
+                document.getElementById("output").innerText = text.trim();
+            }).catch(error => {
+                document.getElementById("output").innerText = "❌ Lỗi OCR!";
+                console.error("Lỗi OCR:", error);
             });
         });
-
-        // 🛠 Chuyển ảnh sang grayscale + phóng to + tăng độ tương phản
-        function preprocessImage(imgDataURL, callback) {
-            let img = new Image();
-            img.src = imgDataURL;
-            img.onload = function () {
-                let tempCanvas = document.createElement("canvas");
-                let ctx = tempCanvas.getContext("2d");
-
-                // 🔹 **Phóng to ảnh 2 lần để OCR dễ đọc hơn**
-                let scale = 2;
-                tempCanvas.width = img.width * scale;
-                tempCanvas.height = img.height * scale;
-
-                ctx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
-                let imageData = ctx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-                let data = imageData.data;
-
-                for (let i = 0; i < data.length; i += 4) {
-                    // 🔹 **Chuyển sang grayscale**
-                    let gray = 0.3 * data[i] + 0.59 * data[i + 1] + 0.11 * data[i + 2];
-
-                    // 🔹 **Tăng độ tương phản** (Nếu pixel sáng, làm sáng hơn; pixel tối, làm tối hơn)
-                    let contrastFactor = 1.5; // Điều chỉnh độ tương phản (1.5 là vừa phải)
-                    gray = (gray - 128) * contrastFactor + 128;
-                    gray = Math.max(0, Math.min(255, gray)); // Giữ trong khoảng hợp lệ
-
-                    data[i] = data[i + 1] = data[i + 2] = gray;
-                }
-
-                ctx.putImageData(imageData, 0, 0);
-                callback(tempCanvas.toDataURL("image/png"));
-            };
-        }
-
-        
     }, 100);
+
     //.then((result) => {
     if (result.isConfirmed) {
             console.log(document.getElementById("ouput").innerText);
