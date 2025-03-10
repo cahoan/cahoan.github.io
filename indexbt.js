@@ -205,12 +205,12 @@ function rutTextTuAnh(){
     //---------
     Swal.fire({
         html:   `
-    <h2>📷 Tải ảnh lên và chọn vùng để nhận diện văn bản</h2>
+    <h2>📷 Tải ảnh lên để lấy văn bản</h2>
     <input type="file" id="imageInput" accept="image/*">
     <br><br>
     <canvas id="canvas" style="
         width: 240px;
-        height: 180px;
+        height: 160px;
         border-radius: 0%; 
         background-size: cover; 
         background-position: center;
