@@ -208,11 +208,11 @@ function rutTextTuAnh(){
     <h2>📷 Tải ảnh lên và chọn vùng để nhận diện văn bản</h2>
     <input type="file" id="imageInput" accept="image/*">
     <br><br>
-    <canvas id="canvas" style="border: 2px solid black;cursor: crosshair;margin-top: 10px;"></canvas>
+    <canvas id="canvas" style="border: 2px solid black;margin-top: 10px;"></canvas>
     <br>
     <button id="extractText" >📜 Trích xuất văn bản</button><br><br>
 
-    <textarea id="output" class="swal2-tien" placeholder="Văn bản nhận diện sẽ hiển thị ở đây và có thể sửa..." rows="6" cols="24" style="font-size:20px"></textarea>
+    <textarea id="output" class="swal2-tien" placeholder="Văn bản nhận diện sẽ hiển thị ở đây và có thể sửa..." rows="6" cols="20" style="font-size:20px"></textarea>
     
         `,
     showCancelButton: true,
