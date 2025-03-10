@@ -262,7 +262,7 @@ function rutTextTuAnh(){
                 return;
             }
 
-            document.getElementById("output").textContent = "⏳ Processing...";
+            //document.getElementById("output").textContent = "⏳ Processing...";
 
             Tesseract.recognize(
                 selectedImage,
