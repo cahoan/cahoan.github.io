@@ -94,8 +94,8 @@ justify-content: center;
 width: 24px; /* Kích thước nút */
 height: 24px;
 border-radius: 0%; /* Làm cho nút tròn */
-margin-top: 14px;
-background-color: transparent;
+margin-top: 16px;
+background: transparent;
 color:transparent ;
 border: transparent;
 }
@@ -196,7 +196,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
 <body>
 <div class="container">
     <!--TIEU DE-->
-    <h3 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for <span onclick="tdyt()">Listening</span></h3>  
+    <h3 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for <span onclick="tdyt()" id="lonNhoYt">Listening</span></h3>  
 
     <!--MENU CHON BAI-->
     <div class="unit_chons">
@@ -212,7 +212,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     </div><br>
 
     <!-- TIEU DE CHAT TALK GPT-->
-    <div  id="infoB" translate="no"> <span id='chattext'> with </span>chat<span onclick="anHienText_GPT()">GPT</span> in <span id='chatlang'>English</span></div>
+    <div  id="infoB" translate="no"> <span id='chattext'>Chat </span>with <span onclick="anHienText_GPT()" id="GPT"> GPT</span> in <span id='chatlang'>English</span></div>
 
     <!-- hai nut mic va bot-->
     <div class="button-container">
@@ -236,12 +236,13 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
      </div>   
 
     <!--CAC NUT DK AM THANH NOI-->
+    <br>
     <div>
         <span id="lbbimat" style="color:transparent ;">Van dich </span>
         <label for="rate" translate="no" >Rate:</label>
         <input id="rate" type="range" min="0.1" max="1.9" step="0.1" value="1" translate="no">
         <output for="rate" translate="no" >1</output> 
-        <span onclick="speakTextVi()" style="color:transparent;"> Am dich</span>
+        <span onclick="speakTextVi()" style="color:transparent;" id="amdich"> Am dich</span>
         <!--Khi nhap vao 1.1 thi doc ban dich anh/viet/tat am-->
     </div><br>
 
@@ -250,7 +251,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
         <label for="pitch" translate="no">Pitch:</label>
         <input id="pitch" type="range" min="0.1" max="1.9" step="0.1" value="1" translate="no">
         <output for="pitch" translate="no" >1</output>
-        <span onclick="GoOff()" style="color:transparent;"> Clear all</span>
+        <span onclick="GoOff()" style="color:transparent;" id="Clearall"> Clear all</span>
         <!--Khi nhap vao 1.1 thi clear/ off-->
     </div>
 
@@ -281,7 +282,7 @@ const iframe_ytEl = document.getElementById("iframe_yt");
 const basicpdfEl = document.getElementById("basicpdf");
 const developingpdfEl = document.getElementById("developingpdf");
 const expandingpdfEl = document.getElementById("expandingpdf");
-
+var hiden=0;
 //-- Cho NEN video ifram youtube-----------------------
     //let id = "";
     var videoIDcurrent;
@@ -295,9 +296,52 @@ const expandingpdfEl = document.getElementById("expandingpdf");
         if (selectb.selectedIndex===0){
             iframe_ytEl.src = iframe_ytEl_src_goc;
         }else{
+            if (selectb.selectedIndex===73){
+                hiden++;
+                if (hiden%2===1){
+                    //hienthi
+                    //alert('hien');
+                    document.getElementById("chonQA_button").style.color = "black";
+                    document.getElementById("chonQA_button").style.background.color = "darkgreen";
+                    document.getElementById("chonQA_button").style.border = "black";
+
+                    document.getElementById("lonNhoYt").style.color="orange";
+                    document.getElementById("chattext").style.color="orange";
+                    document.getElementById("GPT").style.color="orange";
+                    document.getElementById("chatlang").style.color="orange";
+
+                    document.getElementById("chon2or1").style.color="orange";
+                    document.getElementById("lbbimat").style.color="orange";
+                    document.getElementById("amdich").style.color="orange";
+                    document.getElementById("Clearall").style.color="orange";
+                } else {
+                    //alert('che');
+                    document.getElementById("chonQA_button").style.color = "transparent";
+                    document.getElementById("chonQA_button").style.background.color = "transparent";
+                    document.getElementById("chonQA_button").style.border = "transparent";
+
+                    document.getElementById("lonNhoYt").style.color="lightgreen";//transparent chonQA_button
+                    document.getElementById("chattext").style.color="aqua";
+                    document.getElementById("GPT").style.color="aqua";
+                    document.getElementById("chatlang").style.color="aqua";
+
+                    document.getElementById("chon2or1").style.color="transparent";
+                    document.getElementById("lbbimat").style.color="transparent";
+                    document.getElementById("amdich").style.color="transparent";
+                    document.getElementById("Clearall").style.color="transparent";
+
+
+                    //chedi    
+                }
+                selectb.selectedIndex=0;
+                return;
+            }
+            
             videoIDcurrent = list_id[selectb.selectedIndex];
             //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
             iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent + "?enablejsapi=1";
+            
+
         }
     }
     //------
@@ -337,6 +381,7 @@ const expandingpdfEl = document.getElementById("expandingpdf");
             chonQA_buttonEl.innerHTML='1';
         }else{
             chonQA_buttonEl.innerHTML='2';
+            openYtTheDuc();
         }
     })
 
@@ -350,7 +395,8 @@ document.getElementById("iframe_yt").style.height="255px";
 function rutTextTuAnh(){
     iframe_ytEl.src = "https://tiengs.github.io/";
 }
-function tiensg(){
+function openYtTheDuc(){
+    iframe_ytEl.src = "icons/theduc.mp4";
 
 }
 </script>  

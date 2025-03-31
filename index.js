@@ -239,7 +239,8 @@ let listUrlYt = [
   'Expanding Unit 21 : Famous People', 
   'Expanding Unit 22 : Food and Nutrition', 
   'Expanding Unit 23 : Predicaments', 
-  'Expanding Unit 24 : Global Issues'];
+  'Expanding Unit 24 : Global Issues',
+  'Expanding Unit 25 : Unhide Secret'];
   
   // Main function
   function GFG_Fun() {
