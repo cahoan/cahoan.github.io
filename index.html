@@ -379,9 +379,10 @@ var hiden=0;
     chonQA_buttonEl.addEventListener('click', function(){
         if (chonQA_buttonEl.innerHTML==='2'){
             chonQA_buttonEl.innerHTML='1';
+            iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
         }else{
             chonQA_buttonEl.innerHTML='2';
-            openYtTheDuc();
+            iframe_ytEl.src = "icons/theduc.mp4";
         }
     })
 
@@ -394,10 +395,6 @@ document.getElementById("iframe_yt").style.height="255px";
 
 function rutTextTuAnh(){
     iframe_ytEl.src = "https://tiengs.github.io/";
-}
-function openYtTheDuc(){
-    iframe_ytEl.src = "icons/theduc.mp4";
-
 }
 </script>  
 
