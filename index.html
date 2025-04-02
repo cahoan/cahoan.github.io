@@ -91,7 +91,7 @@ align-items: center;
 justify-content: center;
 }
 #chonQA_button{
-width: 24px; /* Kích thước nút */
+width: auto; /* Kích thước nút */
 height: 24px;
 border-radius: 0%; /* Làm cho nút tròn */
 margin-top: 16px;
@@ -305,15 +305,15 @@ var hiden=0;
                     document.getElementById("chonQA_button").style.background.color = "darkgreen";
                     document.getElementById("chonQA_button").style.border = "black";
 
-                    document.getElementById("lonNhoYt").style.color="orange";
-                    document.getElementById("chattext").style.color="orange";
-                    document.getElementById("GPT").style.color="orange";
-                    document.getElementById("chatlang").style.color="orange";
+                    document.getElementById("lonNhoYt").style.color="pink";
+                    document.getElementById("chattext").style.color="pink";
+                    document.getElementById("GPT").style.color="pink";
+                    document.getElementById("chatlang").style.color="pink";
 
-                    document.getElementById("chon2or1").style.color="orange";
-                    document.getElementById("lbbimat").style.color="orange";
-                    document.getElementById("amdich").style.color="orange";
-                    document.getElementById("Clearall").style.color="orange";
+                    document.getElementById("chon2or1").style.color="pink";
+                    document.getElementById("lbbimat").style.color="pink";
+                    document.getElementById("amdich").style.color="pink";
+                    document.getElementById("Clearall").style.color="pink";
                 } else {
                     //alert('che');
                     document.getElementById("chonQA_button").style.color = "transparent";
@@ -356,7 +356,7 @@ var hiden=0;
     function hthipdf3(){
         iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/vlyh";
     }
-
+    let tducso=0;
     function tdyt(){
         //alert('tdyt');
         if (document.getElementById("iframe_yt").style.width==="340px"){
@@ -375,16 +375,33 @@ var hiden=0;
         }
     }
     let chonQA_buttonEl = document.getElementById("chonQA_button");
-    chonQA_buttonEl.innerHTML='2';
+    chonQA_buttonEl.innerHTML='TD';
+
     chonQA_buttonEl.addEventListener('click', function(){
-        if (chonQA_buttonEl.innerHTML==='2'){
-            chonQA_buttonEl.innerHTML='1';
-            iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+        tducso++;
+
+        if (chonQA_buttonEl.innerHTML==='TD'){
+            chonQA_buttonEl.innerHTML='TD';
         }else{
-            chonQA_buttonEl.innerHTML='2';
-            iframe_ytEl.src = "icons/theduc.mp4";
+            chonQA_buttonEl.innerHTML='TD';
         }
-    })
+    
+        if (tducso%4 === 1) {
+            iframe_ytEl.src = "icons/theduc.mp4";
+            chonQA_buttonEl.innerHTML='The duc yhct 30p';
+
+        } else if (tducso%4 === 2) {
+            iframe_ytEl.src = "icons/theducnu.mp4";
+            chonQA_buttonEl.innerHTML='The duc yhct 30p nu';
+        } else if (tducso%4 === 3) {
+            iframe_ytEl.src = "icons/theduc15namnu.mp4";
+            chonQA_buttonEl.innerHTML='The duc yhct 15p';
+        } else {
+            iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+            chonQA_buttonEl.innerHTML='TD';
+
+        }
+    });
 
     
 
