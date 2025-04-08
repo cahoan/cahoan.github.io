@@ -772,6 +772,11 @@ setTimeout(() => iframe.src = videoUrl, 100); // Gán lại URL sau 100ms
 
 //----------------
 function GoOff(){
+  if (resultsEl.innerText !== ""){
+    const text1 = resultsEl.innerText;
+    const text2 = resultsdichEl.innerText;
+    navigator.clipboard.writeText(text1 + '\n' + text2);
+  }
 resultsEl.innerText="";
 resultsdichEl.innerText="";
 
