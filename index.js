@@ -1248,13 +1248,13 @@ function readTd30(){
       speakTextTd(textTdEn, "en-US");
   } else{
       let textTdVi = 'Bạn vừa chọn bài tập thể dục y học cổ truyền. '+
-          'Nếu bạn tập 30 phút mỗi ngày, nó sẽ giúp bạn : '+
+          'Nếu bạn tập 30 phút mỗi ngày, nó sẽ giúp bạn : '+ 
           '1. Lưu thông khí huyết tốt hơn: '+
-          'Các độngtác nhẹ nhàng và chậm rãi giúp cácmạch máu giãn nở tự nhiên, '+
+          'Các động tác nhẹ nhàng và chậm rãi giúp các mạch máu giãn nở tự nhiên, '+
           'kích thích máu và khí di chuyển đều đặn khắp cơ thể. '+
-          'Điều này giúp cung cấp nhiều oxy và dưỡng chất hơn đến các cơ quan, '+
+          'Điều này giúp cung cấp nhiều ô xy và dưỡng chất hơn đến các cơ quan, '+
           'hỗ trợ quá trình phục hồi và cải thiện sức khỏe. '+
-          '2. Giảm căng thẳng và mét mỏi: '+
+          '2. Giảm căng thẳng và mệt mỏi : '+
           'Thể dục y học cổ truyền chú trọng đến hơi thỡ sâu và chậm, '+
           'giúp giảm stress, thư giãn hệ thần kinh và giảm áp lực trên tim mạch. '+
           'Khi hệ thần kinh được thả lỏng, khí huyết lưu thông thuận lợi, '+
