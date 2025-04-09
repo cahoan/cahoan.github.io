@@ -1224,3 +1224,60 @@ Swal.fire({
 //    alert('hhhh');
 //  }    
 }
+//-------------------
+function readTd30(){
+  if (chatlangEl.innerText==='English'){
+      let textTdEn = ''+
+          '30 minutes practice every day for you. '+ 
+          '1. Better blood circulation: '+
+          'The movements are gentle and slow to help the blood stretch naturally expand, '+
+          'stimulating and moving regularly throughout the muscles. '+
+          'This helps to provide more oxygen and quality to the organs, '+
+          'support the recovery process and improve health. '+
+          '2. Reducing stress and fatigue: '+
+          'Traditional gymnastics focus on the steam and slowly, '+
+          'help reduce stress, '+
+          'relax nerves and reduce pressure on the heart. '+
+          'When the nervous system is relaxed, '+
+          'the air circulation is convenient, '+
+          'helping the body regrease and reach the equilibrium state. '+
+          '3. Support the function of the digestive and internal system: '+
+          'These exercises also help stimulate digestion, improve liver, kidney function, '+
+          'and other internal organs by reducing blood stagnation, '+
+          'thereby helping the fluid operate better. ';
+      speakTextTd(textTdEn, "en-US");
+  } else{
+      let textTdVi = ''+
+          '30 phút tập mỗi ngày giúp bạn : '+
+          '1. Lưu thông khí huyết tốt hơn: '+
+          'Các độngtác nhẹ nhàng và chậm rãi giúp cácmạch máu giãn nở tự nhiên, '+
+          'kích thích máu và khí di chuyển đều đặn khắp cơ thể. '+
+          'Điều này giúp cung cấp nhiều oxy và dưỡng chất hơn đến các cơ quan, '+
+          'hỗ trợ quá trình phục hồi và cải thiện sức khỏe. '+
+          '2. Giảm căng thẳng và mét mỏi: '+
+          'Thể dục y học cổ truyền chú trọng đến hơi thỡ sâu và chậm, '+
+          'giúp giảm stress, thư giãn hệ thần kinh và giảm áp lực trên tim mạch. '+
+          'Khi hệ thần kinh được thả lỏng, khí huyết lưu thông thuận lợi, '+
+          'giúp cơ thể hồi phục và đạt trạng thái cân bằng. '+
+          '3. Hỗ trợ chức năng hệ tiêu hóa và nội tạng: '+
+          'Các bài tập này còn giúp kích thích hệ tiêu hóa, '+
+          'cải thiện chức năng gan,thận, và các cơ quan nội tạng khác bằng cách giảm ứ trệ khí huyết, '+
+          'từ đó giúp hệ miễn dịch hoạt động tốt hơn. ';
+      speakTextTd(textTdVi, "vi-VN");
+  }
+}
+//-----------
+function speakTextTd(textTd,langNoi){ 
+  if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
+    return;
+  }
+  let textNoi = textTd;
+  const speech = new SpeechSynthesisUtterance();
+  speech.lang = langNoi;
+  speech.text = textNoi;
+  speech.rate = 1;
+  speech.pitch = 1;
+  speech.volume = 2;
+  speechSynthesis.speak(speech);
+}
+  
