@@ -1227,8 +1227,8 @@ Swal.fire({
 //-------------------
 function readTd30(){
   if (chatlangEl.innerText==='English'){
-      let textTdEn = ''+
-          '30 minutes practice every day for you. '+ 
+      let textTdEn = 'You have selected the tradionnal medicine exercise. If you have '+
+          '30 minutes practice every day, it help you : '+ 
           '1. Better blood circulation: '+
           'The movements are gentle and slow to help the blood stretch naturally expand, '+
           'stimulating and moving regularly throughout the muscles. '+
@@ -1247,8 +1247,8 @@ function readTd30(){
           'thereby helping the fluid operate better. ';
       speakTextTd(textTdEn, "en-US");
   } else{
-      let textTdVi = ''+
-          '30 phút tập mỗi ngày giúp bạn : '+
+      let textTdVi = 'Bạn vừa chọn bài tập thể dục y học cổ truyền. '+
+          'Nếu bạn tập 30 phút mỗi ngày, nó sẽ giúp bạn : '+
           '1. Lưu thông khí huyết tốt hơn: '+
           'Các độngtác nhẹ nhàng và chậm rãi giúp cácmạch máu giãn nở tự nhiên, '+
           'kích thích máu và khí di chuyển đều đặn khắp cơ thể. '+
