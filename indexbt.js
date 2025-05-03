@@ -299,3 +299,26 @@ function rutTextTuAnh(){
         
 
 }
+//-----------------
+function doctd(){
+    let textd = '30 minutes practice every day for you. '+ 
+    '1. Better blood circulation: '+
+    'The movements are gentle and slow to help the blood stretch naturally expand, '+
+    'stimulating and moving regularly throughout the muscles. '+
+    'This helps to provide more oxygen and quality to the organs, '+
+    'support the recovery process and improve health. '+
+    '2. Reducing stress and fatigue: '+
+    'Traditional gymnastics focus on the steam and slowly, '+
+    'help reduce stress, '+
+    'relax nerves and reduce pressure on the heart. '+
+    'When the nervous system is relaxed, '+
+    'the air circulation is convenient, '+
+    'helping the body regrease and reach the equilibrium state. '+
+    '3. Support the function of the digestive and internal system: '+
+    'These exercises also help stimulate digestion, improve liver, kidney function, '+
+    'and other internal organs by reducing blood stagnation, '+
+    'thereby helping the fluid operate better. ';
+
+
+
+}

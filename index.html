@@ -299,16 +299,6 @@ function chonUnit(){ //chon unit khac va update iframe
         iframe_ytEl.src = iframe_ytEl_src_goc;
     }else{
         if (selectb.selectedIndex===73){
-            //moi them 3-5-25
-            window.speechSynthesis.onvoiceschanged = function() {
-                const voices = speechSynthesis.getVoices();
-                console.log("Available voices:", voices.map(v => v.name + ' (' + v.lang + ')'));
-                let voice = null;
-                voice = voices.find(v => v.lang === 'vi-VN');
-                alert(voice.lang);
-            };
-            //HET MOI THEM 3-5-25
-
             hiden++;
             if (hiden%2===1){
                 //hienthi
@@ -426,6 +416,50 @@ function rutTextTuAnh(){
     iframe_ytEl.src = "https://tiengs.github.io/";
 }
 //doc bai theduc
+//them 3-5-25
+function detectLanguage(text) {
+    // Nếu thấy nhiều ký tự có dấu tiếng Việt thì chọn tiếng Việt
+    const vietnameseRegex = /[àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
+    return vietnameseRegex.test(text) ? 'vi-VN' : 'en-US';
+}
+//------------------------
+function speakText(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    const detectedLang = detectLanguage(text);
+    utterance.lang = detectedLang; // 'vi-VN' hoặc 'en-US'
+
+    function setVoiceAndSpeak() {
+        const voices = speechSynthesis.getVoices();
+        console.log("Available voices:", voices.map(v => v.name + ' (' + v.lang + ')'));
+
+        let voice = null;
+
+        if (detectedLang === 'vi-VN') {
+            // Tìm giọng tiếng Việt
+            voice = voices.find(v => v.lang === 'vi-VN');
+        } else {
+            // Tìm giọng tiếng Anh tốt nhất
+            voice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Karen')));
+            if (!voice) {
+                voice = voices.find(v => v.lang === 'en-US');
+            }
+        }
+
+        if (voice) {
+            utterance.voice = voice;
+        }
+
+        speechSynthesis.speak(utterance);
+    }
+
+    if (speechSynthesis.getVoices().length > 0) {
+        setVoiceAndSpeak();
+    } else {
+        speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
+    }
+}
+
+//Het them 3-5-25
 
 </script>  
 

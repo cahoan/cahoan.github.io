@@ -91,7 +91,8 @@ let listUrlYt = [
       'vG7bD1V1vYM', 'PBpCh6ZOOYA', 'jOHp6EqEJz0', 'gXk71msBMgo', 'ff3VrHmFirs', 'ZKb2zpoEKbg', 
       'CXWlHOjTMBM', 'nz0VIbZUpPI', '2p6LN506wN0', '94p8nPfEdu0', 'HPUu7Eu5bdo', 'B_Fh21CwXi0', 
       'pjdRa8-4QCE', 'Mt8LcfwkfDc', 'ZqqsH2jSxEo', 'l92O_ie7T7o', '1PpuwIWJ_AU', 'BN1g_G_ATGc', 
-      'W3vY8AB4YxQ', 'mkWhUuveuCo', 'PjNfRrbSu-E', 'toEv7eDDxPE', 'NkJjcGoum-U', 'qaFcCN23JiQ'];
+      'W3vY8AB4YxQ', 'mkWhUuveuCo', 'PjNfRrbSu-E', 'toEv7eDDxPE', 'NkJjcGoum-U', 'qaFcCN23JiQ',
+      'L3kBxFRx1dY','pdm2VIOmXMc','HB2F7kRKZcs'];
   
   
   let listMenuSelect = [
@@ -1225,6 +1226,7 @@ Swal.fire({
 //  }    
 }
 //-------------------
+
 function readTd30(){
   if (chatlangEl.innerText==='English'){
       let textTdEn = 'You have selected the tradionnal medicine exercise. If you have '+
@@ -1245,8 +1247,9 @@ function readTd30(){
           'These exercises also help stimulate digestion, improve liver, kidney function, '+
           'and other internal organs by reducing blood stagnation, '+
           'thereby helping the fluid operate better. ';
-      speakTextTd(textTdEn, "en-US");
-  } else{
+      //speakTextTd(textTdEn, "en-US");
+      speakText(textTdEn);
+    } else{
       let textTdVi = 'Bạn vừa chọn bài tập thể dục y học cổ truyền. '+
           'Nếu bạn tập 30 phút mỗi ngày, nó sẽ giúp bạn : '+ 
           '1. Lưu thông khí huyết tốt hơn: '+
@@ -1263,7 +1266,8 @@ function readTd30(){
           'Các bài tập này còn giúp kích thích hệ tiêu hóa, '+
           'cải thiện chức năng gan,thận, và các cơ quan nội tạng khác bằng cách giảm ứ trệ khí huyết, '+
           'từ đó giúp hệ miễn dịch hoạt động tốt hơn. ';
-      speakTextTd(textTdVi, "vi-VN");
+      //speakTextTd(textTdVi, "vi-VN");
+      speakText(textTdVi);
   }
 }
 //-----------
