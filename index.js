@@ -355,7 +355,7 @@ async function sendMessage(transcript) {
 
     }  
   
-  function speakText(text) {
+  function speakTextbo(text) {
     // stop any speaking in progress
     window.speechSynthesis.cancel();
   
@@ -381,34 +381,35 @@ async function sendMessage(transcript) {
 }
 
 function reSpeak(){
-if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
-  //listen_imgEl.src = 'icons/bot.png';
-  speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
+    if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
+      //listen_imgEl.src = 'icons/bot.png';
+      speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
 
-      resultsdichEl.innerHTML =   resultsdichEl.innerText;
-  return;
-}
+          resultsdichEl.innerHTML =   resultsdichEl.innerText;
+      return;
+    }
 
-window.speechSynthesis.cancel();
+    window.speechSynthesis.cancel();
 
-text = resultsdichEl.innerText;
-utterance = new SpeechSynthesisUtterance(text);
-// create new utterance with all the properties
-//utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-utterance.lang = langNoi;
-utterance.pitch = pitchInEl.value;
-utterance.rate = rateInEl.value;
-//utterance.volume = volumeInEl.value;
-utterance.volume = 1;
+    text = resultsdichEl.innerText;
 
-utterance.addEventListener('start', handleStart);
-utterance.addEventListener('end', handleEnd2);
-utterance.addEventListener('boundary', handleBoundary);
+    utterance = new SpeechSynthesisUtterance(text);
+    // create new utterance with all the properties
+    //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
+    utterance.lang = langNoi;
+    utterance.pitch = pitchInEl.value;
+    utterance.rate = rateInEl.value;
+    //utterance.volume = volumeInEl.value;
+    utterance.volume = 1;
+
+    utterance.addEventListener('start', handleStart);
+    utterance.addEventListener('end', handleEnd2);
+    utterance.addEventListener('boundary', handleBoundary);
 
 
 
-// speak that utterance
-window.speechSynthesis.speak(utterance);
+    // speak that utterance
+    window.speechSynthesis.speak(utterance);
 }
 
 
@@ -750,18 +751,19 @@ if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
 
   let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
   if (textNoi.trim()==="."){return;}
-  const speech = new SpeechSynthesisUtterance();
-  if (langNoi==='en-US'){
-    speech.lang = "vi-VN"; // Đọc tiếng Vi
-  }else{
-    speech.lang = "en-US"; // Đọc tiếng Vi
+  speakText(textNoi);
+  //const speech = new SpeechSynthesisUtterance();
+  //if (langNoi==='en-US'){
+  //  speech.lang = "vi-VN"; // Đọc tiếng Vi
+  //}else{
+  //  speech.lang = "en-US"; // Đọc tiếng Vi
 
-  }  
-  speech.text = textNoi;
-  speech.rate = 1;
-  speech.pitch = 1;
-  speech.volume = 2;
-  speechSynthesis.speak(speech);
+  //}  
+  //speech.text = textNoi;
+  //speech.rate = 1;
+  //speech.pitch = 1;
+  //speech.volume = 2;
+  //speechSynthesis.speak(speech);
 }
 //--------------------
 function stopVideo() {
@@ -909,7 +911,8 @@ setTimeout(() => {
   });
   // Khi nhấn nút đọc 🔊
   speakButton.addEventListener("click", () => {
-    speakTextAPIen(translatedText.value);
+    //speakTextAPIen(translatedText.value);
+    speakText(translatedText.value);
   });
 }, 100);
 // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
@@ -1082,7 +1085,8 @@ setTimeout(() => {
     });
     // Khi nhấn nút đọc 🔊
     speakButton.addEventListener("click", () => {
-      speakTextAPIvi(translatedText.value);
+      //speakTextAPIvi(translatedText.value);
+      speakText(translatedText.value);
     });
   }, 100);
   // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
