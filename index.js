@@ -354,61 +354,106 @@ async function sendMessage(transcript) {
 
     }  
   
-  function speakTextbo(text) {
+  //function speakTextbo(text) {
     // stop any speaking in progress
-    window.speechSynthesis.cancel();
+  //  window.speechSynthesis.cancel();
   
     // create new utterance with all the properties
     //const text = textEl.value;
-    utterance = new SpeechSynthesisUtterance(text);
+  //  utterance = new SpeechSynthesisUtterance(text);
     //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-    utterance.lang = langNoi;
-    utterance.pitch = pitchInEl.value;
-    utterance.rate = rateInEl.value;
+   // utterance.lang = langNoi;
+   // utterance.pitch = pitchInEl.value;
+   // utterance.rate = rateInEl.value;
     //utterance.volume = volumeInEl.value;
-    utterance.volume = 1;
-    utterance.addEventListener('start', handleStart);
-    utterance.addEventListener('end', handleEnd);
+   // utterance.volume = 1;
+   // utterance.addEventListener('start', handleStart);
+   // utterance.addEventListener('end', handleEnd);
 
 
     // speak that utterance
-    window.speechSynthesis.speak(utterance);
-  }
+   // window.speechSynthesis.speak(utterance);
+  //}
   speakText(resultsdichEl.innerText);
 }
 
 }
 
 function reSpeak(){
-    if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
+
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
       //listen_imgEl.src = 'icons/bot.png';
       speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
 
-          resultsdichEl.innerHTML =   resultsdichEl.innerText;
+      resultsdichEl.innerHTML =   resultsdichEl.innerText;
       return;
     }
 
     window.speechSynthesis.cancel();
 
     text = resultsdichEl.innerText;
+    const utterance = new SpeechSynthesisUtterance(text);
+    const detectedLang = detectLanguage(text);
+    utterance.lang = detectedLang; // 'vi-VN' hoặc 'en-US'
 
-    utterance = new SpeechSynthesisUtterance(text);
+    function setVoiceAndSpeak() {
+        const voices = speechSynthesis.getVoices();
+        console.log("Available voices:", voices.map(v => v.name + ' (' + v.lang + ')'));
+
+        let voice = null;
+
+        if (detectedLang === 'vi-VN') {
+            // Tìm giọng tiếng Việt
+            voice = voices.find(v => v.lang === 'vi-VN');
+        } else {
+            // Tìm giọng tiếng Anh tốt nhất
+            voice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Karen')));
+            if (!voice) {
+                voice = voices.find(v => v.lang === 'en-US');
+            }
+        }
+
+        if (voice) {
+            utterance.voice = voice;
+        }
+        utterance.pitch = pitchInEl.value;
+        utterance.rate = rateInEl.value;
+        //utterance.volume = volumeInEl.value;
+        //utterance.volume = 1;
+
+        utterance.addEventListener('start', handleStart);
+        utterance.addEventListener('end', handleEnd2);
+        utterance.addEventListener('boundary', handleBoundary);
+
+
+        speechSynthesis.speak(utterance);
+    }
+
+    if (speechSynthesis.getVoices().length > 0) {
+        setVoiceAndSpeak();
+    } else {
+        speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
+    }
+
+    //speakText(text);
+    //utterance = new SpeechSynthesisUtterance(text);
     // create new utterance with all the properties
     //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-    utterance.lang = langNoi;
-    utterance.pitch = pitchInEl.value;
-    utterance.rate = rateInEl.value;
+    //utterance.lang = langNoi;
+    //utterance.pitch = pitchInEl.value;
+    //utterance.rate = rateInEl.value;
     //utterance.volume = volumeInEl.value;
-    utterance.volume = 1;
+    //utterance.volume = 1;
 
-    utterance.addEventListener('start', handleStart);
-    utterance.addEventListener('end', handleEnd2);
-    utterance.addEventListener('boundary', handleBoundary);
+    //utterance.addEventListener('start', handleStart);
+    //utterance.addEventListener('end', handleEnd2);
+    //utterance.addEventListener('boundary', handleBoundary);
 
 
 
     // speak that utterance
-    window.speechSynthesis.speak(utterance);
+    //window.speechSynthesis.speak(utterance);
 }
 
 
@@ -745,9 +790,10 @@ if (markElement){
 }
 //------------------------
 function speakTextVi(){ //ham nay doc QA noi bi mat
-if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
-  return;
-}
+
+  if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
+    return;
+  }
 
   let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
   if (textNoi.trim()==="."){return;}
@@ -767,10 +813,10 @@ if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
 }
 //--------------------
 function stopVideo() {
-let iframe = document.getElementById("iframe_yt");
-let videoUrl = iframe.src; // Lưu lại URL video
-iframe.src = ""; // Xóa src để dừng
-setTimeout(() => iframe.src = videoUrl, 100); // Gán lại URL sau 100ms
+  let iframe = document.getElementById("iframe_yt");
+  let videoUrl = iframe.src; // Lưu lại URL video
+  iframe.src = ""; // Xóa src để dừng
+  setTimeout(() => iframe.src = videoUrl, 100); // Gán lại URL sau 100ms
 }
 
 //----------------
@@ -780,65 +826,65 @@ function GoOff(){
     const text2 = resultsdichEl.innerText;
     navigator.clipboard.writeText(text1 + '\n' + text2);
   }
-resultsEl.innerText="";
-resultsdichEl.innerText="";
+  resultsEl.innerText="";
+  resultsdichEl.innerText="";
 
-//start_imgEl.src = "icons/mic.gif";
-start_buttonEl.style.backgroundImage = "url('icons/mic.gif')"; // Set the background image
-//listen_imgEl.src = "icons/bot.png";
-speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
+  //start_imgEl.src = "icons/mic.gif";
+  start_buttonEl.style.backgroundImage = "url('icons/mic.gif')"; // Set the background image
+  //listen_imgEl.src = "icons/bot.png";
+  speakEl.style.backgroundImage = "url('icons/bot.png')"; // Set the background image
 
-resultsdichViqEl.innerText = "";
-resultsdichViaEl.innerText = "";
+  resultsdichViqEl.innerText = "";
+  resultsdichViaEl.innerText = "";
  
-const synth = window.speechSynthesis;
-if (synth.speaking) {synth.cancel();}
+  const synth = window.speechSynthesis;
+  if (synth.speaking) {synth.cancel();}
 
 //stopVideo();  
 }
 
 //----Ham Dich ra Vi------------------
 function dichRaVi(textCanDich,ptchua){
-const inputText = textCanDich;
-let sourceLanguage = 'en';
-let targetLanguage = 'vi';
+  const inputText = textCanDich;
+  let sourceLanguage = 'en';
+  let targetLanguage = 'vi';
 
-const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
 
-const xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function () {
-  if (this.readyState == 4 && this.status == 200){
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200){
       const responseReturned = JSON.parse(this.responseText);
       const translations = responseReturned[0].map((text) => text[0]);
       const outputText = translations.join(" ");
       //console.log(outputText);
       ptchua.innerText = ' '+outputText;
-  }
-};
-xhttp.open("GET", url);
-xhttp.send();
+    }
+  };
+  xhttp.open("GET", url);
+  xhttp.send();
 
 }
 //----Ham Dich ra En------------------
 function dichRaEn(textCanDich,ptchua){
-const inputText = textCanDich;
-let sourceLanguage = 'vi';
-let targetLanguage = 'En';
+  const inputText = textCanDich;
+  let sourceLanguage = 'vi';
+  let targetLanguage = 'En';
 
-const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLanguage}&tl=${targetLanguage}&dt=t&q=${encodeURI(inputText)}`;
 
-const xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function () {
-  if (this.readyState == 4 && this.status == 200){
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200){
       const responseReturned = JSON.parse(this.responseText);
       const translations = responseReturned[0].map((text) => text[0]);
       const outputText = translations.join(" ");
       //console.log(outputText);
       ptchua.innerText = ' '+outputText;
-  }
-};
-xhttp.open("GET", url);
-xhttp.send();
+    }
+  };
+  xhttp.open("GET", url);
+  xhttp.send();
 
 }
 
@@ -846,50 +892,50 @@ xhttp.send();
 let finalSpeechText = ""; // Biến toàn cục để lưu văn bản khi nhấn OK
 
 function chatTiengViet() {
-Swal.fire({
-  title: "<span style='color:darkgreen;'>Chat bằng tiếng Việt</span>",
-  html: `
-<p style="text-align: left; color:orange;">Chọn một yêu cầu để thiết lập trước cụm từ sẽ được nhập:</p>
-<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="" checked>(để trống)</div>
-<div style="text-align: left; color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có chứa từ sau : ">Đưa ra một ví dụ về một câu tiếng Việt có chứa từ sau : </div>
-<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : ">Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : </div>
-<div style="text-align: left;  color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : ">Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : </div>
-<div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : ">Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : </div>
+  Swal.fire({
+    title: "<span style='color:darkgreen;'>Chat bằng tiếng Việt</span>",
+    html: `
+      <p style="text-align: left; color:orange;">Chọn một yêu cầu để thiết lập trước cụm từ sẽ được nhập:</p>
+      <div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="" checked>(để trống)</div>
+      <div style="text-align: left; color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có chứa từ sau : ">Đưa ra một ví dụ về một câu tiếng Việt có chứa từ sau : </div>
+      <div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : ">Đưa ra một ví dụ về một câu tiếng Việt có cụm từ sau : </div>
+      <div style="text-align: left;  color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : ">Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : </div>
+      <div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : ">Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : </div>
     
-<textarea id="input-text" class="swal2-tien" placeholder="Nhập văn bản tiếng Việt" rows="6" cols="20" style="font-size:20px" color:darkgreen></textarea>
-<textarea readonly id="translated-text" class="swal2-tien" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..." rows="6" cols="20" style="font-size:20px; color:orange;"></textarea>
-<br>
-<button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px; background:orange;">🔊 Đọc</button>
+      <textarea id="input-text" class="swal2-tien" placeholder="Nhập văn bản tiếng Việt" rows="6" cols="20" style="font-size:20px" color:darkgreen></textarea>
+      <textarea readonly id="translated-text" class="swal2-tien" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..." rows="6" cols="20" style="font-size:20px; color:orange;"></textarea>
+      <br>
+      <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px; background:orange;">🔊 Đọc</button>
     `,
-showCancelButton: true,
-confirmButtonText: "OK gửi đi",
-cancelButtonText: "Hủy",
-}).then((result) => {
-if (result.isConfirmed) {
-  var cauhoi='';
-  var ele = document.getElementsByName('pre-sentence');
-  for (i = 0; i < ele.length; i++) {
-    if (ele[i].checked){
-      cauhoi = ele[i].value;
-    }
-  }    
-  finalSpeechText = cauhoi + '"' + document.getElementById("input-text").value.trim()+ '"'; // Lưu văn bản vào biến
-  //console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
+    showCancelButton: true,
+    confirmButtonText: "OK gửi đi",
+    cancelButtonText: "Hủy",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      var cauhoi='';
+      var ele = document.getElementsByName('pre-sentence');
+      for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked){
+          cauhoi = ele[i].value;
+        }
+      }    
+      finalSpeechText = cauhoi + '"' + document.getElementById("input-text").value.trim()+ '"'; // Lưu văn bản vào biến
+      //console.log("Văn bản sau khi nhấn OK:", finalSpeechText); // Bạn có thể dùng biến này để xử lý tiếp
 
-  //--text Vi vua input duoc ghi vao elem hoi----
-  if (finalSpeechText.trim()!==''){
-    resultsEl.innerText = finalSpeechText;
+      //--text Vi vua input duoc ghi vao elem hoi----
+      if (finalSpeechText.trim()!==''){
+        resultsEl.innerText = finalSpeechText;
 
-  //text nay can dich sang tieng Anh ghi vao noi bi mat de co the doc len sau nay
-  let textCanDich = resultsEl.innerText.trim() ;
-    //alert(textCanDich);
-    let ptchua = resultsdichViqEl;
-  dichRaEn(textCanDich,ptchua);
+        //text nay can dich sang tieng Anh ghi vao noi bi mat de co the doc len sau nay
+        let textCanDich = resultsEl.innerText.trim() ;
+        //alert(textCanDich);
+        let ptchua = resultsdichViqEl;
+        dichRaEn(textCanDich,ptchua);
 
-  sendMessage(resultsEl.innerText);
-  } else {alert('Không gửi vì chưa nhập gì!')};
-  /////////////////////////////
-}
+        sendMessage(resultsEl.innerText);
+      } else {alert('Không gửi vì chưa nhập gì!')};
+        /////////////////////////////
+  }
 });
 
 // Chờ SweetAlert2 render xong rồi mới gán sự kiện
@@ -916,15 +962,15 @@ setTimeout(() => {
   });
 }, 100);
 // 🎤 Hàm đọc văn bản bằng SpeechSynthesis API
-function speakTextAPIen(text) {
-  const speech = new SpeechSynthesisUtterance();
-  speech.lang = "en-US"; // Đọc tiếng Anh
-  speech.text = text;
-  speech.rate = 1.0;
-  speech.pitch = 1.0;
-  speech.volume = 1;
-  speechSynthesis.speak(speech);
-}
+//function speakTextAPIen(text) {
+//  const speech = new SpeechSynthesisUtterance();
+//  speech.lang = "en-US"; // Đọc tiếng Anh
+//  speech.text = text;
+//  speech.rate = 1.0;
+//  speech.pitch = 1.0;
+//  speech.volume = 1;
+//  speechSynthesis.speak(speech);
+//}
 
 }
 
@@ -1275,17 +1321,17 @@ function readTd30(){
   }
 }
 //-----------
-function speakTextTd(textTd,langNoi){ 
-  if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
-    return;
-  }
-  let textNoi = textTd;
-  const speech = new SpeechSynthesisUtterance();
-  speech.lang = langNoi;
-  speech.text = textNoi;
-  speech.rate = 1;
-  speech.pitch = 1;
-  speech.volume = 2;
-  speechSynthesis.speak(speech);
-}
+//function speakTextTd(textTd,langNoi){ 
+//  if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
+//    return;
+//  }
+//  let textNoi = textTd;
+//  const speech = new SpeechSynthesisUtterance();
+//  speech.lang = langNoi;
+//  speech.text = textNoi;
+//  speech.rate = 1;
+//  speech.pitch = 1;
+//  speech.volume = 2;
+//  speechSynthesis.speak(speech);
+//}
   

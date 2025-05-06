@@ -103,6 +103,10 @@ border: transparent;
     color:yellow;
     text-align: center;
 }
+#results{
+    text-align: center;
+}
+
 #resultsdichViQ {
     color:pink;
     text-align: center;
@@ -298,7 +302,7 @@ function chonUnit(){ //chon unit khac va update iframe
     if (selectb.selectedIndex===0){
         iframe_ytEl.src = iframe_ytEl_src_goc;
     }else{
-        if (selectb.selectedIndex===74){
+        if (selectb.selectedIndex===73){
             hiden++;
             if (hiden%2===1){
                 //hienthi
@@ -424,6 +428,8 @@ function detectLanguage(text) {
 }
 //------------------------
 function speakText(text) {
+    speakEl.style.backgroundImage = "url('icons/mic-animation.gif')"; // Set the background image
+
     const utterance = new SpeechSynthesisUtterance(text);
     const detectedLang = detectLanguage(text);
     utterance.lang = detectedLang; // 'vi-VN' hoặc 'en-US'
@@ -448,6 +454,7 @@ function speakText(text) {
         if (voice) {
             utterance.voice = voice;
         }
+        utterance.addEventListener('end', handleEnd);
 
         speechSynthesis.speak(utterance);
     }
