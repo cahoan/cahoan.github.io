@@ -94,7 +94,6 @@ let listUrlYt = [
       'W3vY8AB4YxQ', 'mkWhUuveuCo', 'PjNfRrbSu-E', 'toEv7eDDxPE', 'NkJjcGoum-U', 'qaFcCN23JiQ',
       'L3kBxFRx1dY','pdm2VIOmXMc','HB2F7kRKZcs'];
   
-  
   let listMenuSelect = [
       'Basic Unit 1 : Introductions and Names', 
       'Basic Unit 2 : Describing people', 
@@ -606,7 +605,7 @@ $("#start_button").click(function () {
   final_transcript = '';
 
 
-  recognition.start();
+  //recognition.start();
   if (chatlangEl.innerText ==='English'){
     langNoi='en-US';
     recognition.lang = langNoi;
@@ -626,6 +625,7 @@ $("#start_button").click(function () {
   //alert(start_img.src);
   showInfo('allow');
   start_timestamp = event.timeStamp;
+  recognition.start();
 });
 
 
