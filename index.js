@@ -94,79 +94,6 @@ let listUrlYt = [
       'W3vY8AB4YxQ', 'mkWhUuveuCo', 'PjNfRrbSu-E', 'toEv7eDDxPE', 'NkJjcGoum-U', 'qaFcCN23JiQ',
       'L3kBxFRx1dY','pdm2VIOmXMc','HB2F7kRKZcs'];
   
-  let listMenuSelect = [
-      'Basic Unit 1 : Introductions and Names', 
-      'Basic Unit 2 : Describing people', 
-      'Basic Unit 3 : Clothes', 
-      'Basic Unit 4 : Routines', 
-      'Basic Unit 5 : Dates', 
-      'Basic Unit 6 : Jobs', 
-      'Basic Unit 7 : Favorites', 
-      'Basic Unit 8 : Sports and Excercise', 
-      'Basic Unit 9 : Locations', 
-      'Basic Unit 10 : The family', 
-      'Basic Unit 11 : Entertainment', 
-      'Basic Unit 12 : Prices', 
-      'Basic Unit 13 : Restaurants', 
-      'Basic Unit 14 : Small Talk', 
-      'Basic Unit 15 : Vacations', 
-      'Basic Unit 16 : Apartment Living', 
-      'Basic Unit 17 : Hopes and Plans', 
-      'Basic Unit 18 : The Weather', 
-      'Basic Unit 19 : Shopping', 
-      'Basic Unit 20 : Describing Things', 
-      'Basic Unit 21 : Direction', 
-      'Basic Unit 22 : People We Know', 
-      'Basic Unit 23 : Places', 
-      'Basic Unit 24 : Health', 
-      'Developing Unit 1 : The Weekend', 
-      'Developing Unit 2 : City Transportation', 
-      'Developing Unit 3 : Neighbors', 
-      'Developing Unit 4 : Celebrations', 
-      'Developing Unit 5 : Restaurants', 
-      'Developing Unit 6 : Gifts', 
-      'Developing Unit 7 : Air Travel', 
-      'Developing Unit 8 : Mishaps', 
-      'Developing Unit 9 : Jobs', 
-      'Developing Unit 10 : Keeping Fit', 
-      'Developing Unit 11 : Invitations', 
-      'Developing Unit 12 : Campus Life', 
-      'Developing Unit 13 : Hobbies & Pastimes', 
-      'Developing Unit 14 : Shopping Problems', 
-      'Developing Unit 15 : Hotel Services', 
-      'Developing Unit 16 : Movies', 
-      'Developing Unit 17 : Fears', 
-      'Developing Unit 18 : Phone Messages', 
-      'Developing Unit 19 : Touring a City', 
-      'Developing Unit 20 : Airports', 
-      'Developing Unit 21 : Hotels', 
-      'Developing Unit 22 : Traffic', 
-      'Developing Unit 23 : Roommates', 
-      'Developing Unit 24 : Travel', 
-      'Expanding Unit 1 : Small Talk', 
-      'Expanding Unit 2 : Plans', 
-      'Expanding Unit 3 : Successful Businesses', 
-      'Expanding Unit 4 : Apologies and Excuses', 
-      'Expanding Unit 5 : Character Traits', 
-      'Expanding Unit 6 : Travel', 
-      'Expanding Unit 7 : Housing', 
-      'Expanding Unit 8 : Can you believe it', 
-      'Expanding Unit 9 : Friendship', 
-      'Expanding Unit 10 : Television', 
-      'Expanding Unit 11 : Cities', 
-      'Expanding Unit 12 : Urban Life', 
-      'Expanding Unit 13 : Special Days', 
-      'Expanding Unit 14 : Fashion', 
-      'Expanding Unit 15 : Favorites', 
-      'Expanding Unit 16 : Phone Message', 
-      'Expanding Unit 17 : Past Events', 
-      'Expanding Unit 18 : Vacations', 
-      'Expanding Unit 19 : The News', 
-      'Expanding Unit 20 : Opinions', 
-      'Expanding Unit 21 : Famous People', 
-      'Expanding Unit 22 : Food and Nutrition', 
-      'Expanding Unit 23 : Predicaments', 
-      'Expanding Unit 24 : Global Issues'];
   
   let elmts = ['Basic Unit 1 : Introductions and Names', 
   'Basic Unit 2 : Describing people', 
@@ -1245,13 +1172,13 @@ var dong4 = "";
 Swal.fire({
   title: "<span style='color:darkgreen;'>About</span>",
   html: 
-    '<p style="text-align: left;  color:grey;">- Bộ sách <span style="color:darkblue;">Tactics for lístening</span> của <span style="color:darkblue;">Jack C. Richards</span> do Đại học <span style="color:darkblue;">Oxford</span>  phát hành, được rất nhiều người dùng .\n</p>'+
+    '<p style="text-align: left;  color:grey;">✅ Bộ sách <span style="color:darkblue;">Tactics for lístening</span> của <span style="color:darkblue;">Jack C. Richards</span> do Đại học <span style="color:darkblue;">Oxford</span>  phát hành, được rất nhiều người dùng .\n</p>'+
     '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">tiensg89@gmail.com</span> tìm thấy trên mạng nên góp nhặt tải về và lập trang web này để thuận tiện sử dụng và giúp người khác trong việc tự học nghe tiếng Anh.\n</p>'+
     '<p style="text-align: left;  color:grey;">- Nó có 3 cuốn, mỗi cuốn có 24 unit kèm theo audio để nghe. Sách có dạng <span style="color:darkblue;">pdf flip</span> rất hay.\n</p>'+
     '<p style="text-align: left;  color:grey;">- Cách sử dụng để học là do người dùng tự khám phá và hoạch định. Bộ tài liệu nảy rất tuyệt.\n</p>'+
     '<p style="text-align: left;  color:grey;">Riêng tôi đã từng làm giáo viên giảng dạy và quản lý nhà trường, '+
     ' nên đã lập trình để tự hoc tiếng Anh theo tài liệu này.'+' </p>'+
-    '<p style="text-align: left;  color:grey;">Đặc biệt tôi đã tiếp cận được <span>chatGPT</span>và biết cách dùng <span style="color:darkblue;">Javascript</span> để lập trình phuc vụ cho việc tập nghe và nói tiếng Anh qua viêc chat với GPT'+
+    '<p style="text-align: left;  color:grey;">✅ Đặc biệt tôi đã tiếp cận được <span>chatGPT</span>và biết cách dùng <span style="color:darkblue;">Javascript</span> để lập trình phuc vụ cho việc tập nghe và nói tiếng Anh qua viêc chat với GPT'+
     ' '+' </p>'+
  
     '<p style="text-align: left;  color:grey;"><span style="color:red;">1-</span> Bạn co thể sử dụng chatGPT trong app này'+
@@ -1266,8 +1193,10 @@ Swal.fire({
     ' '+'</p>'+
 
     '<p style="text-align: left;  color:grey;"><span style="color:red;">3-</span> Và <span style="color:darkblue;">hướng phát triển tiếp theo là nhờ GPT nhận xét các trả lời của bạn đã hợp logic hay chưa.</span>'+
-    ' Và còn nhiều thứ nữa chúng ta sẽ khám phá qua việc chơi và học với chatGPT.'+'</p>',
-
+    ' Và còn nhiều thứ nữa chúng ta sẽ khám phá qua việc chơi và học với chatGPT.'+'</p>'+
+    
+    '<p style="text-align: left;  color:grey;">✅ Cuối cùng, các links của "VOA LEARNING ENGLISH" cũng được thêm vào để học tiếng Anh miễn phí với nhiều cấp độ. Chương trình học mang tính quốc tế và rất phong phú về kiến thức, rất hữu ích cho việc tự học tiếng Anh.'+'</p',
+    
   confirmButtonText: "OK", 
 });
 //.then((result) => {
@@ -1334,4 +1263,3 @@ function readTd30(){
 //  speech.volume = 2;
 //  speechSynthesis.speak(speech);
 //}
-  
