@@ -1,54 +1,483 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Danh sách bài học VOA</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    select, button {
-      font-size: 16px;
-      padding: 8px;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiensg89 Learn Tictac For Listening</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Import SweetAlert2 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.0.2/tesseract.min.js"></script>
+
+
+    <!--<link rel="stylesheet" href="index.css">-->
+<style>
+html, body {
+overflow-x: hidden; /* Chặn cuộn ngang */
+width: 100vw; /* Đảm bảo không vượt quá chiều rộng thiết bị */
+max-width: 100%; /* Tránh nội dung tràn ra ngoài */
+margin: 0;
+padding: 0;
+touch-action: manipulation; /* Ngăn chặn thao tác vuốt không mong muốn */
+}
+
+body {
+    background-image: linear-gradient(-45deg, #f4d03f, #160223); 
+    color: #fff;
+    font: 1rem/1 'Poppins', sans-serif;
+}
+/*
+.video-wrapper {
+    width: 320px;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;}
+.video-wrapper iframe {
+    width: 320px;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;}
+*/
+.container{
+position: relative;
+top:0;
+left: 2%;
+right:2%;
+display: flex;
+flex-direction: column;
+align-items: center;
+width:96%;
+
+}
+.button-container{
+    width: 340px;
+    display:flex;
+    justify-content: space-between;
+    
+}
+.center{
+    text-align: center;
+    color:lightgreen;
+}
+
+#start_button{
+width: 50px; /* Kích thước nút */
+height: 50px;
+border-radius: 50%; /* Làm cho nút tròn */
+background-image: url("icons/mic.gif"); /* Ảnh bên trong */
+background-size: cover; /* Đảm bảo ảnh phủ đầy */
+background-position: center;
+border: 3px solid #333; /* Viền */
+cursor: pointer;
+align-items: center;
+justify-content: center;
+}
+
+#listen_button {
+width: 50px; /* Kích thước nút */
+height: 50px;
+border-radius: 50%; /* Làm cho nút tròn */
+background-image: url("icons/bot.png"); /* Ảnh bên trong */
+background-size: cover; /* Đảm bảo ảnh phủ đầy */
+background-position: center;
+border: 3px solid #333; /* Viền */
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#chonQA_button{
+width: auto; /* Kích thước nút */
+height: 24px;
+border-radius: 0%; /* Làm cho nút tròn */
+margin-top: 16px;
+background: transparent;
+color:transparent ;
+border: transparent;
+}
+#resultsdich{
+    color:yellow;
+    text-align: center;
+}
+#results{
+    text-align: center;
+}
+
+#resultsdichViQ {
+    color:pink;
+    text-align: center;
+} 
+#resultsdichViA {
+    color:darkgreen;
+    text-align: center;
+} 
+.buttons3{
+    background-color: #6d5c1a;;
+    width: 340px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 16px;
+    border-top: 1px solid #fff3;
+
+}
+.buttons4{
+    background-color: #6d5c1a;;
+    width: 340px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 16px;
+    border-top: 1px solid #fff3;
+    text-align: center;
+}
+#buttonQ{
+color:yellow;
+width:114px;
+}
+#buttonH{
+color:whitesmoke;
+width:114px;
+
+}
+
+#buttonQ,  #buttonH{
+background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%); /* Màu gradient 3D */
+font-size: 14px;
+padding: 2px 4px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 0px 5px 0px #1B5E20; /* Đổ bóng để tạo hiệu ứng nổi */
+transition: all 0.2s ease-in-out;
+}    
+
+#buttonQ:active, #buttonH:active{
+box-shadow: 0px 2px 0px #1B5E20; /* Giảm bóng khi nhấn */
+transform: translateY(3px); /* Hiệu ứng nhấn xuống */
+}
+#helpexercise{
+    text-align: center;
+    background-color: darkgreen;
+    color:rgb(206, 206, 244);
+}
+#infoB{
+
+    border-radius: 0%;
+    color:aqua;
+    border:0;
+    text-align: center;
+    font-size:large ;
+
+}
+.scroll-container{
+    width: 340px;
+    height:48px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#questionOutput{
+    display: none;
+}
+.resultsdichcss{
+    width: 340px;
+
+}    
+#results{
+    width: 340px;
+    height: auto;
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>📚 Danh sách bài học VOA</h1>
-    <select id="voaSelect">
-        <option value="">-- VOA LEARNING ENGLISH --</option>
-        <option value="https://learningenglish.voanews.com/p/8322.html">Let's Learn English with Anna!</option>
-        <option value="https://learningenglish.voanews.com/p/5644.html">Let's Learn English 1</option>
-        <option value="https://learningenglish.voanews.com/p/6765.html">Let's Learn English 2</option>
-        <option value="https://learningenglish.voanews.com/p/5610.html">Intermediate Level</option>
-        <option value="https://learningenglish.voanews.com/p/5611.html">Advanced Level</option>
-        <option value="https://learningenglish.voanews.com/p/6353.html">U.S. History</option>
-        <option value="https://learningenglish.voanews.com/p/5631.html">Video</option>
-    </select>
-    
-    <button onclick="moVOAFromButton()">OK</button>
-  </div>
+<div class="container">
+    <!--TIEU DE-->
+    <h3 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for <span onclick="tdyt()" id="lonNhoYt">Listening</span></h3>  
 
-<script>
-function moVOAFromButton() {
-    const select = document.getElementById("voaSelect");
-    const url = select.value;
+    <!--MENU CHON BAI-->
+    <div class="unit_chons">
+        <select id="unit_chon" onchange="chonUnit()">
+            <option style="text-align: center;color:blue;" value="" translate="no">--Select a Unit--</option>
+        </select>
+    </div><br>
 
-    if (url) {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        const left = window.screenX;
-        const top = window.screenY;
+    <!-- DAT VIDEO YT-->
+    <div class="video-wrapper">
+        <iframe id="iframe_yt" src="https://online.flipbuilder.com/sdtta/fpva/mobile/index.html" width="340px" height="255px">
+        </iframe>
+    </div><br>
 
-        window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
-        //select.selectedIndex = 0; // Reset lại
+    <!-- TIEU DE CHAT TALK GPT-->
+    <div  id="infoB" translate="no"> <span id='chattext'>Chat </span>with <span onclick="anHienText_GPT()" id="GPT"> GPT</span> in <span id='chatlang'>English</span></div>
+
+    <!-- hai nut mic va bot-->
+    <div class="button-container">
+        <button id="start_button"></button>
+        <button id="chonQA_button">2</button>
+        <button id="listen_button"></button>
+    </div>
+
+    <!--phan hien cau hoi -->
+    <div id="results">
+        <span id="final_span" class="final">final</span>
+        <span id="interim_span" class="interim">interim</span>
+    </div>   
+
+    <!--Hien reply va dich yc va dich reply-->    
+    <div class = "resultsdichcss">
+
+        <div class="scroll-container" translate="no" id="resultsdich" onclick="readSelectedText()">reply</div>
+        <div translate="no" id="resultsdichViQ"></div>
+        <div translate="no" id="resultsdichViA"></div>
+     </div>   
+
+    <!--CAC NUT DK AM THANH NOI-->
+    <br>
+    <div>
+        <span id="lbbimat" style="color:transparent ;">Van dich </span>
+        <label for="rate" translate="no" >Rate:</label>
+        <input id="rate" type="range" min="0.1" max="1.9" step="0.1" value="1" translate="no">
+        <output for="rate" translate="no" >1</output> 
+        <span onclick="speakTextVi()" style="color:transparent;" id="amdich"> Am dich</span>
+        <!--Khi nhap vao 1.1 thi doc ban dich anh/viet/tat am-->
+    </div><br>
+
+    <div>
+        <span id="chon2or1" style="color:transparent;" onclick="rutTextTuAnh()">Extractext</span>
+        <label for="pitch" translate="no">Pitch:</label>
+        <input id="pitch" type="range" min="0.1" max="1.9" step="0.1" value="1" translate="no">
+        <output for="pitch" translate="no" >1</output>
+        <span onclick="GoOff()" style="color:transparent;" id="Clearall"> Copy text</span>
+        <!--Khi nhap vao 1.1 thi clear/ off-->
+    </div>
+
+    <div class="buttons4">
+        <select id="selectexercise" style="background-color: rgb(187, 194, 137);">
+        </select>
+        <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
+        <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
+        <label for="selectexercise" translate="no"><button id="buttonH" onclick="htTBhelp()" ><span id="cauhoin" style="color:yellow"></span>❓Help</button></label>
+    </div>  
+
+    <!--CAC LINK PDF TACTIC-->
+    <div class="buttons3">
+        <button onclick="hthipdf1()" id="wordLength" style="background-color: darkgreen;" translate="no"><a style="color:lightgreen; font-size: small;"  >&nbsp;&nbsp;&nbsp;&nbsp;Basic&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;TFL PDF</a></button>
+        <button onclick="hthipdf2()" id="developingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(236, 194, 179);font-size: small;">Developing &nbsp;&nbsp;TFL PDF</a></button>
+        <button onclick="hthipdf3()" id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding &nbsp;TFL PDF</a></button>
+    </div>
+
+    <!--CHO BAI TAP-->
+    <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
+
+</div>
+
+
+<!-- JAVASCRIP CHO IFRAME VIDEO YT BAT BUOC PHAI HERE -->
+<script>//Ma duoi day bat buoc phai dat o html, neu dat trong tep js ben ngoai (hoc_en_tactics) se khong chay
+const iframe_ytEl = document.getElementById("iframe_yt");
+const basicpdfEl = document.getElementById("basicpdf");
+const developingpdfEl = document.getElementById("developingpdf");
+const expandingpdfEl = document.getElementById("expandingpdf");
+var hiden=0;
+let tducso=0;
+
+//-- Cho NEN video ifram youtube-----------------------
+//let id = "";
+var videoIDcurrent;
+const selectb = document.getElementById("unit_chon");
+    //nen la id luu last
+//document.getElementById("iframe_yt").src="https://youtube.com/embed/" + videoIDcurrent;
+//cai nay default Basic PDF
+let iframe_ytEl_src_goc = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+//----Ham chon bai YT
+function chonUnit(){ //chon unit khac va update iframe
+    if (selectb.selectedIndex===0){
+        iframe_ytEl.src = iframe_ytEl_src_goc;
+    }else{
+        if (selectb.selectedIndex===73){
+            hiden++;
+            if (hiden%2===1){
+                //hienthi
+                //alert('hien');
+                document.getElementById("chonQA_button").style.color = "pink";
+                document.getElementById("chonQA_button").style.background.color = "darkgreen";
+                document.getElementById("chonQA_button").style.border = "black";
+
+                document.getElementById("lonNhoYt").style.color="pink";
+                document.getElementById("chattext").style.color="pink";
+                document.getElementById("GPT").style.color="pink";
+                document.getElementById("chatlang").style.color="pink";
+
+                document.getElementById("chon2or1").style.color="pink";
+                document.getElementById("lbbimat").style.color="pink";
+                document.getElementById("amdich").style.color="pink";
+                document.getElementById("Clearall").style.color="pink";
+            } else {
+                //alert('che');
+                document.getElementById("chonQA_button").style.color = "transparent";
+                document.getElementById("chonQA_button").style.background.color = "transparent";
+                document.getElementById("chonQA_button").style.border = "transparent";
+
+                document.getElementById("lonNhoYt").style.color="lightgreen";//transparent chonQA_button
+                document.getElementById("chattext").style.color="aqua";
+                document.getElementById("GPT").style.color="aqua";
+                document.getElementById("chatlang").style.color="aqua";
+
+                document.getElementById("chon2or1").style.color="transparent";
+                document.getElementById("lbbimat").style.color="transparent";
+                document.getElementById("amdich").style.color="transparent";
+                document.getElementById("Clearall").style.color="transparent";
+
+
+                //chedi    
+            }
+            selectb.selectedIndex=0;
+            return;
+        }
+        
+        videoIDcurrent = list_id[selectb.selectedIndex];
+        //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
+        iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent + "?enablejsapi=1";
+
     }
 }
-</script>
+//------
+//lay basic pdf dua vao iframe dang co src=""
+//document.getElementById("basicpdf").click();
+function hthipdf1(){
+    iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+}
+function hthipdf2(){
+    iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/kjol";
+}
+function hthipdf3(){
+    iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/vlyh";
+}
+//let tducso=0;
+function tdyt(){
+    //alert('tdyt');
+    if (document.getElementById("iframe_yt").style.width==="340px"){
+    
+        document.getElementById("iframe_yt").style.width="800px";
+        document.getElementById("iframe_yt").style.height="600px";
+
+    }else if (document.getElementById("iframe_yt").style.width==="800px"){
+
+        document.getElementById("iframe_yt").style.width="1200px";
+        document.getElementById("iframe_yt").style.height="900px";
+
+    }else{
+        document.getElementById("iframe_yt").style.width="340px";
+        document.getElementById("iframe_yt").style.height="255px";
+    }
+}
+let chonQA_buttonEl = document.getElementById("chonQA_button");
+chonQA_buttonEl.innerHTML='TD';
+
+chonQA_buttonEl.addEventListener('click', function(){
+    tducso++;
+
+    if (chonQA_buttonEl.innerHTML==='TD'){
+        chonQA_buttonEl.innerHTML='TD';
+    }else{
+        chonQA_buttonEl.innerHTML='TD';
+    }
+
+    if (tducso%5 === 1) {
+        iframe_ytEl.src = "icons/theduc.mp4";
+        chonQA_buttonEl.innerHTML='The duc yhct 30p';
+        readTd30();
+
+    } else if (tducso%5 === 2) {
+        iframe_ytEl.src = "icons/theducnu.mp4";
+        chonQA_buttonEl.innerHTML='The duc yhct 30p nu';
+    } else if (tducso%5 === 3) {
+        iframe_ytEl.src="https://youtube.com/embed/" + "2p6qQSm3AcI" ;
+        chonQA_buttonEl.innerHTML='11 bt ta tay';
+    } else if (tducso%5 === 4) {
+        //iframe_ytEl.src = "icons/theduc15namnu.mp4";
+        //https://www.youtube.com/watch?v=2p6qQSm3AcI , 11 bt voi ta tay
+        iframe_ytEl.src = "icons/thuocthan.mp4";
+        chonQA_buttonEl.innerHTML='Bai thuoc tri than yeu';
+
+    } else {
+        iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+        chonQA_buttonEl.innerHTML='TD';
+
+    }
+});
+
+    
+
+
+//khoi dong luc dau
+document.getElementById("iframe_yt").style.width="340px";
+document.getElementById("iframe_yt").style.height="255px";
+
+function rutTextTuAnh(){
+    iframe_ytEl.src = "https://tiengs.github.io/";
+}
+//doc bai theduc
+//them 3-5-25
+function detectLanguage(text) {
+    // Nếu thấy nhiều ký tự có dấu tiếng Việt thì chọn tiếng Việt
+    const vietnameseRegex = /[àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
+    return vietnameseRegex.test(text) ? 'vi-VN' : 'en-US';
+}
+//------------------------
+function speakText(text) {
+    speakEl.style.backgroundImage = "url('icons/mic-animation.gif')"; // Set the background image
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    const detectedLang = detectLanguage(text);
+    utterance.lang = detectedLang; // 'vi-VN' hoặc 'en-US'
+
+    function setVoiceAndSpeak() {
+        const voices = speechSynthesis.getVoices();
+        console.log("Available voices:", voices.map(v => v.name + ' (' + v.lang + ')'));
+
+        let voice = null;
+
+        if (detectedLang === 'vi-VN') {
+            // Tìm giọng tiếng Việt
+            voice = voices.find(v => v.lang === 'vi-VN');
+        } else {
+            // Tìm giọng tiếng Anh tốt nhất
+            voice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Karen')));
+            if (!voice) {
+                voice = voices.find(v => v.lang === 'en-US');
+            }
+        }
+
+        if (voice) {
+            utterance.voice = voice;
+        }
+        utterance.addEventListener('end', handleEnd);
+
+        speechSynthesis.speak(utterance);
+    }
+
+    if (speechSynthesis.getVoices().length > 0) {
+        setVoiceAndSpeak();
+    } else {
+        speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
+    }
+}
+
+//Het them 3-5-25
+
+</script>  
+
+<script src="index.js"></script> 
+<script src="indexbt.js"></script> 
+
 </body>
 </html>
-
