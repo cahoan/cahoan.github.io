@@ -195,13 +195,26 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     width: 340px;
     height: auto;
 }
+.unit_chons_voa{
+    background-color: #6d5c1a;;
+    width: 340px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 16px;
+}
+.voa-link{
+    display: none;
+}
 </style>
 </head>
 <body>
 <div class="container">
     <!--TIEU DE-->
     <h3 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for <span onclick="tdyt()" id="lonNhoYt">Listening</span></h3>  
-
+      
     <!--MENU CHON BAI-->
     <div class="unit_chons">
         <select id="unit_chon" onchange="chonUnit()">
@@ -260,7 +273,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     </div>
 
     <div class="buttons4">
-        <select id="selectexercise">
+        <select id="selectexercise" style="background-color: rgb(187, 194, 137);">
         </select>
         <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
         <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
@@ -276,6 +289,16 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
 
     <!--CHO BAI TAP-->
     <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
+
+    <!--CHO HTML VOA-->
+    <a href="#" class="voa-link" onclick="return moVOA(event, '')"></a>
+
+    
+    <div class="unit_chons_voa">
+        <select id="unit_chon_voa" onchange="chonUnitVoa()" style="background-color: rgb(187, 194, 137); text-align: center; ">
+            <option style="text-align: center; " value="" translate="no">--VOA LEARNING ENGLISH--</option>
+        </select>
+    </div><br>
 
 </div>
 
@@ -344,6 +367,8 @@ function chonUnit(){ //chon unit khac va update iframe
         }
         
         videoIDcurrent = list_id[selectb.selectedIndex];
+        //videoIDcurrent = 'https://learningenglish.voanews.com/a/6654462.html?withmediaplayer=1';
+
         //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
         iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent + "?enablejsapi=1";
 
@@ -478,6 +503,7 @@ function speakText(text) {
 
 <script src="index.js"></script> 
 <script src="indexbt.js"></script> 
+<script src="indexvoa.js"></script> 
 
 </body>
 </html>

@@ -42,24 +42,27 @@ function chonUnitVoa(){ //chon unit khac va update iframe
 
 let popupWindow = null;
 
-function moVOA(url) {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const left = window.screenX;
-  const top = window.screenY;
+function moVOA(event, url) {
+    event.preventDefault(); // Ngăn trình duyệt mở thẳng link
 
-  // Nếu popup cũ còn mở thì đóng lại trước
-  if (popupWindow && !popupWindow.closed) {
-    popupWindow.close();
-  }
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const left = window.screenX;
+    const top = window.screenY;
 
-  popupWindow = window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+    // Gọi trực tiếp window.open trong sự kiện click để tránh bị chặn
+    popupWindow = window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+
+    return false;
 }
 
 // Theo dõi khi popup đóng thì hiển thị trạng thái quay lại
-//setInterval(() => {
-//  if (popupWindow && popupWindow.closed) {
-//    document.getElementById("status").textContent = "✅ Bạn đã quay lại ứng dụng. Hãy tiếp tục học bài khác.";
-//  }
-//}, 1000);
+setInterval(() => {
+    if (popupWindow && popupWindow.closed) {
+        //document.getElementById("status").textContent = "✅ Bạn đã quay lại ứng dụng. Hãy tiếp tục học bài khác.";
+        console.log("✅ Bạn đã quay lại ứng dụng. Hãy tiếp tục học bài khác.")
+        popupWindow = null;
+    }
+}, 1000);
+
 
