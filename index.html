@@ -122,7 +122,7 @@ border: transparent;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     gap: 10px;
-    margin-top: 6px;
+    margin-top: 10px;
     padding: 16px;
     border-top: 1px solid #fff3;
 
@@ -134,87 +134,66 @@ border: transparent;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     gap: 10px;
-    margin-top: 6px;
+    margin-top: 10px;
     padding: 16px;
     border-top: 1px solid #fff3;
     text-align: center;
 }
 #buttonQ{
-  color:yellow;
-  width:114px;
+color:yellow;
+width:114px;
 }
 #buttonH{
-  color:whitesmoke;
-  width:114px;
+color:whitesmoke;
+width:114px;
 
 }
 
 #buttonQ,  #buttonH{
-  background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%); /* Màu gradient 3D */
-  font-size: 14px;
-  padding: 2px 4px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0px 5px 0px #1B5E20; /* Đổ bóng để tạo hiệu ứng nổi */
-  transition: all 0.2s ease-in-out;
+background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%); /* Màu gradient 3D */
+font-size: 14px;
+padding: 2px 4px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 0px 5px 0px #1B5E20; /* Đổ bóng để tạo hiệu ứng nổi */
+transition: all 0.2s ease-in-out;
 }    
 
 #buttonQ:active, #buttonH:active{
-  box-shadow: 0px 2px 0px #1B5E20; /* Giảm bóng khi nhấn */
-  transform: translateY(3px); /* Hiệu ứng nhấn xuống */
+box-shadow: 0px 2px 0px #1B5E20; /* Giảm bóng khi nhấn */
+transform: translateY(3px); /* Hiệu ứng nhấn xuống */
 }
 #helpexercise{
-  text-align: center;
-  background-color: darkgreen;
-  color:rgb(206, 206, 244);
+    text-align: center;
+    background-color: darkgreen;
+    color:rgb(206, 206, 244);
 }
 #infoB{
-  border-radius: 0%;
-  color:aqua;
-  border:0;
-  text-align: center;
-  font-size:large ;
+
+    border-radius: 0%;
+    color:aqua;
+    border:0;
+    text-align: center;
+    font-size:large ;
+
 }
 .scroll-container{
-  width: 340px;
-  height:48px;
-  overflow-y: auto;
-  overflow-x: hidden;
+    width: 340px;
+    height:48px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 #questionOutput{
     display: none;
 }
 .resultsdichcss{
     width: 340px;
+
 }    
 #results{
     width: 340px;
     height: auto;
-}
-.unit_chons_voa{ /*button2*/
-  background-color: #6d5c1a;;
-  width: 340px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
-  gap: 10px;
-  margin-top: 6px;
-  padding: 16px;
-}
-#unit_chon_voa{
-  height: 36px;
-}
-.voa-link{
-    display: none;
-}
-.openbut{
-  background-color:rgb(187, 194, 137);
-  width: 40;
-  height: 40px;
-  border-radius: 50%;
-  text-align: center;
-
 }
 </style>
 </head>
@@ -222,7 +201,7 @@ border: transparent;
 <div class="container">
     <!--TIEU DE-->
     <h3 class="center" id="tieude" translate="no" >Learn on <span id="about" style="color:orange;" onclick="aboutapp()">T</span>actics for <span onclick="tdyt()" id="lonNhoYt">Listening</span></h3>  
-      
+
     <!--MENU CHON BAI-->
     <div class="unit_chons">
         <select id="unit_chon" onchange="chonUnit()">
@@ -295,22 +274,9 @@ border: transparent;
         <button onclick="hthipdf3()" id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding &nbsp;TFL PDF</a></button>
     </div>
 
-    <!--CHO BAI TAP
-    <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>-->
-    <!--CHO HTML VOA-->
-    <div class="unit_chons_voa">
-        <select id="unit_chon_voa" style="background-color: rgb(187, 194, 137); text-align: center; ">
-            <option value="" translate="no">-- VOA LEARNING ENGLISH --</option>
-            <option value="https://learningenglish.voanews.com/p/8322.html" translate="no">Let's Learn English with Anna!</option>
-            <option value="https://learningenglish.voanews.com/p/5644.html" translate="no">Let's Learn English 1</option>
-            <option value="https://learningenglish.voanews.com/p/6765.html" translate="no">Let's Learn English 2</option>
-            <option value="https://learningenglish.voanews.com/p/5610.html" translate="no">Intermediate Level</option>
-            <option value="https://learningenglish.voanews.com/p/5611.html" translate="no">Advanced Level</option>
-            <option value="https://learningenglish.voanews.com/p/6353.html" translate="no">U.S. History</option>
-            <option value="https://learningenglish.voanews.com/p/5631.html" translate="no">Video</option>
-        </select>
-        <button class="openbut" onclick="moVOAFromButton()">OPEN</button>
-    </div>
+    <!--CHO BAI TAP-->
+    <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
+
 </div>
 
 
@@ -378,8 +344,6 @@ function chonUnit(){ //chon unit khac va update iframe
         }
         
         videoIDcurrent = list_id[selectb.selectedIndex];
-        //videoIDcurrent = 'https://learningenglish.voanews.com/a/6654462.html?withmediaplayer=1';
-
         //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
         iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent + "?enablejsapi=1";
 
@@ -509,20 +473,6 @@ function speakText(text) {
 }
 
 //Het them 3-5-25
-function moVOAFromButton() {
-        const select = document.getElementById("unit_chon_voa");
-        const url = select.value;
-    
-        if (url) {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            const left = window.screenX;
-            const top = window.screenY;
-    
-            window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
-            
-        }
-    }
 
 </script>  
 
