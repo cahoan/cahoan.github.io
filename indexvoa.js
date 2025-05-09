@@ -23,7 +23,7 @@ function GFG_Fun_Voa() {
 GFG_Fun_Voa();
 
 //lay link vao <a></a> tuong ung voi menu elmtsvoa'; list co 4 pt
-
+    
 let lahtml = ["",
     "https://learningenglish.voanews.com/p/8322.html",
     "https://learningenglish.voanews.com/p/5644.html",
@@ -35,7 +35,7 @@ let lahtml = ["",
 
 function chonUnitVoa(){ //chon unit khac va update iframe
     if (selectvoa.selectedIndex > 0){
-        moVOA(lahtml[selectvoa.selectedIndex]);
+        moVOA(event, lahtml[selectvoa.selectedIndex]);    
     }
 }
 
