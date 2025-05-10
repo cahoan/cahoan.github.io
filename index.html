@@ -475,15 +475,14 @@ function speakText(text) {
 }
 
 //Het them 3-5-25
-//let popupWindow = null;
 
 function moVOA(event, url) {
     event.preventDefault(); // Ngăn trình duyệt mở thẳng link
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const left = window.screenX;
-    const top = window.screenY;
+    //const width = window.innerWidth;
+    //const height = window.innerHeight;
+    //const left = window.screenX;
+    //const top = window.screenY;
 
     // Nếu popup cũ còn mở thì đóng lại trước
     //if (popupWindow && !popupWindow.closed) {
@@ -492,7 +491,17 @@ function moVOA(event, url) {
 
     // Gọi trực tiếp window.open trong sự kiện click để tránh bị chặn
     //popupWindow =   window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
-    window.open(url, "_blank", "noopener,noreferrer");
+    const newTab = window.open(url, "_blank", "noopener,noreferrer");
+
+    if (!newTab) {
+        alert("Trình duyệt đã chặn tab mới. Vui lòng cho phép.");
+    }
+
+    // Phát hiện thiết bị iPhone
+    const isIphone = /iPhone/i.test(navigator.userAgent);
+    if (isIphone) {
+        document.getElementById("note").style.display = "block";
+    }
     
 }
 
