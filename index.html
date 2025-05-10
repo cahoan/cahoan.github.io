@@ -195,6 +195,17 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     width: 340px;
     height: auto;
 }
+#note {
+margin-top: 20px;
+font-size: 15px;
+color: #d9534f;
+display: none;
+background: #fff3cd;
+border-left: 4px solid #ffc107;
+padding: 12px;
+border-radius: 4px;
+}
+
 </style>
 </head>
 <body>
@@ -273,8 +284,9 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
         <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
         <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
         <!--<label for="selectexercise" translate="no"><button id="buttonH" onclick="htTBhelp()" ><span id="cauhoin" style="color:yellow"></span>❓Help</button></label>-->
-        <button id="buttonH" onclick="openVOA()">Voa Anna</button>
+        <button id="buttonH"><a href="#" onclick="return moVOA(event, 'https://learningenglish.voanews.com/p/8322.html')">Voa Anna</a></button>
     </div>  
+<div id="note">Bạn đang dùng iPhone. Sau khi xem xong VOA, hãy bấm nút chuyển tab của trình duyệt để quay lại ứng dụng gốc.</div>
 
     <!--CHO BAI TAP-->
     <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
@@ -488,6 +500,38 @@ function openVOA() {
     if (isIphone) {
         document.getElementById("note").style.display = "block";
     }
+}
+
+//let popupWindow = null;
+
+function moVOA(event, url) {
+    event.preventDefault(); // Ngăn trình duyệt mở thẳng link
+
+    //const width = window.innerWidth;
+    //const height = window.innerHeight;
+    //const left = window.screenX;
+    //const top = window.screenY;
+
+    // Nếu popup cũ còn mở thì đóng lại trước
+    //if (popupWindow && !popupWindow.closed) {
+    //    popupWindow.close();
+    //}
+
+    // Gọi trực tiếp window.open trong sự kiện click để tránh bị chặn
+    //popupWindow =   window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+    const newTab = window.open(url, "_blank", "noopener,noreferrer");
+    
+    if (!newTab) {
+        alert("Trình duyệt đã chặn tab mới. Vui lòng cho phép.");
+    }
+
+    // Phát hiện thiết bị iPhone
+    const isIphone = /iPhone/i.test(navigator.userAgent);
+    if (isIphone) {
+        document.getElementById("note").style.display = "block";
+    }
+
+    
 }
 
 </script>  
