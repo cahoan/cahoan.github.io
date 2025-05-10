@@ -475,7 +475,7 @@ function speakText(text) {
 }
 
 //Het them 3-5-25
-let popupWindow = null;
+//let popupWindow = null;
 
 function moVOA(event, url) {
     event.preventDefault(); // Ngăn trình duyệt mở thẳng link
@@ -491,8 +491,8 @@ function moVOA(event, url) {
     //}
 
     // Gọi trực tiếp window.open trong sự kiện click để tránh bị chặn
-    popupWindow = window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
-
+    //popupWindow =   window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+    window.open(url, "_blank", "noopener,noreferrer");
     
 }
 
