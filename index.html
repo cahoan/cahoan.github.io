@@ -479,16 +479,16 @@ let popupWindow = null;
 
 function moVOA(event, url) {
     event.preventDefault(); // Ngăn trình duyệt mở thẳng link
-    console.log('ttttt');
+
     const width = window.innerWidth;
     const height = window.innerHeight;
     const left = window.screenX;
     const top = window.screenY;
 
     // Nếu popup cũ còn mở thì đóng lại trước
-    //if (popupWindow && !popupWindow.closed) {
-    //    popupWindow.close();
-    //}
+    if (popupWindow && !popupWindow.closed) {
+        popupWindow.close();
+    }
 
     // Gọi trực tiếp window.open trong sự kiện click để tránh bị chặn
     popupWindow = window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
