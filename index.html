@@ -273,7 +273,7 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
         <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
         <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
         <!--<label for="selectexercise" translate="no"><button id="buttonH" onclick="htTBhelp()" ><span id="cauhoin" style="color:yellow"></span>❓Help</button></label>-->
-        <button id="buttonH"><a href="#" onclick="moVOA('https://learningenglish.voanews.com/p/8322.html')">Voa Anna</a></button>
+        <button id="buttonH"><a href="#" onclick="return moVOA(event, 'https://learningenglish.voanews.com/p/8322.html')">Voa Anna</a></button>
     </div>  
 
     <!--CHO BAI TAP-->
@@ -477,18 +477,23 @@ function speakText(text) {
 //Het them 3-5-25
 let popupWindow = null;
 
-function moVOA(url) {
+function moVOA(event, url) {
+    event.preventDefault(); // Ngăn trình duyệt mở thẳng link
+    console.log('ttttt');
     const width = window.innerWidth;
     const height = window.innerHeight;
     const left = window.screenX;
     const top = window.screenY;
 
     // Nếu popup cũ còn mở thì đóng lại trước
-    if (popupWindow && !popupWindow.closed) {
-    popupWindow.close();
-    }
+    //if (popupWindow && !popupWindow.closed) {
+    //    popupWindow.close();
+    //}
 
+    // Gọi trực tiếp window.open trong sự kiện click để tránh bị chặn
     popupWindow = window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+
+    return false;
 }
 
 </script>  
