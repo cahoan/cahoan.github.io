@@ -259,13 +259,6 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
         <!--Khi nhap vao 1.1 thi clear/ off-->
     </div>
 
-    <div class="buttons4">
-        <select id="selectexercise" style="background-color: rgb(187, 194, 137);">
-        </select>
-        <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
-        <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
-        <label for="selectexercise" translate="no"><button id="buttonH" onclick="htTBhelp()" ><span id="cauhoin" style="color:yellow"></span>❓Help</button></label>
-    </div>  
 
     <!--CAC LINK PDF TACTIC-->
     <div class="buttons3">
@@ -273,6 +266,15 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
         <button onclick="hthipdf2()" id="developingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(236, 194, 179);font-size: small;">Developing &nbsp;&nbsp;TFL PDF</a></button>
         <button onclick="hthipdf3()" id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding &nbsp;TFL PDF</a></button>
     </div>
+
+    <div class="buttons4">
+        <select id="selectexercise" style="background-color: rgb(187, 194, 137);">
+        </select>
+        <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
+        <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
+        <!--<label for="selectexercise" translate="no"><button id="buttonH" onclick="htTBhelp()" ><span id="cauhoin" style="color:yellow"></span>❓Help</button></label>-->
+        <button id="buttonH"><a href="#" onclick="moVOA('https://learningenglish.voanews.com/p/8322.html')">Voa Anna</a></button>
+    </div>  
 
     <!--CHO BAI TAP-->
     <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
@@ -473,6 +475,21 @@ function speakText(text) {
 }
 
 //Het them 3-5-25
+let popupWindow = null;
+
+function moVOA(url) {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const left = window.screenX;
+    const top = window.screenY;
+
+    // Nếu popup cũ còn mở thì đóng lại trước
+    if (popupWindow && !popupWindow.closed) {
+    popupWindow.close();
+    }
+
+    popupWindow = window.open(url, "voaPopup", `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+}
 
 </script>  
 
