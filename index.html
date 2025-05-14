@@ -131,7 +131,7 @@ border: transparent;
     background-color: #6d5c1a;;
     width: 340px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
@@ -203,11 +203,6 @@ background: #fff3cd;
 border-left: 4px solid #ffc107;
 padding: 12px;
 border-radius: 4px;
-}
-.voa{
-    width: 24px; 
-    height: 24px;
-    border-radius: 50%;
 }
 
 </style>
@@ -284,7 +279,6 @@ border-radius: 4px;
 
     <div class="buttons4">
         <button id="buttonH"><select id="select_voa" onchange="chonUnitVoa()" style="background-color: transparent; border: none; color:rgb(105, 27, 27);font-weight:bolder;"></select></button>
-        <img class="voa" src="icons/voa.png" onclick="toVoa()">
     </div>
     
 </div>
@@ -515,10 +509,6 @@ var videoIDcurrentvoa;
     videoIDcurrentvoa = lIdTitle_voa[select_voa.selectedIndex].split("|")[0];
     iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrentvoa;
   }
-function toVoa(){
-    let url="https://learningenglish.voanews.com";
-    window.open(url);
-}  
 //link yt basic  DKF  https://youtube.com/playlist?list=PLhow8vRduAKyaJ8_5-jBR4PV3is3tSpYz&si=LfPbgHbHBLY5eMfN
 //link yt develop DKF https://www.youtube.com/playlist?list=PLhow8vRduAKwxvROzq8ZMj1fUqsXuFN2E
 //link yt expand  DKF https://youtube.com/playlist?list=PLhow8vRduAKwIIZ0yzh5kl1C1DxzPxxYZ&si=rxpoDMbkKBF_8_99
