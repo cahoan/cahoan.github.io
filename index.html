@@ -131,7 +131,7 @@ border: transparent;
     background-color: #6d5c1a;;
     width: 340px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
@@ -145,11 +145,10 @@ width:114px;
 }
 #buttonH{
 color:whitesmoke;
-width:114px;
 
 }
 
-#buttonQ,  #buttonH{
+#buttonQ,#buttonH{
 background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%); /* Màu gradient 3D */
 font-size: 14px;
 padding: 2px 4px;
@@ -195,6 +194,17 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
     width: 340px;
     height: auto;
 }
+#note {
+margin-top: 20px;
+font-size: 15px;
+color: #d9534f;
+display: none;
+background: #fff3cd;
+border-left: 4px solid #ffc107;
+padding: 12px;
+border-radius: 4px;
+}
+
 </style>
 </head>
 <body>
@@ -259,13 +269,6 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
         <!--Khi nhap vao 1.1 thi clear/ off-->
     </div>
 
-    <div class="buttons4">
-        <select id="selectexercise" style="background-color: rgb(187, 194, 137);">
-        </select>
-        <label id="getQuestionBtn" onclick="getRandomQuestion()"><button id="buttonQ">Ex.🎲Question</button></label>
-        <!--<label onclick="resetList()"><button id="buttonR">🔄Fresh</button></label>-->
-        <label for="selectexercise" translate="no"><button id="buttonH" onclick="htTBhelp()" ><span id="cauhoin" style="color:yellow"></span>❓Help</button></label>
-    </div>  
 
     <!--CAC LINK PDF TACTIC-->
     <div class="buttons3">
@@ -274,9 +277,10 @@ transform: translateY(3px); /* Hiệu ứng nhấn xuống */
         <button onclick="hthipdf3()" id="expandingpdf" style="background-color: darkgreen;" translate="no"><a style="color:rgb(206, 206, 244);font-size: small;">Expanding &nbsp;TFL PDF</a></button>
     </div>
 
-    <!--CHO BAI TAP-->
-    <div id="questionOutput" style="color:darkgreen;">[Chưa có câu hỏi]</div>
-
+    <div class="buttons4">
+        <button id="buttonH"><select id="select_voa" onchange="chonUnitVoa()" style="background-color: transparent; border: none; color:rgb(105, 27, 27);font-weight:bolder;"></select></button>
+    </div>
+    <br><br><br><br>
 </div>
 
 
@@ -288,11 +292,12 @@ const developingpdfEl = document.getElementById("developingpdf");
 const expandingpdfEl = document.getElementById("expandingpdf");
 var hiden=0;
 let tducso=0;
-
+var level = 1;
 //-- Cho NEN video ifram youtube-----------------------
 //let id = "";
-var videoIDcurrent;
+var videoIDcurrent, videoIDcurrentVoa, listx, listy;
 const selectb = document.getElementById("unit_chon");
+const selectvoa = document.getElementById("select_voa");
     //nen la id luu last
 //document.getElementById("iframe_yt").src="https://youtube.com/embed/" + videoIDcurrent;
 //cai nay default Basic PDF
@@ -343,9 +348,10 @@ function chonUnit(){ //chon unit khac va update iframe
             return;
         }
         
-        videoIDcurrent = list_id[selectb.selectedIndex];
+        //videoIDcurrent = list_id[selectb.selectedIndex];
+        videoIDcurrent = listy[selectb.selectedIndex].split("|")[0];
         //alert(videoIDcurrent); src embed co dang do yt quy dinh : "https://youtube.com/embed/"+id_yt
-        iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent + "?enablejsapi=1";
+        iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrent ;
 
     }
 }
@@ -354,12 +360,42 @@ function chonUnit(){ //chon unit khac va update iframe
 //document.getElementById("basicpdf").click();
 function hthipdf1(){
     iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
+    updateMenuT(0);
+    updateMenuV(0);
+    document.getElementById("developingpdf").disabled = false;
+    document.getElementById("expandingpdf").disabled = false;
+    document.getElementById("wordLength").disabled = true;
+
+    document.getElementById("wordLength").style.background = "transparent";
+    document.getElementById("expandingpdf").style.background = "darkgreen";
+    document.getElementById("developingpdf").style.background = "darkgreen";
+
 }
 function hthipdf2(){
     iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/kjol";
+    updateMenuT(1);
+    updateMenuV(1);
+    document.getElementById("wordLength").disabled = false;
+    document.getElementById("expandingpdf").disabled = false;
+    document.getElementById("developingpdf").disabled = true;
+
+    document.getElementById("developingpdf").style.background = "transparent";
+    document.getElementById("wordLength").style.background = "darkgreen";
+    document.getElementById("expandingpdf").style.background = "darkgreen";
+
 }
 function hthipdf3(){
     iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/vlyh";
+    updateMenuT(2);
+    updateMenuV(2);
+    document.getElementById("wordLength").disabled = false;
+    document.getElementById("developingpdf").disabled = false;
+    document.getElementById("expandingpdf").disabled = true;
+
+    document.getElementById("expandingpdf").style.background = "transparent";
+    document.getElementById("developingpdf").style.background = "darkgreen";
+    document.getElementById("wordLength").style.background = "darkgreen";
+
 }
 //let tducso=0;
 function tdyt(){
@@ -395,22 +431,20 @@ chonQA_buttonEl.addEventListener('click', function(){
         iframe_ytEl.src = "icons/theduc.mp4";
         chonQA_buttonEl.innerHTML='The duc yhct 30p';
         readTd30();
-
     } else if (tducso%5 === 2) {
-        iframe_ytEl.src = "icons/theducnu.mp4";
-        chonQA_buttonEl.innerHTML='The duc yhct 30p nu';
+        //iframe_ytEl.src = "icons/theducnu.mp4";
+        iframe_ytEl.src="https://youtube.com/embed/pdm2VIOmXMc"; 
+        chonQA_buttonEl.innerHTML='The duc yhct 27p nu';
     } else if (tducso%5 === 3) {
         iframe_ytEl.src="https://youtube.com/embed/" + "2p6qQSm3AcI" ;
         chonQA_buttonEl.innerHTML='11 bt ta tay';
     } else if (tducso%5 === 4) {
-        //iframe_ytEl.src = "icons/theduc15namnu.mp4";
-        //https://www.youtube.com/watch?v=2p6qQSm3AcI , 11 bt voi ta tay
-        iframe_ytEl.src = "icons/thuocthan.mp4";
-        chonQA_buttonEl.innerHTML='Bai thuoc tri than yeu';
-
+        iframe_ytEl.src="https://youtube.com/embed/" + "Xwb1OrkPupM" ;
+        chonQA_buttonEl.innerHTML='Tra Ky Tu';
     } else {
         iframe_ytEl.src = "https://online.flipbuilder.com/sdtta/fpva/mobile/index.html";
         chonQA_buttonEl.innerHTML='TD';
+
 
     }
 });
@@ -422,10 +456,6 @@ chonQA_buttonEl.addEventListener('click', function(){
 document.getElementById("iframe_yt").style.width="340px";
 document.getElementById("iframe_yt").style.height="255px";
 
-function rutTextTuAnh(){
-    iframe_ytEl.src = "https://tiengs.github.io/";
-}
-//doc bai theduc
 //them 3-5-25
 function detectLanguage(text) {
     // Nếu thấy nhiều ký tự có dấu tiếng Việt thì chọn tiếng Việt
@@ -473,10 +503,20 @@ function speakText(text) {
 }
 
 //Het them 3-5-25
+var videoIDcurrentvoa;
+  const select_voa = document.getElementById("select_voa");
+  function chonUnitvoa(){ //chon unit khac va update iframe
+    videoIDcurrentvoa = lIdTitle_voa[select_voa.selectedIndex].split("|")[0];
+    iframe_ytEl.src="https://youtube.com/embed/" + videoIDcurrentvoa;
+  }
+//link yt basic  DKF  https://youtube.com/playlist?list=PLhow8vRduAKyaJ8_5-jBR4PV3is3tSpYz&si=LfPbgHbHBLY5eMfN
+//link yt develop DKF https://www.youtube.com/playlist?list=PLhow8vRduAKwxvROzq8ZMj1fUqsXuFN2E
+//link yt expand  DKF https://youtube.com/playlist?list=PLhow8vRduAKwIIZ0yzh5kl1C1DxzPxxYZ&si=rxpoDMbkKBF_8_99
 
 </script>  
 
 <script src="index.js"></script> 
+<script src="indexvoa.js"></script> 
 <script src="indexbt.js"></script> 
 
 </body>

@@ -241,9 +241,123 @@ let listUrlYt = [
     'Expanding Unit 23 : Predicaments', 
     'Expanding Unit 24 : Global Issues',
     'Expanding Unit 25 : Unhide Secret'];
-    
+//--------------------------------------------------
+//------------------------------id va title cua tactic basic yt
+let lIdTitle_TFL0 = [
+"Xj8Amv0Z52w|TFL Basic Unit 1 Introductions and Names",
+"lfEy2xMmv0Y|TFL Basic Unit 2 Describing people",
+"ltKWFehkvVU|TFL Basic Unit 3 Clothes",
+"Zb6isCtPnEI|TFL Basic Unit 4 Routines",
+"dDCfehYsrgk|TFL Basic Unit 5 Dates",
+"vr9iQtbb6I8|TFL_Basic_Unit 6 Jobs",
+"TLDAAk_lpyY|TFL Basic Unit 7 Favorites",
+"C2amKJcCSFU|TFL Basic Unit 8 Sports and Excercise",
+"qO8aWZ-sfTI|TFL Basic Unit 9 Locations",
+"K2O-8dSTmGM|TFL Basic Unit 10 The family",
+"rvavpRuzHfY|TFL Basic Unit 11 Entertainment",
+"BlM-Syj6bP0|TFL Basic Unit 12 Prices",
+"Bjc6UI5YgDQ|TFL Basic Unit 13 Restaurants",
+"G1pQ1E7pYHw|TFL Basic Unit 14 Small Talk",
+"hA8HdVq3fNc|TFL Basic Unit 15 Vacations",
+"djNclWnIvHw|TFL Basic Unit 16 Apartment Living",
+"vXrLxdliCiw|TFL Basic Unit 17 Hopes and Plans",
+"pxLEhCufVPc|TFL Basic Unit 18 The Weather",
+"VMhPHWI7yvQ|TFL Basic Unit 19 Shopping",
+"hUJDSGI64pQ|TFL Basic Unit 20 Describing Things",
+"iPKQCpZJTvw|TFL Basic Unit 21 Direction",
+"58geqDklMLU|TFL Basic Unit 22 People We Know",
+"XUIOdZj5Ni4|TFL Basic Unit 23 Places",
+"CXYoUA37Xas|TFL Basic Unit 24 Health",
+"FvjHJS9FM00|TFL Basic Test 1",
+"oxSdumslhik|TFL Basic Test 2",
+"GO-OXeNqCCY|TFL Basic Test 3",
+"jwfMfV8bytU|TFL Basic Test 4",
+"Hdr7zxnRrwE|TFL Basic Test 5",
+"LvnKkz5Yk9A|TFL Basic Test 6"
+];
+
+let lIdTitle_TFL1 = [
+"mreFzGaKLpY|TFL Developing Unit 1 The Weekend",
+"85GZKHYwJ1A|TFL Developing Unit 2 City Transportation",
+"M6XIzsOTdQQ|TFL Developing Unit 3 Neighbors",
+"kNZKCk6WPEo|TFL Developing Unit 4 Celebrations",
+"grllLeqd8pw|TFL Developing Unit 5 Restaurants",
+"CPGoFenijc4|TFL Developing Unit 6 Gifts",
+"jfztr4grDuw|TFL Developing Unit 7 Air Travel",
+"VjnxaTriZM0|TFL Developing Unit 8 Mishaps",
+"6wXRxUa4wyU|TFL Developing Unit 9 Jobs",
+"f-Qx2UhtSEY|TFL Developing Unit 10 Keeping Fit",
+"DqHu21-GwBc|TFL Developing Unit 11 Invitations",
+"YYoa2yVGymM|TFL Developing Unit 12 Campus Life",
+"ObNoRKjfYxo|TFL Developing Unit 13 Hobbies & Pastimes",
+"ULo3ZCbK474|TFL Developing Unit 14 Shopping Problems",
+"Dme7NDF-Big|TFL Developing Unit 15 Hotel Services",
+"T_P6kqCQjb0|TFL Developing Unit 16 Movies",
+"Lpn3vGsN4bc|TFL Developing Unit 17 Fears",
+"Sr9HGGU0AP4|TFL Developing Unit 18 Phone Messages",
+"PpBNHLJ_Bdc|TFL Developing Unit 19 Touring a City",
+"wWUTbBJnSrw|TFL Developing Unit 20 Airports",
+"6DCcF5iq9eY|TFL Developing Unit 21 Hotels",
+"MqT42QVxPV0|TFL Developing Unit 22 Traffic",
+"Qnj8j4Y1CIk|TFL Developing Unit 23 Roommates",
+"M7NHT21Udfo|TFL Developing Unit 24 Travel"
+];
+
+let lIdTitle_TFL2 = [
+"vG7bD1V1vYM|TFL Expanding_Unit 1 Small Talk",
+"PBpCh6ZOOYA|TFL Expanding Unit 2 Plans",
+"jOHp6EqEJz0|TFL Expanding Unit 3 Successful Businesses",
+"gXk71msBMgo|TFL Expanding Unit 4 Apologies and Excuses",
+"ff3VrHmFirs|TFL Expanding Unit 5 Character Traits",
+"ZKb2zpoEKbg|TFL Expanding Unit 6 Travel",
+"CXWlHOjTMBM|TFL Expanding Unit 7 Housing",
+"nz0VIbZUpPI|TFL Expanding Unit 8 Can you believe it",
+"2p6LN506wN0|TFL Expanding Unit 9 Friendship",
+"94p8nPfEdu0|TFL Expanding Unit 10 Television",
+"HPUu7Eu5bdo|TFL Expanding Unit 11 Cities",
+"B_Fh21CwXi0|TFL Expanding Unit 12 Urban Life",
+"pjdRa8-4QCE|TFL Expanding Unit 13 Special Days",
+"Mt8LcfwkfDc|TFL Expanding Unit 14 Fashion",
+"ZqqsH2jSxEo|TFL Expanding Unit 15 Favorites",
+"l92O_ie7T7o|TFL Expanding Unit 16 Phone Message",
+"1PpuwIWJ_AU|TFL Expanding Unit 17 Past Events",
+"BN1g_G_ATGc|TFL Expanding Unit 18 Vacations",
+"W3vY8AB4YxQ|TFL Expanding Unit 19 The News",
+"mkWhUuveuCo|TFL Expanding Unit 20 Opinions",
+"PjNfRrbSu-E|TFL Expanding Unit 21 Famous People",
+"toEv7eDDxPE|TFL Expanding Unit 22 Food and Nutrition",
+"NkJjcGoum-U|TFL Expanding_Unit 23 Predicaments",
+"qaFcCN23JiQ|TFL Expanding Unit 24 Global Issues",
+"8hmdVT8_0Ns|TFL Expanding Test 1 Picture Based Questions",
+"nNxvEDJvivk|TFL Expanding Test 2 Making inferences",
+"oOtC3oFgYdU|TFL Expanding Test 3 Question focused listening",
+"zFFXboTHgTw|TFL Expanding Test 4 Conversation Based Question",
+"TkTX3ut3WJg|TFL Expanding Test 5 Negatives in questions",
+"6MB2LDicGn4|TFL Expanding Test 6 Listening for Organization"
+];
+
+function updateMenuT(levely) {
+    for (i = selectb.options.length-1; i >= 0;i--) {
+        selectb.remove(i);
+    }
+    if (levely===0){
+        listy=lIdTitle_TFL0;
+    }else if(levely===1){
+        listy=lIdTitle_TFL1;
+    }else{
+        listy=lIdTitle_TFL2;
+    }
+    for (let i = 0; i < listy.length; i++) {
+        let optn = listy[i].split("|")[1];
+        let el = document.createElement("option");
+        el.textContent = optn;
+        el.value = optn;
+        selectb.appendChild(el);
+    }
+}
+updateMenuT(0);
     // Main function
-    function GFG_Fun() {
+    function GFG_Funbbbb() {
         for (let i = 0; i < elmts.length; i++) {
             let optn = elmts[i];
             let el = document.createElement("option");
@@ -252,13 +366,13 @@ let listUrlYt = [
             selectb.appendChild(el);
         }
     }
-    GFG_Fun();
+    ///GFG_FunBo();
     function maHoaLaiAK(){
       let ch = listUrlYt[listUrlYt.length - 1].split("be/")[1].replaceAll("=","-");
       //console.log(ch);
       return ch;
     }
-    //maHoaLaiAK();
+  
   //-apiKey--chat--------------------------------------------    
   
   const resultsEl = document.getElementById('results');
@@ -354,26 +468,6 @@ let listUrlYt = [
   
       }  
     
-    //function speakTextbo(text) {
-      // stop any speaking in progress
-    //  window.speechSynthesis.cancel();
-    
-      // create new utterance with all the properties
-      //const text = textEl.value;
-    //  utterance = new SpeechSynthesisUtterance(text);
-      //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-     // utterance.lang = langNoi;
-     // utterance.pitch = pitchInEl.value;
-     // utterance.rate = rateInEl.value;
-      //utterance.volume = volumeInEl.value;
-     // utterance.volume = 1;
-     // utterance.addEventListener('start', handleStart);
-     // utterance.addEventListener('end', handleEnd);
-  
-  
-      // speak that utterance
-     // window.speechSynthesis.speak(utterance);
-    //}
     speakText(resultsdichEl.innerText);
   }
   
@@ -436,29 +530,7 @@ let listUrlYt = [
           speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
       }
   
-      //speakText(text);
-      //utterance = new SpeechSynthesisUtterance(text);
-      // create new utterance with all the properties
-      //utterance.voice = window.speechSynthesis.getVoices().find(voice => voice.voiceURI === voiceInEl.value);
-      //utterance.lang = langNoi;
-      //utterance.pitch = pitchInEl.value;
-      //utterance.rate = rateInEl.value;
-      //utterance.volume = volumeInEl.value;
-      //utterance.volume = 1;
-  
-      //utterance.addEventListener('start', handleStart);
-      //utterance.addEventListener('end', handleEnd2);
-      //utterance.addEventListener('boundary', handleBoundary);
-  
-  
-  
-      // speak that utterance
-      //window.speechSynthesis.speak(utterance);
   }
-  
-  
-  
-  
   //--Cac bien toan cuc--
   //var text='';
   var demah=0;
@@ -608,11 +680,6 @@ let listUrlYt = [
       final_spanEl.textContent = linebreak(final_transcript);
       interim_spanEl.textContent = linebreak(interim_transcript);
   
-      //sendMessage(final_transcript);
-  
-    //final_transcript la global nen no van ton tai ca cac thay doi, den khi ta click nghe thi moi dich
-    //resultsdichEl.innerHTML=translate(final_transcript);     
-    //translate(final_transcript);     
   };
   
   }
@@ -659,9 +726,6 @@ let listUrlYt = [
       recognition.lang = langNoi;
   
     }
-  
-    //recognition.lang = langNoi;
-    //console.log(recognition.lang);
   
     ignore_onend = false;
     final_spanEl.textContent = '';
@@ -798,18 +862,6 @@ let listUrlYt = [
     let textNoi = resultsdichViqEl.innerText.trim() + " . " + resultsdichViaEl.innerText.trim();
     if (textNoi.trim()==="."){return;}
     speakText(textNoi);
-    //const speech = new SpeechSynthesisUtterance();
-    //if (langNoi==='en-US'){
-    //  speech.lang = "vi-VN"; // Đọc tiếng Vi
-    //}else{
-    //  speech.lang = "en-US"; // Đọc tiếng Vi
-  
-    //}  
-    //speech.text = textNoi;
-    //speech.rate = 1;
-    //speech.pitch = 1;
-    //speech.volume = 2;
-    //speechSynthesis.speak(speech);
   }
   //--------------------
   function stopVideo() {
@@ -1245,29 +1297,23 @@ let listUrlYt = [
   Swal.fire({
     title: "<span style='color:darkgreen;'>About</span>",
     html: 
-      '<p style="text-align: left;  color:grey;">- Bộ sách <span style="color:darkblue;">Tactics for lístening</span> của <span style="color:darkblue;">Jack C. Richards</span> do Đại học <span style="color:darkblue;">Oxford</span>  phát hành, được rất nhiều người dùng .\n</p>'+
+      '<p style="text-align: left;  color:grey;">✅ Bộ sách <span style="color:darkblue;">Tactics for lístening</span> của <span style="color:darkblue;">Jack C. Richards</span> do Đại học <span style="color:darkblue;">Oxford</span>  phát hành, được rất nhiều người dùng .\n</p>'+
       '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">tiensg89@gmail.com</span> tìm thấy trên mạng nên góp nhặt tải về và lập trang web này để thuận tiện sử dụng và giúp người khác trong việc tự học nghe tiếng Anh.\n</p>'+
       '<p style="text-align: left;  color:grey;">- Nó có 3 cuốn, mỗi cuốn có 24 unit kèm theo audio để nghe. Sách có dạng <span style="color:darkblue;">pdf flip</span> rất hay.\n</p>'+
       '<p style="text-align: left;  color:grey;">- Cách sử dụng để học là do người dùng tự khám phá và hoạch định. Bộ tài liệu nảy rất tuyệt.\n</p>'+
-      '<p style="text-align: left;  color:grey;">Riêng tôi đã từng làm giáo viên giảng dạy và quản lý nhà trường, '+
-      ' nên đã lập trình để tự hoc tiếng Anh theo tài liệu này.'+' </p>'+
-      '<p style="text-align: left;  color:grey;">Đặc biệt tôi đã tiếp cận được <span>chatGPT</span>và biết cách dùng <span style="color:darkblue;">Javascript</span> để lập trình phuc vụ cho việc tập nghe và nói tiếng Anh qua viêc chat với GPT'+
-      ' '+' </p>'+
-   
-      '<p style="text-align: left;  color:grey;"><span style="color:red;">1-</span> Bạn co thể sử dụng chatGPT trong app này'+
+      
+      '<p style="text-align: left;  color:grey;">✅ Đặc biệt tôi đã tiếp cận được <span>chatGPT</span>và đã lập trình phuc vụ cho việc tập nghe và nói tiếng Anh qua việc chat với GPT. '+
+      'Bạn có thể sử dụng chatGPT trong app này'+
       ' '+'</p>'+
       '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">để hỏi hoặc yêu cầu GPT trả lời hoặc cho biết các thông tin nào đó'+
       ' bằng tiếng nói hoặc văn bản nhập vào bằng tiếng Anh hoặc tiếng Việt.</span>'+' </p>'+
       '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">GPT sẽ hồi đáp bằng âm thanh, văn bản bằng tiếng Anh hoặc tiếng việt qua những nút bấm.</span></p>'+
       '<p style="text-align: left;  color:grey;">- <span style="color:darkblue;">Khi click vào một từ hồi đáp, GPT sẽ cung cấp các thông tin về ngữ nghĩa của từ đó.</span></p>'+
   
-      '<p style="text-align: left;  color:grey;"><span style="color:red;">2-</span> Bạn cũng có thể sử dụng các bài luyện tập nghe và nói tiếng Anh, tiếng Việt vói chatGPT'+
-      ' do tôi biên soạn theo tài liệu nêu trên. <span style="color:darkblue;">Các bài tập này bổ sung cho việc luyện nghe và nói bất cứ lúc nào. Chỉ cần chọn bài và bấm nút Ques.</span>'+
-      ' '+'</p>'+
+      '<p style="text-align: left;  color:grey;">✅ Bạn cũng có thể sử dụng các bài học tiếng Anh dạng Youtube của VOA trong menu phía dưới để học. '+'</p>'+
+      '<p style="text-align: left;  color:grey;">Khi xem các bài youtube, nếu có phần không hiểu và đang chạy trên máy tính, bạn có thể nhấp mic để GPT nghe phần đó rồi phản hồi. Sau đó nhấp nút dịch tiếng Việt để nghe hoặc xem văn bản.'+' </p>'+
   
-      '<p style="text-align: left;  color:grey;"><span style="color:red;">3-</span> Và <span style="color:darkblue;">hướng phát triển tiếp theo là nhờ GPT nhận xét các trả lời của bạn đã hợp logic hay chưa.</span>'+
-      ' Và còn nhiều thứ nữa chúng ta sẽ khám phá qua việc chơi và học với chatGPT.'+'</p>',
-  
+      '<p style="text-align: left;  color:darkblue;">✅ Và còn rất nhiều thứ chúng ta sẽ khám phá dần với chatGPT. '+'</p>',
     confirmButtonText: "OK", 
   });
   //.then((result) => {
@@ -1321,17 +1367,3 @@ let listUrlYt = [
     }
   }
   //-----------
-  //function speakTextTd(textTd,langNoi){ 
-  //  if (window.speechSynthesis.speaking) {window.speechSynthesis.cancel();
-  //    return;
-  //  }
-  //  let textNoi = textTd;
-  //  const speech = new SpeechSynthesisUtterance();
-  //  speech.lang = langNoi;
-  //  speech.text = textNoi;
-  //  speech.rate = 1;
-  //  speech.pitch = 1;
-  //  speech.volume = 2;
-  //  speechSynthesis.speak(speech);
-  //}
-    
