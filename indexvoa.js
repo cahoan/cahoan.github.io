@@ -122,12 +122,15 @@ let lIdTitle_voaL1 = [
 
 let lIdTitle_voaL2 = [
 "mnmGvdVcQ-0|Let's Learn English Level 2",
+"4XaAE5NRHVM|01: Budget Cuts",
 "xokbf-np33Q|02: The Interview",
 "a7X5ftOnp74|03: He Said - She Said",
 "OR0d7fb_Ls0|04: Run Away With the Circus!",
 "yJ5fpEFx6j8|05: Greatest Vacation of All Time",
 "36l0ff0FGXg|06: News and Social Media",
+"x9MqYQYAGdA|07: Tip Your Tour Guide",
 "WoJVDTaQQ5A|08: No title",
+"8aa3uD1Ywjc|09: Pets Are Family, Too!",
 "O08F0xp1UGk|10: Visit to Peru",
 "DimMV7rUOhQ|11: The Big Snow",
 "VwoIWAsBQgM|12: Run! Bees!",
