@@ -199,7 +199,7 @@ function htTBhelp(){
 }
 //---tham khao
 function rutTextTuAnh(){
-    let heso=0;
+        let heso=0;
     let modheso;
 
     //---------
@@ -209,7 +209,7 @@ function rutTextTuAnh(){
     <input type="file" id="imageInput" accept="image/*">
     <br><br>
     <canvas id="canvas" style="
-        width: 240px;
+        width: 394px;
         height: 160px;
         border-radius: 0%; 
         background-size: cover; 
@@ -222,7 +222,7 @@ function rutTextTuAnh(){
     <br><br>
     <button id="extractText" >📜 Trích xuất văn bản</button><br><br>
 
-    <textarea id="output" class="swal2-tien" placeholder="Văn bản nhận diện sẽ hiển thị ở đây và có thể sửa..." rows="6" cols="20" style="font-size:20px"></textarea>
+    <textarea id="output" class="swal2-tien" placeholder="Văn bản nhận diện sẽ hiển thị ở đây và có thể sửa..." rows="6" cols="34" style="font-size:20px"></textarea>
     
         `,
     showCancelButton: true,
@@ -295,8 +295,6 @@ function rutTextTuAnh(){
             console.log(document.getElementById("ouput").innerText);
     }
     
-
-        
 
 }
 //-----------------

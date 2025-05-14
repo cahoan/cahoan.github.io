@@ -954,8 +954,8 @@ updateMenuT(0);
         <div style="text-align: left;  color:darkgreen;"><input type="radio" name="pre-sentence" value="Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : ">Đưa ra một ví dụ về một câu tiếng Việt có câu trả lời có thể như sau : </div>
         <div style="text-align: left;  color:green;"><input type="radio" name="pre-sentence" value="Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : ">Nói một câu tiếng Việt khiến tôi phải trả lời như thế này : </div>
       
-        <textarea id="input-text" class="swal2-tien" placeholder="Nhập văn bản tiếng Việt" rows="6" cols="20" style="font-size:20px" color:darkgreen></textarea>
-        <textarea readonly id="translated-text" class="swal2-tien" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..." rows="6" cols="20" style="font-size:20px; color:orange;"></textarea>
+        <textarea id="input-text" class="swal2-tien" placeholder="Nhập văn bản tiếng Việt" rows="6" cols="34" style="font-size:20px" color:darkgreen></textarea>
+        <textarea readonly id="translated-text" class="swal2-tien" placeholder="Bản dịch tiếng Anh sẽ hiển thị ở đây..." rows="6" cols="34" style="font-size:20px; color:orange;"></textarea>
         <br>
         <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px; background:orange;">🔊 Đọc</button>
       `,
@@ -1128,8 +1128,8 @@ updateMenuT(0);
   
   <br>
   
-      <textarea id="input-text" class="swal2-tien" placeholder="Enter English text" rows="6" cols="20" style="font-size:20px"></textarea>
-        <textarea readonly id="translated-text" class="swal2-tien" placeholder="Vietnamese translation will display here..." rows="6" cols="20" style="font-size:20px;color:orange;"></textarea>
+      <textarea id="input-text" class="swal2-tien" placeholder="Enter English text" rows="6" cols="34" style="font-size:20px"></textarea>
+        <textarea readonly id="translated-text" class="swal2-tien" placeholder="Vietnamese translation will display here..." rows="6" cols="34" style="font-size:20px;color:orange;"></textarea>
         <br>
         <button id="speak-button" class="swal2-confirm swal2-styled" style="display: none; margin-top: 10px; background:orange">🔊 Đọc</button>
         `,
