@@ -1362,7 +1362,9 @@ updateMenuT(0);
             'Các bài tập này còn giúp kích thích hệ tiêu hóa, '+
             'cải thiện chức năng gan,thận, và các cơ quan nội tạng khác bằng cách giảm ứ trệ khí huyết, '+
             'từ đó giúp hệ miễn dịch hoạt động tốt hơn. '+
-            '1- Sáng, việc đầu tiên và quan trọng nhất uống một cốc nước ấm. Không phải nước lạnh không phải nước '+
+            
+            '... Cũng nên tập năm thói quen sau đây: ... '+
+            '...Một:... Sáng, việc đầu tiên và quan trọng nhất uống một cốc nước ấm. Không phải nước lạnh không phải nước '+
 'thường phải là nước hơi ấm. Lý do sau 7, 8 tiếng ngủ quý vị mất khoảng 500 n qua hơi thở và mồ hôi. '+
 'Lúc này máu đang cô đặc nguy hiểm chảy chậm như mật ong. Theo viện tim mạch hơn 60% người già '+
 'bị đột quỵ hoặc nhồi máu cơ tim từ sáo đến chính sáng do máu quá đặc. Một cốc nước ấm lúc này '+
@@ -1371,24 +1373,24 @@ updateMenuT(0);
 'trống, chỉ dùng lực chân. Đừng coi thường nó. Theo nghiên cứu năm 2023, chỉ cần 10 lần mỗi ngày '+
 'sau tám tuần lực cơ đùi tăng 23%. Đây chính là cơ bắp dưỡng mạng sống khi quý vị vốc ngã. '+
 
-'2- Sau bữa sáng tắm nắng, ăn xong nghỉ 30 phút, sau đó mặc đồ thoải mái ra ngoài tắm nắng. '+
+'...Hai:...Sau bữa sáng tắm nắng, ăn xong nghỉ 30 phút, sau đó mặc đồ thoải mái ra ngoài tắm nắng. '+
 'Chỉ cần 15 phút dưới nắng sáng, da sẽ tự sản sinh vitamin D giúp xương chắc tăng miễn dịch và '+ 
 'ngừa trầm cảm. Sau đó đi bộ 30 40 phút đi thong thả thôi. Trong lúc đi hãy dừng lại kiễng gót chân '+ 
 '10 lần. Động tác này bơm máu từ chân về tim hiệu quả suốt đời. '+
 
-'3- Xoàng bữa trưa quyết định chất lượng máu. 30 phút. Trước ăn trưa uống nửa cốc nước ấm. '+
+'... Ba: ... Xoàng bữa trưa quyết định chất lượng máu. 30 phút. Trước ăn trưa uống nửa cốc nước ấm. '+
 'Trong bữa ăn nhất định phải có một khúc cá đặc biệt là cá béo, cá thu, cá nục, cá ba. '+
 'Đây là vấn đề sống còn vì Omega 3 trong cá là máy quét rác mạch máu tự nhiên mạnh nhất. '+
 'Nghiên cứu tại Nauy, trên 40 người cho thấy ăn cá béo hai lần tuần giảm 47% nguy cơ đột quỵ.'+ 
 'Sau ăn ăn một nấm hạt lạc óc chó hại nhân, nó bù đắp lượng ma di bị thuốc tây lấy mất. '+
 
-'4- Buổi chiều thời gian vàng kết nối, hãy ra ngoài lần nữa nếu có thể. Đi chợ gặp bạn bè '+
+'...Bốn: ... Buổi chiều thời gian vàng kết nối, hãy ra ngoài lần nữa nếu có thể. Đi chợ gặp bạn bè '+
 'trong xóm, đừng rú trong nhà. Nhìn vào mắt người khác cười và nói chuyện, hãy nhớ cô đơn '+
 'giết người nhanh hơn ung thư, chỉ 5 phút trò chuyện cũng giảm viêm não. Về nhà uống nửa cốc '+ 
 'nước ấm, khi nghỉ ngơi tập đứng một chân 10 giây có thể vịn tường. Đây là bài tập cân bằng '+
 'tốt nhất chống té ngã. '+
 
-'5- Buổi tối chuẩn bị cho giấc ngủ phục hồi, ăn tối nhẹ nhàng. Sau ăn ăn một quả chuối '+
+'... Năm:...Buổi tối chuẩn bị cho giấc ngủ phục hồi, ăn tối nhẹ nhàng. Sau ăn ăn một quả chuối '+
 'kali và maji trong chuối giúp ngừa chuột rút đêm và ngủ ngon. Đặc biệt tốt cho người uống '+ 
 'thuốc huyết áp. Và đây là khoảnh khắc quan trọng nhất đêm nay. Gọi điện thoại cho con cháu '+
 'hoặc bạn bè ít nhất 10 phút, nói chuyện gì cũng được. Sự kết nối này dập tắt nỗi cô đơn giảm '+
@@ -1403,5 +1405,6 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
 
