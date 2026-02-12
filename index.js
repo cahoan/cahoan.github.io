@@ -1385,7 +1385,7 @@ updateMenuT(0);
 '4- Buổi chiều thời gian vàng kết nối, hãy ra ngoài lần nữa nếu có thể. Đi chợ gặp bạn bè '+
 'trong xóm, đừng rú trong nhà. Nhìn vào mắt người khác cười và nói chuyện, hãy nhớ cô đơn '+
 'giết người nhanh hơn ung thư, chỉ 5 phút trò chuyện cũng giảm viêm não. Về nhà uống nửa cốc '+ 
-'nước ấm, khi nghỉ ngơi tập đứng một chân 10 giây có thể vịn tường. Đây là bài tập cân bằng '+'+
+'nước ấm, khi nghỉ ngơi tập đứng một chân 10 giây có thể vịn tường. Đây là bài tập cân bằng '+
 'tốt nhất chống té ngã. '+
 
 '5- Buổi tối chuẩn bị cho giấc ngủ phục hồi, ăn tối nhẹ nhàng. Sau ăn ăn một quả chuối '+
@@ -1403,4 +1403,5 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
