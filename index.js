@@ -1355,7 +1355,7 @@ updateMenuT(0);
             'hỗ trợ quá trình phục hồi và cải thiện sức khỏe. '+
             '...2... Giảm căng thẳng và mệt mỏi : '+
             'Thể dục i học cổ truyền chú trọng đến hơi thở sâu và chậm, '+
-            'giúp giảm stress, thư giãn hệ thần kinh và giảm áp lực trên tim mạch. '+
+            'giúp giảm tret, thư giãn hệ thần kinh và giảm áp lực trên tim mạch. '+
             'Khi hệ thần kinh được thả lỏng, khí huyết lưu thông thuận lợi, '+
             'giúp cơ thể hồi phục và đạt trạng thái cân bằng. '+
             '...3... Hỗ trợ chức năng hệ tiêu hóa và nội tạng: '+
@@ -1390,15 +1390,15 @@ updateMenuT(0);
 'nước ấm, khi nghỉ ngơi tập đứng một chân 10 giây có thể vịn tường. Đây là bài tập cân bằng '+
 'tốt nhất chống té ngã. '+
 
-'... Năm:...Buổi tối chuẩn bị cho giấc ngủ phục hồi, ăn tối nhẹ nhàng. Sau ăn ăn một quả chuối '+
-'kali và ma nhê trong chuối giúp ngừa chuột rút đêm và ngủ ngon. Đặc biệt tốt cho người uống '+ 
+'... Năm:...Buổi tối chuẩn bị cho giấc ngủ phục hồi, ăn tối nhẹ nhàng. rồi ăn một quả chuối, '+
+'ka li và ma nhê trong chuối giúp ngừa chuột rút đêm và ngủ ngon. Đặc biệt tốt cho người uống '+ 
 'thuốc huyết áp. Và đây là khoảnh khắc quan trọng nhất đêm nay. Gọi điện thoại cho con cháu '+
 'hoặc bạn bè ít nhất 10 phút, nói chuyện gì cũng được. Sự kết nối này dập tắt nỗi cô đơn giảm '+
 'viêm não. Một tiếng trước khi ngủ, uống nửa cốc nước ấm cuối cùng, chỉ nửa cốc để không đi '+
 'tiểu đêm. Khi lên giường, nghĩ về ba điều mình đã làm tốt hôm nay. Điều này giúp tâm an và '+
 'ngủ sâu hơn. '+
           '....  Đó là quy trình hồi phục sự sống 24 giờ. không tốn kém, không phức tạp, '+
-'chỉ cần kiên trì, Bác sĩ Vũ Đức Anh - người đã nghiên cứu và chữa bệnh cho nhiều người cao tổi trong hơn 40 năm - cam đoan chỉ sau hai tuần quý vị sẽ thấy cơ thể thay đổi rõ rệt.'+
+'chỉ cần kiên trì, Bác sĩ Vũ Đức Anh, người đã nghiên cứu và chữa bệnh cho nhiều người cao tổi trong hơn 40 năm, cam đoan chỉ sau hai tuần quý vị sẽ thấy cơ thể thay đổi rõ rệt.'+
             '... ';
 
         
@@ -1407,6 +1407,7 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
 
 
