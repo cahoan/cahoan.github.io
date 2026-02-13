@@ -1380,9 +1380,9 @@ updateMenuT(0);
 
 '... Ba: ... Xoàng bữa trưa quyết định chất lượng máu. 30 phút. Trước ăn trưa uống nửa cốc nước ấm. '+
 'Trong bữa ăn nhất định phải có một khúc cá đặc biệt là cá béo hoặc cá thu, hoặc cá nục, hay cá ba xa... '+
-'Đây là vấn đề sống còn vì Omega 3 trong cá là máy quét rác mạch máu tự nhiên mạnh nhất. '+
-'Nghiên cứu tại Nauy, trên 40 người cho thấy ăn cá béo hai lần tuần giảm 47% nguy cơ đột quỵ.'+ 
-'Sau ăn ăn một nấm hạt lạc óc chó hại nhân, nó bù đắp lượng ma di bị thuốc tây lấy mất. '+
+'Đây là vấn đề sống còn vì ô mê ga 3 trong cá là máy quét rác mạch máu tự nhiên mạnh nhất. '+
+'Nghiên cứu tại Na uy, trên 40 người cho thấy ăn cá béo hai lần tuần giảm 47% nguy cơ đột quỵ.'+ 
+'Sau đó ăn một nấm hạt lạc hoặc óc chó hay hạt nhân, nó bù đắp lượng ma di bị thuốc tây lấy mất. '+
 
 '...Bốn: ... Buổi chiều thời gian vàng kết nối, hãy ra ngoài lần nữa nếu có thể. Đi chợ gặp bạn bè '+
 'trong xóm, đừng rú trong nhà. Nhìn vào mắt người khác cười và nói chuyện, hãy nhớ cô đơn '+
@@ -1407,6 +1407,7 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
 
 
