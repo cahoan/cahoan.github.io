@@ -1354,7 +1354,7 @@ updateMenuT(0);
             'Điều này giúp cung cấp nhiều ô xy và dưỡng chất hơn đến các cơ quan, '+
             'hỗ trợ quá trình phục hồi và cải thiện sức khỏe. '+
             '...2... Giảm căng thẳng và mệt mỏi : '+
-            'Thể dục i học cổ truyền chú trọng đến hơi thỡ sâu và chậm, '+
+            'Thể dục i học cổ truyền chú trọng đến hơi thở sâu và chậm, '+
             'giúp giảm stress, thư giãn hệ thần kinh và giảm áp lực trên tim mạch. '+
             'Khi hệ thần kinh được thả lỏng, khí huyết lưu thông thuận lợi, '+
             'giúp cơ thể hồi phục và đạt trạng thái cân bằng. '+
@@ -1379,7 +1379,7 @@ updateMenuT(0);
 '10 lần. Động tác này bơm máu từ chân về tim hiệu quả suốt đời. '+
 
 '... Ba: ... Xoàng bữa trưa quyết định chất lượng máu. 30 phút. Trước ăn trưa uống nửa cốc nước ấm. '+
-'Trong bữa ăn nhất định phải có một khúc cá đặc biệt là cá béo, cá thu, cá nục, cá ba xa... '+
+'Trong bữa ăn nhất định phải có một khúc cá đặc biệt là cá béo hoặc cá thu, hoặc cá nục, hay cá ba xa... '+
 'Đây là vấn đề sống còn vì Omega 3 trong cá là máy quét rác mạch máu tự nhiên mạnh nhất. '+
 'Nghiên cứu tại Nauy, trên 40 người cho thấy ăn cá béo hai lần tuần giảm 47% nguy cơ đột quỵ.'+ 
 'Sau ăn ăn một nấm hạt lạc óc chó hại nhân, nó bù đắp lượng ma di bị thuốc tây lấy mất. '+
@@ -1407,6 +1407,7 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
 
 
