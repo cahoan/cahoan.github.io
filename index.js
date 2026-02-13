@@ -1396,8 +1396,10 @@ updateMenuT(0);
 'hoặc bạn bè ít nhất 10 phút, nói chuyện gì cũng được. Sự kết nối này dập tắt nỗi cô đơn giảm '+
 'viêm não. Một tiếng trước khi ngủ, uống nửa cốc nước ấm cuối cùng, chỉ nửa cốc để không đi '+
 'tiểu đêm. Khi lên giường, nghĩ về ba điều mình đã làm tốt hôm nay. Điều này giúp tâm an và '+
-'ngủ sâu hơn. Đó là quy trình hồi phục sự sống 24 giờ. không tốn kém, không phức tạp, '+
-'chỉ cần kiên trì, tôi cam đoan chỉ sau hai tuần quý vị sẽ thấy cơ thể thay đổi rõ rệt.';
+'ngủ sâu hơn. '+
+          '....  Đó là quy trình hồi phục sự sống 24 giờ. không tốn kém, không phức tạp, '+
+'chỉ cần kiên trì, Bác sĩ Vũ Đức Anh - người đã nghiên cứu và chữa bệnh cho nhiều người cao tổi trong hơn 40 năm - cam đoan chỉ sau hai tuần quý vị sẽ thấy cơ thể thay đổi rõ rệt.'+
+            '... ';
 
         
         //speakTextTd(textTdVi, "vi-VN");
@@ -1405,6 +1407,7 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
 
 
