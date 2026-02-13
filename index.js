@@ -1363,14 +1363,14 @@ updateMenuT(0);
             'cải thiện chức năng gan,thận, và các cơ quan nội tạng khác bằng cách giảm ứ trệ khí huyết, '+
             'từ đó giúp hệ miễn dịch hoạt động tốt hơn. '+
             
-            '... Cũng nên tập năm thói quen sau đây: ... '+
+            '...... Cũng nên tập năm thói quen sau đây: ... '+
             '...Một:... Sáng, việc đầu tiên và quan trọng nhất uống một cốc nước ấm. Không phải nước lạnh không phải nước '+
-'thường phải là nước hơi ấm. Lý do sau 7, 8 tiếng ngủ quý vị mất khoảng 500 n qua hơi thở và mồ hôi. '+
+'thường phải là nước hơi ấm. Lý do sau 7, 8 tiếng ngủ quý vị mất khoảng hơn nửa lít nước qua hơi thở và mồ hôi. '+
 'Lúc này máu đang cô đặc nguy hiểm chảy chậm như mật ong. Theo viện tim mạch hơn 60% người già '+
 'bị đột quỵ hoặc nhồi máu cơ tim từ sáo đến chính sáng do máu quá đặc. Một cốc nước ấm lúc này '+
-'làm loãng máu giúp tuần hoàn trơn chu và đánh thức hệ tiêu hóa. Sau khi uống nước và đi vệ sinh,'+ 
-'hãy làm động tác cứu mạng. Đứng trước ghế chắc chắn ngồi xuống đứng lên 10 lần. Không dùng tay '+
-'trống, chỉ dùng lực chân. Đừng coi thường nó. Theo nghiên cứu năm 2023, chỉ cần 10 lần mỗi ngày '+
+'làm loãng máu giúp tuần hoàn trơn chu và đánh thức hệ tiêu hóa... Sau khi uống nước và đi vệ sinh,'+ 
+'hãy làm động tác cứu mạng:... Đứng trước ghế chắc chắn ngồi xuống đứng lên 10 lần. Không dùng tay '+
+'chống, chỉ dùng lực chân. Đừng coi thường nó. Theo nghiên cứu năm 2023, chỉ cần 10 lần mỗi ngày '+
 'sau tám tuần lực cơ đùi tăng 23%. Đây chính là cơ bắp dưỡng mạng sống khi quý vị vốc ngã. '+
 
 '...Hai:...Sau bữa sáng tắm nắng, ăn xong nghỉ 30 phút, sau đó mặc đồ thoải mái ra ngoài tắm nắng. '+
@@ -1379,7 +1379,7 @@ updateMenuT(0);
 '10 lần. Động tác này bơm máu từ chân về tim hiệu quả suốt đời. '+
 
 '... Ba: ... Xoàng bữa trưa quyết định chất lượng máu. 30 phút. Trước ăn trưa uống nửa cốc nước ấm. '+
-'Trong bữa ăn nhất định phải có một khúc cá đặc biệt là cá béo, cá thu, cá nục, cá ba. '+
+'Trong bữa ăn nhất định phải có một khúc cá đặc biệt là cá béo, cá thu, cá nục, cá ba xa... '+
 'Đây là vấn đề sống còn vì Omega 3 trong cá là máy quét rác mạch máu tự nhiên mạnh nhất. '+
 'Nghiên cứu tại Nauy, trên 40 người cho thấy ăn cá béo hai lần tuần giảm 47% nguy cơ đột quỵ.'+ 
 'Sau ăn ăn một nấm hạt lạc óc chó hại nhân, nó bù đắp lượng ma di bị thuốc tây lấy mất. '+
@@ -1391,7 +1391,7 @@ updateMenuT(0);
 'tốt nhất chống té ngã. '+
 
 '... Năm:...Buổi tối chuẩn bị cho giấc ngủ phục hồi, ăn tối nhẹ nhàng. Sau ăn ăn một quả chuối '+
-'kali và maji trong chuối giúp ngừa chuột rút đêm và ngủ ngon. Đặc biệt tốt cho người uống '+ 
+'kali và ma nhê trong chuối giúp ngừa chuột rút đêm và ngủ ngon. Đặc biệt tốt cho người uống '+ 
 'thuốc huyết áp. Và đây là khoảnh khắc quan trọng nhất đêm nay. Gọi điện thoại cho con cháu '+
 'hoặc bạn bè ít nhất 10 phút, nói chuyện gì cũng được. Sự kết nối này dập tắt nỗi cô đơn giảm '+
 'viêm não. Một tiếng trước khi ngủ, uống nửa cốc nước ấm cuối cùng, chỉ nửa cốc để không đi '+
@@ -1405,6 +1405,7 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
 
 
