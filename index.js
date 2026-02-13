@@ -1367,7 +1367,7 @@ updateMenuT(0);
             '...Một:... Sáng, việc đầu tiên và quan trọng nhất uống một cốc nước ấm. Không phải nước lạnh không phải nước '+
 'thường phải là nước hơi ấm. Lý do sau 7, 8 tiếng ngủ quý vị mất khoảng hơn nửa lít nước qua hơi thở và mồ hôi. '+
 'Lúc này máu đang cô đặc nguy hiểm chảy chậm như mật ong. Theo viện tim mạch hơn 60% người già '+
-'bị đột quỵ hoặc nhồi máu cơ tim từ sáo đến chính sáng do máu quá đặc. Một cốc nước ấm lúc này '+
+'bị đột quỵ hoặc nhồi máu cơ tim từ 6 đến 9 giờ sáng do máu quá đặc. Một cốc nước ấm lúc này '+
 'làm loãng máu giúp tuần hoàn trơn chu và đánh thức hệ tiêu hóa... Sau khi uống nước và đi vệ sinh,'+ 
 'hãy làm động tác cứu mạng:... Đứng trước ghế chắc chắn ngồi xuống đứng lên 10 lần. Không dùng tay '+
 'chống, chỉ dùng lực chân. Đừng coi thường nó. Theo nghiên cứu năm 2023, chỉ cần 10 lần mỗi ngày '+
@@ -1407,6 +1407,7 @@ updateMenuT(0);
     }
   }
   //-----------
+
 
 
 
